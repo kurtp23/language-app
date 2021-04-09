@@ -1,12 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import Dashboard from './pages/dashboard/Dashboard';
+import NavBar from './components/nav/NavBar';
 
 function App() {
   return (
     <div>
-      {/* <Dashboard /> */}
+
       <Router>
+        <div>
+          <NavBar />
               <Switch>
               <Route path="/game">
                 <h1>Hello from Game</h1>
@@ -30,6 +33,8 @@ function App() {
                 <Dashboard />
               </Route>
             </Switch>
+        </div>
+
       </Router>
     </div>
   );

@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom';
 const Dashboard = () => {
     return (
         <div>
-            <div>
-                <Link to='/'><h1>Home</h1></Link>
-            </div>
             <Grid doubling columns={5} style={{ height: '100vh'}}>
                 <Grid.Column>
                     <div>
