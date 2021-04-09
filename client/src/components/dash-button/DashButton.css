@@ -7,5 +7,9 @@
     text-align: center;
     font-size: large;
     padding-top: 5px;
-    box-shadow: 0 0 0 5pt lightskyblue;
+    box-shadow: 0 0 0 5pt #ffcccb;
+}
+
+.dash-btn:hover {
+    box-shadow: 0 0 5pt 5pt lightskyblue;
 }

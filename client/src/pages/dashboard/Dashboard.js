@@ -1,12 +1,13 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import './Dashboard.css';
 import DashButton from '../../components/dash-button/DashButton';
 
 const Dashboard = () => {
     return (
         <div>
-            <Grid doubling columns={5} style={{ height: '100vh', innerWidth: '100vh'}}>
+            <Grid className='dash-container' doubling columns={3}>
                 <Grid.Column>
                     <Link to="game">
                         <DashButton children='Play!' color='red'/>
