@@ -21,6 +21,7 @@ const auth = firebase.auth();
 
 function App() {
   const [user] = useAuthState(auth);
+  console.log('user is', [user]);
   return (
     <div>
       {user ? (

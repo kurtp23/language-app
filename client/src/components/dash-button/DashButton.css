@@ -3,13 +3,15 @@
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 20px;
-    background-color: lightgreen;
+    background-color: #40e0d0;
     text-align: center;
     font-size: large;
+    font-weight: bold;
     padding-top: 5px;
-    box-shadow: 0 0 0 5pt #ffcccb;
+    box-shadow: 0 0 0 5pt #ffffff;
+    color: #ffffff
 }
 
 .dash-btn:hover {
-    box-shadow: 0 0 5pt 5pt lightskyblue;
+    box-shadow: 0 0 5pt 5pt #ffffff;
 }
