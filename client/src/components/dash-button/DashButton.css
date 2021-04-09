@@ -1,0 +1,11 @@
+.dash-btn {
+    height: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    background-color: lightgreen;
+    text-align: center;
+    font-size: large;
+    padding-top: 5px;
+    box-shadow: 0 0 0 5pt lightskyblue;
+}

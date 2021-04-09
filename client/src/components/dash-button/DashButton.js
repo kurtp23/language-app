@@ -1,12 +1,15 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import './DashButton.css';
 
 const DashButton = (props) => {
 
-    return (
-        <Button color='red'>Red</Button>
-    )
+    const color = props.color
 
+    return (
+        <div className='dash-btn'>
+            {props.children}
+        </div>
+    )
 }
 
 export default DashButton;
