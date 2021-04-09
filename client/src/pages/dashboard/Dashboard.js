@@ -7,34 +7,46 @@ const Dashboard = () => {
         <div>
             <Grid doubling columns={5} style={{ height: '100vh'}}>
                 <Grid.Column>
-                    <div>
-                        <Link to="/game">Play!</Link>
-                    </div>
+                    <Link to="game">
+                        <div style={{ height: '100%', outline: '1px solid black' }}>
+
+                        </div>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/challenge">Challenge!</Link>
-                    </div>
+                    <Link to="challenge">
+                        <div style={{ height: '100%', outline: '1px solid black' }}>
+
+                        </div>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/flashcards">Flash Cards!</Link>
-                    </div>
+                    <Link to="flashcards">
+                        <div style={{ height: '100%', outline: '1px solid black' }}>
+
+                        </div>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/stats">Stats!</Link>
-                    </div>
+                    <Link to="stats">
+                        <div style={{ height: '100%', outline: '1px solid black' }}>
+
+                        </div>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/settings">Settings!</Link>
-                    </div>
+                    <Link to="settings">
+                        <div style={{ height: '100%', outline: '1px solid black' }}>
+
+                        </div>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/teambio">Team</Link>
-                    </div>
+                    <Link to="teambio">
+                        <div style={{ height: '100%', outline: '1px solid black' }}>
+                            
+                        </div>
+                    </Link>
                 </Grid.Column>
             </Grid>
         </div>
