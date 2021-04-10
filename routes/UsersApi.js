@@ -13,8 +13,14 @@ const User = require("../models/User");
 //     }
 // });
 
-Router.post("/api/userAdd", async (req, res) => {
-  const user = new User(body);
+Router.post("/", async (req, res) => {
+  const user = new User({
+    username: "user3",
+
+    email: "user@3",
+
+    userCreated: new Date(Date.now()),
+  });
   User.create(user)
     .then((dbUser) => {
       res.json(dbUser);
