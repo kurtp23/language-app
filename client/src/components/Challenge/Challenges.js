@@ -56,11 +56,12 @@ function Challenges() {
         setSelection(sel)
     }
     console.log("This is the selection:", selection)
+    
     return (
         <>
             <h2>Select a Category!</h2>
 
-                    {RenderCategories}
+                    {!selection ? RenderCategories : <></>}
 
         </>
         
