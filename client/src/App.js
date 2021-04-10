@@ -9,6 +9,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "./utils/fireUtil";
+import Stats from "./pages/stats/stats";
 
 // hard-wiring in the Challenge for dev purposes
 import Challenges from './components/Challenge/Challenges.js'
@@ -37,7 +38,7 @@ function App() {
                 <FlashCard />
               </Route>
               <Route path="/stats">
-                <h1>Hello from stats</h1>
+                <h1><Stats/></h1>
               </Route>
               <Route path="/settings">
                 <h1>Hello from settings</h1>
