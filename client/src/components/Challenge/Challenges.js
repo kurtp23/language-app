@@ -50,3 +50,5 @@ function Challenges() {
 
     return <p>hello</p>
 }
+
+export default Challenges;
