@@ -45,7 +45,6 @@ function Challenges() {
         // get data from MongoDB
         API.getChallenges()
         .then((data) => {
-            console.log("got data", data.data[0])
             let list = []        
             data.data[0].names.map(name => {
                 list.push(name.cat)
@@ -63,7 +62,6 @@ function Challenges() {
     function handleSelection(sel){
         setSelection(sel)
     }
-    console.log("This is the selection:", selection)
 
     return (
         <>

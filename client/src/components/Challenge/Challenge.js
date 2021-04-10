@@ -22,18 +22,39 @@ function Challenge({ category }){
 
             // onExit => send up the number of rounds to the DB with the DATE of play, keep it simple for now. Add more data later
     const [data, setData] = React.useState([])
+    const [count, setCount] = React.useState(0)
+    const [answered, setAnswered] = React.useState([])
+    
     useEffect(() => {
         // get data from MongoDB
         API.getChallengeData(category)
         .then((data) => {
             console.log("got category data", data.data)
-            
+
             setData(data.data)
         })
 
     }, [])
+
+    function renderChoices(){
+        let choicesArr = []
+        for (let i = 0; i < 4; i++) {
+                
+            choicesArr.push(<h2>{data[i]}</h2>)
+            
+        }
+
+        return choicesArr
+    }
     
-    return <h2>You picked {category}! Now we will do our fun activity!</h2>
+    const choices = renderChoices();
+
+    return (
+        <>
+            {!choices ? <></> : choices}
+        </>
+        
+    )
 }
 
 export default Challenge
