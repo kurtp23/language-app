@@ -26,13 +26,9 @@ function Challenge({ category }){
         // get data from MongoDB
         API.getChallengeData(category)
         .then((data) => {
-            console.log("got data", data.data[0])
-            let list = []        
-            data.data[0].names.map(name => {
-                list.push(name.cat)
-            })
-    
-            setData(list)
+            console.log("got category data", data.data)
+            
+            setData(data.data)
         })
 
     }, [])
