@@ -25,38 +25,44 @@
     // onclick: if word=image ? Success : No Points
     // gotonext
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import categories from './ChallengesDB.js'
+import Category from './Category.js'
+// semantic ui
+import { Grid, Segment } from 'semantic-ui-react'
 
 
 function Challenges() {
 
     const [categoryList, setCategoryList] = React.useState([])
 
+
     useEffect(() => {
         let list = []
         
-        for (const [key, value] of Object.entries(categories)) {
-            list.push(key)
-        }
+        categories.names.map(name => {
+            list.push(name.cat)
+        })
 
         setCategoryList(list)
 
     }, [])
     
-    const RenderCategories = categoryList.map(cat => {
-        return <p>{cat}</p>
+    const RenderCategories = categoryList.map((cat, i) => {
+        return (
+                    <Category key={i} category={cat} />
+        )
     })
     
 
     return (
         <>
             <h2>Select a Category!</h2>
-            {RenderCategories}
+
+                    {RenderCategories}
+
         </>
-        
-           
         
     )
 }
