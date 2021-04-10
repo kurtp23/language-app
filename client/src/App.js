@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
 import FlashCard from "./pages/flash-cards/FlashCard";
@@ -20,6 +20,11 @@ const auth = firebase.auth();
 function App() {
   const [user] = useAuthState(auth);
   console.log(user);
+  if (user) {
+    postUser(user);
+  }
+  useEffect(() => {}, []);
+
   return (
     <div>
       {user ? (
@@ -56,7 +61,7 @@ function App() {
         </Router>
       ) : (
         <SignIn />
-      ).then(postUser(user))}
+      )}
     </div>
   );
 }
