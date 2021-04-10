@@ -1,40 +1,42 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import './Dashboard.css';
+import DashButton from '../../components/dash-button/DashButton';
 
 const Dashboard = () => {
     return (
         <div>
-            <Grid doubling columns={5} style={{ height: '100vh'}}>
+            <Grid className='dash-container' doubling columns={3}>
                 <Grid.Column>
-                    <div>
-                        <Link to="/game">Play!</Link>
-                    </div>
+                    <Link to="game">
+                        <DashButton children='Play!' color='red'/>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/challenge">Challenge!</Link>
-                    </div>
+                    <Link to="challenge">
+                        <DashButton children='Challenge!'/>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/flashcards">Flash Cards!</Link>
-                    </div>
+                    <Link to="flashcards">
+                        <DashButton children='Flashcards!'/>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/stats">Stats!</Link>
-                    </div>
+                    <Link to="stats">
+                        <DashButton children='Stats!'/>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/settings">Settings!</Link>
-                    </div>
+                    <Link to="settings">
+                        <DashButton children='Settings!'/>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <div>
-                        <Link to="/teambio">Team</Link>
-                    </div>
+                    <Link to="teambio">
+                        <DashButton children='Team!'/>
+                    </Link>
                 </Grid.Column>
             </Grid>
         </div>

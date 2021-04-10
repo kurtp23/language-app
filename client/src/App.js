@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
+import FlashCard from "./pages/flash-cards/FlashCard";
 import NavBar from "./components/nav/NavBar";
 import Login from "./components/landingpage/login";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -33,7 +34,7 @@ function App() {
                 <Challenges />
               </Route>
               <Route path="/flashcards">
-                <h1>Hello from flashcards</h1>
+                <FlashCard />
               </Route>
               <Route path="/stats">
                 <h1>Hello from stats</h1>
