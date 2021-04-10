@@ -39,20 +39,17 @@ function Challenges() {
 
 
     useEffect(() => {
-        let list = []
-        
+
+        let list = []        
         categories.names.map(name => {
             list.push(name.cat)
         })
 
         setCategoryList(list)
-
     }, [])
     
     const RenderCategories = categoryList.map((cat, i) => {
-        return (
-                    <Category key={i} category={cat} />
-        )
+        return <Category key={i} category={cat} />
     })
     
 
