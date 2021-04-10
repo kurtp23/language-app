@@ -17,7 +17,9 @@ if (process.env.NODE_ENV === "production") {
 
 // Define API routes here
 const UsersRoutes = require("./routes/UsersApi.js");
+const FlashcardRoutes = require("./routes/flashCardApi")
 app.use(UsersRoutes);
+app.use(FlashcardRoutes);
 
 const ChallengeRoutes = require("./routes/ChallengeApi.js");
 app.use(ChallengeRoutes);
@@ -28,7 +30,18 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learningapp");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learningapp", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected to db!');
+});
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
