@@ -1,8 +1,13 @@
 import React from 'react';
+import FlashCardTemplate from '../../components/flash-card-template/FlashCardTemplate';
 
 const FlashCard = () => {
     return (
-        <h1>This will be a flashCard soon.</h1>
+        <div>
+            <h1>This is the flash card page</h1>
+            <FlashCardTemplate />
+        </div>
+
     )
 }
 
