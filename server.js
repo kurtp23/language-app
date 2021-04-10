@@ -19,6 +19,9 @@ if (process.env.NODE_ENV === "production") {
 const UsersRoutes = require("./routes/UsersApi.js");
 app.use(UsersRoutes);
 
+const ChallengeRoutes = require("./routes/ChallengeApi.js");
+app.use(ChallengeRoutes);
+
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("/", (req, res) => {

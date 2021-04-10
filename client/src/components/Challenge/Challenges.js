@@ -31,6 +31,7 @@ import categories from './ChallengesDB.js'
 import Category from './Category.js'
 import Challenge from './Challenge.js'
 
+import API from '../../utils/API.js'
 
 // semantic ui
 
@@ -41,7 +42,11 @@ function Challenges() {
     const [selection, setSelection] = React.useState('')
 
     useEffect(() => {
-
+        API.getChallenges()
+        .then((data) => {
+            
+            console.log(data)
+        })
         let list = []        
         categories.names.map(name => {
             list.push(name.cat)
