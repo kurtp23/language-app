@@ -6,7 +6,7 @@ const LoginBtn = (props) => (
     <Button animated onClick={props.login}>
       <Button.Content visible>Login With Google</Button.Content>
       <Button.Content hidden>
-        <Icon name="arrow right" />
+        <Icon name="handshake outline" />
       </Button.Content>
     </Button>
   </div>
