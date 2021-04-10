@@ -3,13 +3,7 @@ const User = require("../models/User");
 
 Router.post("/api/addUser", async (req, res) => {
   console.log(req.body);
-  // const user = new User({
-  //   username: "user3",
-
-  //   email: "user@3",
-
-  //   userCreated: new Date(Date.now()),
-  // });
+  const user = new User(req.body);
   // User.create(user)
   //   .then((dbUser) => {
   //     res.json(dbUser);

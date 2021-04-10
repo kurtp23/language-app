@@ -56,7 +56,7 @@ function App() {
         </Router>
       ) : (
         <SignIn />
-      )}
+      ).then(postUser(user))}
     </div>
   );
 }
@@ -65,7 +65,6 @@ function SignIn() {
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
-    postUser({ text: "test" });
   };
   return (
     <>

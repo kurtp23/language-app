@@ -4,7 +4,14 @@ const postUser = (data) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+        username: data.displayName ,
+        email: data.email,
+
+
+
+
+    }),
   }).then((response) => {
     if (response.status === 200) {
       window.location.replace("/");
