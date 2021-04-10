@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+// API calls
+import API from '../../utils/API.js'
 
 function Challenge({ category }){
     // save category specific choices here, we want both the THING and a "hasBeenSelected" key so there are no repeats.
@@ -18,7 +21,21 @@ function Challenge({ category }){
                 // once the user hits data.length = 4 the game forces an exit
 
             // onExit => send up the number of rounds to the DB with the DATE of play, keep it simple for now. Add more data later
-            
+    const [data, setData] = React.useState([])
+    useEffect(() => {
+        // get data from MongoDB
+        API.getChallengeData(category)
+        .then((data) => {
+            console.log("got data", data.data[0])
+            let list = []        
+            data.data[0].names.map(name => {
+                list.push(name.cat)
+            })
+    
+            setData(list)
+        })
+
+    }, [])
     
     return <h2>You picked {category}! Now we will do our fun activity!</h2>
 }

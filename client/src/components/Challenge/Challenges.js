@@ -27,13 +27,14 @@
 
 import React, { useEffect } from 'react';
 
+// Components
 import Category from './Category.js'
 import Challenge from './Challenge.js'
 
+// API calls
 import API from '../../utils/API.js'
 
 // semantic ui
-
 
 function Challenges() {
 
@@ -41,6 +42,7 @@ function Challenges() {
     const [selection, setSelection] = React.useState('')
 
     useEffect(() => {
+        // get data from MongoDB
         API.getChallenges()
         .then((data) => {
             console.log("got data", data.data[0])
