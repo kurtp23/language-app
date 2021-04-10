@@ -17,10 +17,13 @@ Router.get("/api/challenge/:category", async (req, res) => {
   console.log("GET request for CHALLENGE name: ", req.params.category)
   Challenge.find({})
   .then((data) => {
-
-      console.log("Got this data: ", data[0].data)
-
-    res.json(data);
+      // find the category key
+      const key = (data[0].names.find(o => o.cat === req.params.category)).key;
+      
+      // get the data array
+      const dataArr = data[0].data[key]
+      
+    res.status(200).json(dataArr);
   })
   .catch((err) => {
     res.status(200).json(err);
