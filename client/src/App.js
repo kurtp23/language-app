@@ -9,13 +9,13 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "./utils/fireUtil";
+import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
 
 // hard-wiring in the Challenge for dev purposes
-import Challenges from './components/Challenge/Challenges.js'
+import Challenges from "./components/Challenge/Challenges.js";
 
 const auth = firebase.auth();
-
 
 function App() {
   const [user] = useAuthState(auth);
@@ -38,7 +38,9 @@ function App() {
                 <FlashCard />
               </Route>
               <Route path="/stats">
-                <h1><Stats/></h1>
+                <h1>
+                  <Stats />
+                </h1>
               </Route>
               <Route path="/settings">
                 <h1>Hello from settings</h1>
@@ -63,6 +65,7 @@ function SignIn() {
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
+    postUser({ text: "test" });
   };
   return (
     <>
