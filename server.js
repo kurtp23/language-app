@@ -17,7 +17,9 @@ if (process.env.NODE_ENV === "production") {
 
 // Define API routes here
 const UsersRoutes = require("./routes/UsersApi.js");
+const FlashcardRoutes = require("./routes/flashCardApi")
 app.use(UsersRoutes);
+app.use(FlashcardRoutes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
