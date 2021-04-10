@@ -1,18 +1,6 @@
 import React from "react";
 
-import {
-  Grid,
-  Image,
-  Button,
-  Divider,
-  Header,
-  Icon,
-  Search,
-  Input,
-  Segment,
-  Container,
-  Card,
-} from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 import LoginBtn from "./LoginBtn.js";
 

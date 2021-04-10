@@ -1,17 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  Image,
-  Button,
-  Divider,
-  Header,
-  Icon,
-  Search,
-  Input,
-  Segment,
-  Container,
-  Card,
-} from "semantic-ui-react";
+import { Divider, Segment, Container } from "semantic-ui-react";
 import LoginCard from "./loginCard.js";
 
 const Login = (props) => (
