@@ -36,7 +36,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 function Challenges() {
 
     const [categoryList, setCategoryList] = React.useState([])
-
+    const [selection, setSelection] = React.useState('')
 
     useEffect(() => {
 
@@ -49,10 +49,13 @@ function Challenges() {
     }, [])
     
     const RenderCategories = categoryList.map((cat, i) => {
-        return <Category key={i} category={cat} />
+        return <Category key={i} category={cat} onChange={handleSelection}/>
     })
     
-
+    function handleSelection(sel){
+        setSelection(sel)
+    }
+    console.log("This is the selection:", selection)
     return (
         <>
             <h2>Select a Category!</h2>
