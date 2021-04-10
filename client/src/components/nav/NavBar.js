@@ -34,7 +34,7 @@ function SignOut(props) {
     >
       <Button.Content visible>Sign Out</Button.Content>
       <Button.Content hidden>
-        <Icon name="arrow right" />
+        <Icon name="ban" />
       </Button.Content>
     </Button>
   );
