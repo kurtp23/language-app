@@ -1,5 +1,6 @@
 // temporary, convert to schema when time permits
 // add "descriptions" to be rendered on Card-Selectors!
+// API images OR store images somewhere else, but in either case use the animal name as the URL, add "PNG". All images must be PNG
 
 const categories = {
     names: [{cat: 'Zoo Animals', key: 'zooAnimals'}, {cat:'Farm Animals', key:'farmAnimals'}, {cat:'Places', key:'places'}, {cat:'Fruits & Veggies', key:'fruitsVegetables'}],
