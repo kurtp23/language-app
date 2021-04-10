@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
 import FlashCard from "./pages/flash-cards/FlashCard";
@@ -9,17 +9,22 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "./utils/fireUtil";
+import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
 
 // hard-wiring in the Challenge for dev purposes
-import Challenges from './components/Challenge/Challenges.js'
+import Challenges from "./components/Challenge/Challenges.js";
 
 const auth = firebase.auth();
-
 
 function App() {
   const [user] = useAuthState(auth);
   console.log(user);
+  if (user) {
+    postUser(user);
+  }
+  useEffect(() => {}, []);
+
   return (
     <div>
       {user ? (
@@ -38,7 +43,9 @@ function App() {
                 <FlashCard />
               </Route>
               <Route path="/stats">
-                <h1><Stats/></h1>
+                <h1>
+                  <Stats />
+                </h1>
               </Route>
               <Route path="/settings">
                 <h1>Hello from settings</h1>

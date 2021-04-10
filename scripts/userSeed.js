@@ -11,12 +11,16 @@ var userSeed = [
 
     email: "kurt@phillips",
 
+    fire_id: "1233wwedx",
+
     userCreated: new Date(Date.now()),
   },
   {
     username: "user2",
 
     email: "user@2",
+
+    fire_id: "12fdsghg",
 
     userCreated: new Date(Date.now()),
   },
