@@ -32,20 +32,33 @@ import categories from './ChallengesDB.js'
 
 function Challenges() {
 
-    const [data, setData] = React.useState({})
-    const [category, setCategory] = React.useState('')
+    const [categoryList, setCategoryList] = React.useState([])
 
     useEffect(() => {
+        let list = []
+        
+        for (const [key, value] of Object.entries(categories)) {
+            list.push(key)
+        }
 
-        setData(categories)
-        console.log("new  data", data)
+        setCategoryList(list)
+
     }, [])
+    
+    const RenderCategories = categoryList.map(cat => {
+        return <p>{cat}</p>
+    })
+    
 
-    function CategorySelector() {
-
-    }
-
-    return <p>hello</p>
+    return (
+        <>
+            <h2>Select a Category!</h2>
+            {RenderCategories}
+        </>
+        
+           
+        
+    )
 }
 
 export default Challenges;
