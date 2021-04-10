@@ -43,9 +43,9 @@ function Challenges() {
     useEffect(() => {
         API.getChallenges()
         .then((data) => {
-            console.log("got data", data)
+            console.log("got data", data.data[0])
             let list = []        
-            data.names.map(name => {
+            data.data[0].names.map(name => {
                 list.push(name.cat)
             })
     
