@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require('morgan')
 const path = require("path");
 const mongoose = require('mongoose');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 const app = express();
 const UsersRoutes = require('./routes/UsersApi.js');
 // Define middleware here
@@ -25,7 +25,18 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learning-app");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learningapp", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected to db!');
+});
 
 
 app.listen(PORT, () => {
