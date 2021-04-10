@@ -3,33 +3,23 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
 import FlashCard from "./pages/flash-cards/FlashCard";
 import NavBar from "./components/nav/NavBar";
-
+import Login from "./components/landingpage/login";
+import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
-
-firebase.initializeApp({
-  apiKey: "AIzaSyB4QCoJnYPe0SO57vaRjY2n2RjkzFJIjzo",
-  authDomain: "language-app-9fdd7.firebaseapp.com",
-  projectId: "language-app-9fdd7",
-  storageBucket: "language-app-9fdd7.appspot.com",
-  messagingSenderId: "322107717238",
-  appId: "1:322107717238:web:6ff906f60e98e96f349157",
-  measurementId: "G-4X4FT4CYN6",
-});
+import "./utils/fireUtil";
 const auth = firebase.auth();
 
 function App() {
   const [user] = useAuthState(auth);
-  console.log('user is', [user]);
+  console.log(user);
   return (
     <div>
       {user ? (
         <Router>
           <div>
-            <SignOut />
-            <NavBar />
+            <NavBar user={user} auth={auth} />
 
             <Switch>
               <Route path="/game">
@@ -68,15 +58,11 @@ function SignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   };
-  return <button onClick={signInWithGoogle}>Sign in with google</button>;
-}
-function SignOut() {
   return (
-    auth.currentUser && (
-      <button className="sign-out" onClick={() => auth.signOut()}>
-        Sign Out
-      </button>
-    )
+    <>
+      <Login login={signInWithGoogle} />
+    </>
   );
 }
+
 export default App;
