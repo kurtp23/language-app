@@ -18,11 +18,11 @@ if (process.env.NODE_ENV === "production") {
 // Define API routes here
 const UsersRoutes = require("./routes/UsersApi.js");
 const FlashcardRoutes = require("./routes/flashCardApi")
+const ChallengeRoutes = require("./routes/ChallengeApi.js");
 app.use(UsersRoutes);
 app.use(FlashcardRoutes);
-
-const ChallengeRoutes = require("./routes/ChallengeApi.js");
 app.use(ChallengeRoutes);
+
 
 // Send every other request to the React app
 // Define any API routes before this runs
