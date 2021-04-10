@@ -27,7 +27,6 @@
 
 import React, { useEffect } from 'react';
 
-import categories from './ChallengesDB.js'
 import Category from './Category.js'
 import Challenge from './Challenge.js'
 
@@ -44,15 +43,15 @@ function Challenges() {
     useEffect(() => {
         API.getChallenges()
         .then((data) => {
-            
-            console.log(data)
-        })
-        let list = []        
-        categories.names.map(name => {
-            list.push(name.cat)
+            console.log("got data", data)
+            let list = []        
+            data.names.map(name => {
+                list.push(name.cat)
+            })
+    
+            setCategoryList(list)
         })
 
-        setCategoryList(list)
     }, [])
     
     const RenderCategories = categoryList.map((cat, i) => {
