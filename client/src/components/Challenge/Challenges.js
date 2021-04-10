@@ -27,25 +27,22 @@
 
 import React, { useEffect, useState } from 'react';
 
-import categories from './ChallengesDB.js
+import categories from './ChallengesDB.js'
+
 
 function Challenges() {
 
-    const [data, setData] = useState({})
-    const [category, setCategory] = useState('')
+    const [data, setData] = React.useState({})
+    const [category, setCategory] = React.useState('')
 
     useEffect(() => {
 
         setData(categories)
-        data.entries(obj).forEach(([key, value]) => {
-            console.log(key, value);
-        });
+        console.log("new  data", data)
     }, [])
 
     function CategorySelector() {
-        data.entries(obj).forEach(([key, value]) => {
-            console.log(key, value);
-        });
+
     }
 
     return <p>hello</p>

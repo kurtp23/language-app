@@ -8,7 +8,12 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "./utils/fireUtil";
+
+// hard-wiring in the Challenge for dev purposes
+import Challenges from './components/Challenge/Challenges.js'
+
 const auth = firebase.auth();
+
 
 function App() {
   const [user] = useAuthState(auth);
@@ -25,7 +30,7 @@ function App() {
                 <h1>Hello from Game</h1>
               </Route>
               <Route path="/challenge">
-                <h1>Hello from challenge</h1>
+                <Challenges />
               </Route>
               <Route path="/flashcards">
                 <h1>Hello from flashcards</h1>
