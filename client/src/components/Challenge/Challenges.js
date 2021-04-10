@@ -11,9 +11,10 @@
 
 // data
 // random words from category API
-// small images from API
+// small images from API: https://pixabay.com/api/?key=19527879-11b24e10aa7a260d8c2bad18b&q=${term-here}&image_type=photo
+    // this returns an array of images. Look at "tags" to get an exact match, otherwise you get weird other things. Tags = "Farm Animal"
 // MAKE SURE THESE ARE KID FRIENDLY
-// Mongoose??? What are we storing here?
+// Mongoose??? What are we storing here? Set wordlist <- prevents any uncertainty with what is displayed
 // Stats => Users Schema
 
 // functionality
@@ -23,3 +24,29 @@
     // RENDER 4 images and 1 word
     // onclick: if word=image ? Success : No Points
     // gotonext
+
+import React, { useEffect, useState } from 'react';
+
+import categories from './ChallengesDB.js
+
+function Challenges() {
+
+    const [data, setData] = useState({})
+    const [category, setCategory] = useState('')
+
+    useEffect(() => {
+
+        setData(categories)
+        data.entries(obj).forEach(([key, value]) => {
+            console.log(key, value);
+        });
+    }, [])
+
+    function CategorySelector() {
+        data.entries(obj).forEach(([key, value]) => {
+            console.log(key, value);
+        });
+    }
+
+    return <p>hello</p>
+}
