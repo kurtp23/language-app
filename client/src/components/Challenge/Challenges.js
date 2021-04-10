@@ -29,8 +29,10 @@ import React, { useEffect } from 'react';
 
 import categories from './ChallengesDB.js'
 import Category from './Category.js'
+import Challenge from './Challenge.js'
+
+
 // semantic ui
-import { Grid, Segment } from 'semantic-ui-react'
 
 
 function Challenges() {
@@ -56,12 +58,12 @@ function Challenges() {
         setSelection(sel)
     }
     console.log("This is the selection:", selection)
-    
+
     return (
         <>
             <h2>Select a Category!</h2>
 
-                    {!selection ? RenderCategories : <></>}
+                    {!selection ? RenderCategories : <Challenge category={selection}/>}
 
         </>
         
