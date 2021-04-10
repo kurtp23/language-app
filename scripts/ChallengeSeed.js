@@ -1,7 +1,12 @@
-// temporary, convert to schema when time permits
-// add "descriptions" to be rendered on Card-Selectors!
+var mongoose = require("mongoose");
+var db = require("../models/");
 
-const categories = {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learningapp", {
+  useNewUrlParser: true,
+});
+
+var challengeSeed = [
+  {
     names: [{cat: 'Zoo Animals', key: 'zooAnimals'}, {cat:'Farm Animals', key:'farmAnimals'}, {cat:'Places', key:'places'}, {cat:'Fruits & Veggies', key:'fruitsVegetables'}],
     data: {
         zooAnimals: ['Polar Bear', 'Cheetah', 'Monkey', 'Giraffe', 'Eagle', 'Tiger', 'Lion', 'Penguin', 'Crocodile', 'Elephant', 'Flamingo', 'Snake', 'Fox', 'Butterfly', 'Sea Lion', 'Crab', 'Iguana', 'Turtle', 'Koala', 'Rhino', 'Hippo', 'Gorrila', 'Zebra'],
@@ -10,5 +15,16 @@ const categories = {
         fruitsVegetables: ['Apple', 'Banana', 'Cherry', 'Avocado', 'Watermelon', 'Blueberry', 'Raspberry', 'Blackberry', 'Tomato', 'Zuccini', 'Pepper', 'Turnip', 'Parsnip', 'Carrot', 'Spinach', 'Celery', 'Onion', 'Garlic', 'Lemon', 'Orange', 'Mushroom']
     }
 }
+];
 
-export default categories
+db.Challenge.deleteMany({})
+  .then(
+    db.Challenge.collection.insertMany(challengeSeed).then((data) => {
+      console.log(data.result.n + " records inserted!");
+      process.exit(0);
+    })
+  )
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
