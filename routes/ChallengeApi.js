@@ -14,10 +14,12 @@ Router.get("/api/challenges", async (req, res) => {
 });
 
 Router.get("/api/challenge/:category", async (req, res) => {
-  console.log("GET request for CHALLENGE name: ", req.category)
+  console.log("GET request for CHALLENGE name: ", req.params.category)
   Challenge.find({})
   .then((data) => {
-      console.log("Sending CHALLENGES", data)
+
+      console.log("Got this data: ", data[0].data)
+
     res.json(data);
   })
   .catch((err) => {
