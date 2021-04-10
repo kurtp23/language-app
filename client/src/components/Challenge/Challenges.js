@@ -65,9 +65,8 @@ function Challenges() {
 
     return (
         <>
-            <h2>Select a Category!</h2>
-
-                    {!selection ? RenderCategories : <Challenge category={selection}/>}
+            {!selection ? <h2>Select a Category!</h2> : <></>}
+            {!selection ? RenderCategories : <Challenge category={selection}/>}
 
         </>
         
