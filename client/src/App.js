@@ -11,7 +11,7 @@ import "firebase/auth";
 import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
-import CardExampleGroupCentered from "./pages/teampage/teampage.js";
+import CardExampleCard from "./pages/teampage/teampage.js";
 
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
@@ -52,7 +52,7 @@ function App() {
                 <h1>Hello from settings</h1>
               </Route>
               <Route path="/teambio">
-                <CardExampleGroupCentered />
+                <CardExampleCard />
               </Route>
               <Route path="/">
                 <Dashboard />
