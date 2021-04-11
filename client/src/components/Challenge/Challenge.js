@@ -25,9 +25,10 @@ function Challenge({ category }){
 
             // onExit => send up the number of rounds to the DB with the DATE of play, keep it simple for now. Add more data later
     const [data, setData] = React.useState([])
-    const [count, setCount] = React.useState(0)
-    const [answered, setAnswered] = React.useState([])
-    
+    const [nextData, setNextData] = React.useState([])
+
+    // const [count, setCount] = React.useState(0)
+    // const [answered, setAnswered] = React.useState([])
     
     useEffect(() => {
         // get data from MongoDB
@@ -52,22 +53,43 @@ function Challenge({ category }){
 
     function renderChoices() {
         let choices = []
-        data.forEach((item) => {
+        
+        let newData = [...data]
+
+        data.forEach((item, i) => {
             if (!item.rendered && choices.length < 4) {
+                newData[i].rendered = true
                 choices.push(item.name)
             }
         })
         
-        return choices
-    }
 
-    const choices = renderChoices()
+
+        return choices
+
+    }
+    console.log("New Render, new Data", data)
+    let choices = renderChoices()
 
     const correctAnswer = choices[Math.floor(Math.random() * 4)]
 
     function handleAnswer(e) {
-        console.log(e.target)
-        console.log(e.target.value === correctAnswer)
+        
+        console.log("Answered? ", e.target.value === correctAnswer)
+        if (e.target.value === correctAnswer) {
+            console.log("New Render")
+            let newData = [...data]
+            console.log("data before", data)
+
+            newData.forEach(item => {
+                if (item.name !== e.target.value) {
+                    item.rendered = false
+                }
+            });
+            console.log(newData)
+        }
+
+
         // show the target's english value
         // IF answer = wrong, do wrong
         // IF answer = correct
