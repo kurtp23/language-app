@@ -1,26 +1,113 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+// components
+import Choice from './Choice.js'
+
+// API calls
+import API from '../../utils/API.js'
+
+// semantic ui
+import { Link } from 'react-router-dom'
 
 function Challenge({ category }){
-    // save category specific choices here, we want both the THING and a "hasBeenSelected" key so there are no repeats.
-    // will render FOUR things at a time as Cards
-    // need to call an API for the translations, they will be hidden
+    // TODO LIST:
+    // Add translations into the mix
+    // Add Images
+    // Add "Exit Game" Button
+    // STYLING
+    // modulation!
+    const [data, setData] = React.useState([])
+    const [count, setCount] = React.useState(0)
+    const [answered, setAnswered] = React.useState(false)
     
-    // ONE of the four will RANDOMLY be assigned "Answer".
-    // the "answer" value will be rendered as a visible card, the user has to click on the card they think it matches
-        // add any audio cues here too, like "click to hear the word"
-    // When CARD is selected, 
-        // WRONG: translation is revealed, english and spanish. Can no longer select that card
-        // CORRECT: a "happy" message is revealed, the rest of the cards are also revealed
-            // this specific value is marked as "hasBeenSelected"
-        // All cards will have the audio available to listen to if they want
-        // User given option to "goto Next" or "exit"
-            // goto Next => re-render the next four, do NOT re-render a "hasBeenSelected"
-                // once the user hits data.length = 4 the game forces an exit
+    useEffect(() => {
+        // get data from MongoDB
+        API.getChallengeData(category)
+        .then((data) => {
 
-            // onExit => send up the number of rounds to the DB with the DATE of play, keep it simple for now. Add more data later
+            let dataTransformed = []
             
+            data.data.forEach((data) => {
+               dataTransformed.push({
+                   name: data,
+                   rendered: false
+               }) 
+            })
+            // randomizes the list
+            dataTransformed.sort(function() { return 0.5 - Math.random() });
+            setData(dataTransformed)
+        })
+
+    }, [])
+
+    function renderChoices() {
+        // this gets rendered into components
+        let choices = []
+        // this ensures a "correct" answer isn't re-selected on next render
+        let newData = [...data]
+        data.forEach((item, i) => {
+            if (!item.rendered && choices.length < 4) {
+                newData[i].rendered = true
+                choices.push(item.name)
+            }
+        })
+
+        return choices
+
+    }
     
-    return <h2>You picked {category}! Now we will do our fun activity!</h2>
+    let choices = renderChoices()
+
+    const correctAnswer = choices[Math.floor(Math.random() * 4)]
+
+    function handleAnswer(e) {
+        
+        if (e.target.value === correctAnswer) {
+            // helps reset the dataset, unlocking for next round
+            let newData = [...data]
+
+            newData.forEach(item => {
+                // make sure not to allow the same answer two times in a row
+                if (item.name !== e.target.value) {
+                    item.rendered = false
+                }
+            });
+            data.sort(function() { return 0.5 - Math.random() });
+            setAnswered(true)
+            setCount(count + 1)
+            
+        }
+    }
+
+    function handleNextClick(){
+        // this effectively gives the user the option to either EXIT or CONTINUE the game
+        setAnswered(false)
+    }
+
+    function handleExit() {
+        // send data to stats schema here
+        const stat = {
+            user: '',
+            activity: 'challenge',
+            value: count,
+            date: new Date()
+        }
+        console.log("This will go to stats schema: ", stat)
+    }
+    return (
+        <>
+            <h2>Challenge Game!</h2>
+            <h3>Times Played: {count}</h3>
+            {!answered && choices ? <p>{correctAnswer}</p> : <></>}
+            {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>}) : <></>}
+        
+            {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
+            {answered ? <h3>Nice Work!</h3> : <></>}
+            {answered ? <Link to="/"><button onClick={handleExit}>Exit</button></Link> : <></>}
+            
+        </>
+        
+    )
 }
 
 export default Challenge

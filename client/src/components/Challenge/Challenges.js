@@ -27,23 +27,25 @@
 
 import React, { useEffect } from 'react';
 
+// Components
 import Category from './Category.js'
 import Challenge from './Challenge.js'
 
+// API calls
 import API from '../../utils/API.js'
 
 // semantic ui
 
-
 function Challenges() {
-
+    // TODO: Need CATEGORY Images!!!
+    // STYLING!
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
 
     useEffect(() => {
+        // get data from MongoDB
         API.getChallenges()
         .then((data) => {
-            console.log("got data", data.data[0])
             let list = []        
             data.data[0].names.map(name => {
                 list.push(name.cat)
@@ -61,13 +63,11 @@ function Challenges() {
     function handleSelection(sel){
         setSelection(sel)
     }
-    console.log("This is the selection:", selection)
 
     return (
         <>
-            <h2>Select a Category!</h2>
-
-                    {!selection ? RenderCategories : <Challenge category={selection}/>}
+            {!selection ? <h2>Select a Category!</h2> : <></>}
+            {!selection ? RenderCategories : <Challenge category={selection}/>}
 
         </>
         
