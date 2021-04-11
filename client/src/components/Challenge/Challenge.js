@@ -62,7 +62,8 @@ function Challenge({ category }){
     return (
         <>
             <h2>Challenge Game!</h2>
-            {!choices ? <></> : choices.map((item, i) => {return <p key={i}>{item}</p>})}
+            {!choices ? <></> : choices.map((item, i) => {return <button key={i}>{item}</button>})}
+            {!choices ? <></> : <p>{choices[Math.floor(Math.random() * 4)]}</p>}
         </>
         
     )
