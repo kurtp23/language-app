@@ -3,22 +3,27 @@ import { Card } from "semantic-ui-react";
 
 const items = [
   {
-    header: "Project Report - April",
+    header: "Destiny Fleming ",
     description: "Leverage agile frameworks to provide a robust synopsis for high level overviews.",
     meta: "ROI: 30%",
   },
   {
-    header: "Project Report - May",
+    header: "Erik Portillo",
     description: "Bring to the table win-win survival strategies to ensure proactive domination.",
     meta: "ROI: 34%",
   },
   {
-    header: "Project Report - May",
+    header: "Charles Latrobe-Bateman ",
     description: "Bring to the table win-win survival strategies to ensure proactive domination.",
     meta: "ROI: 34%",
   },
   {
-    header: "Project Report - May",
+    header: "Steve Eliuth",
+    description: "Bring to the table win-win survival strategies to ensure proactive domination.",
+    meta: "ROI: 34%",
+  },
+  {
+    header: "Kurt Phillips",
     description: "Bring to the table win-win survival strategies to ensure proactive domination.",
     meta: "ROI: 34%",
   },
