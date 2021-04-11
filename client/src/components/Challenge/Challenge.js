@@ -6,6 +6,10 @@ import Choice from './Choice.js'
 // API calls
 import API from '../../utils/API.js'
 
+// semantic ui
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+
 function Challenge({ category }){
     // TODO LIST:
     // Add translations into the mix
@@ -82,6 +86,9 @@ function Challenge({ category }){
         setAnswered(false)
     }
 
+    function handleExit() {
+        // send data to stats schema here
+    }
     return (
         <>
             <h2>Challenge Game!</h2>
@@ -91,7 +98,7 @@ function Challenge({ category }){
         
             {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
             {answered ? <h3>Nice Work!</h3> : <></>}
-            {answered ? <button>Click here to EXIT (not working yet)</button> : <></>}
+            {answered ? <a href="/" class="button">Go to Exit</a> : <></>}
             
         </>
         
