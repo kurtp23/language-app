@@ -37,7 +37,7 @@ import API from '../../utils/API.js'
 // semantic ui
 
 function Challenges() {
-
+    // TODO: Need CATEGORY Images!!!
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
 
