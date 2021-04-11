@@ -65,7 +65,7 @@ function Challenge({ category }){
 
     const correctAnswer = choices[Math.floor(Math.random() * 4)]
 
-    function handleChoice(e) {
+    function handleAnswer(e) {
         console.log(e.target)
         console.log(e.target.value === correctAnswer)
         // show the target's english value
@@ -84,7 +84,7 @@ function Challenge({ category }){
     return (
         <>
             <h2>Challenge Game!</h2>
-            {!choices ? <></> : choices.map((item, i) => {return <Choice onClick={handleChoice} key={i} value={item}>{item}</Choice>})}
+            {!choices ? <></> : choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>})}
             {!choices ? <></> : <p>{correctAnswer}</p>}
         </>
         
