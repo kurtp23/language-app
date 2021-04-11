@@ -7,7 +7,7 @@ const FlashCardTemplate = (props) => {
             <Card.Content>
             <Card.Header>Flash Card</Card.Header>
             <Card.Meta>
-                <span className='cardNum'>Card #1</span>
+                <span className='cardNum'>Card #{props.cardNumber}</span>
             </Card.Meta>
             <Card.Description>
                 <h1>{props.word}</h1>
