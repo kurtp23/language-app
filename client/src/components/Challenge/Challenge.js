@@ -59,10 +59,15 @@ function Challenge({ category }){
 
     const choices = renderChoices()
 
+    function handleChoice(e) {
+        console.log(e.target.value)
+        // somehow get the picked === matching to work.
+    }
+
     return (
         <>
             <h2>Challenge Game!</h2>
-            {!choices ? <></> : choices.map((item, i) => {return <button key={i}>{item}</button>})}
+            {!choices ? <></> : choices.map((item, i) => {return <button onClick={handleChoice} key={i} value={item}>{item}</button>})}
             {!choices ? <></> : <p>{choices[Math.floor(Math.random() * 4)]}</p>}
         </>
         
