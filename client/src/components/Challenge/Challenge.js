@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 
+// components
+import Choice from './Choice.js'
+
 // API calls
 import API from '../../utils/API.js'
 
@@ -63,7 +66,7 @@ function Challenge({ category }){
     const correctAnswer = choices[Math.floor(Math.random() * 4)]
 
     function handleChoice(e) {
-        console.log(e.target.value)
+        console.log(e.target)
         console.log(e.target.value === correctAnswer)
         // show the target's english value
         // IF answer = wrong, do wrong
@@ -81,7 +84,7 @@ function Challenge({ category }){
     return (
         <>
             <h2>Challenge Game!</h2>
-            {!choices ? <></> : choices.map((item, i) => {return <button onClick={handleChoice} key={i} value={item}>{item}</button>})}
+            {!choices ? <></> : choices.map((item, i) => {return <Choice onClick={handleChoice} key={i} value={item}>{item}</Choice>})}
             {!choices ? <></> : <p>{correctAnswer}</p>}
         </>
         
