@@ -8,5 +8,9 @@ export default {
   getChallengeData: function(query) {
     const queryURL = "api/challenge/" + query
     return axios.get(queryURL)
-  }
+  },
+  // Gets all flashcards
+  getFlashcards: function() {
+    return axios.get("/api/flashcards");
+  },
 };
