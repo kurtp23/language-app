@@ -28,7 +28,8 @@ function Challenge({ category }){
     const [nextData, setNextData] = React.useState([])
 
     const [count, setCount] = React.useState(0)
-    // const [answered, setAnswered] = React.useState([])
+
+    const [answered, setAnswered] = React.useState(false)
     
     useEffect(() => {
         // get data from MongoDB
@@ -64,11 +65,11 @@ function Challenge({ category }){
         })
         
 
-
+        console.log(choices)
         return choices
 
     }
-    console.log("New Render, new Data", data)
+    
     let choices = renderChoices()
 
     const correctAnswer = choices[Math.floor(Math.random() * 4)]
@@ -79,38 +80,34 @@ function Challenge({ category }){
         if (e.target.value === correctAnswer) {
             console.log("New Render")
             let newData = [...data]
-            console.log("data before", data)
 
             newData.forEach(item => {
                 if (item.name !== e.target.value) {
                     item.rendered = false
                 }
             });
+            data.sort(function() { return 0.5 - Math.random() });
+            setAnswered(true)
             setCount(count + 1)
-            console.log(newData)
+            
         }
-
-
-        // show the target's english value
-        // IF answer = wrong, do wrong
-        // IF answer = correct
-            // set all data as "rendered = false"
-            // set item === correct as "rendered = true"
-            // prompt to "gotonext"
-                // re-render!
     }
+    console.log("is answered?", answered)
+    console.log("Status: ", !answered && !choices)
 
-    function wrongAnswer(){
-        console.log("wrong!")
+    function handleNextClick(){
+        setAnswered(false)
     }
 
     return (
         <>
             <h2>Challenge Game!</h2>
             <h3>Times Played: {count}</h3>
-            {!choices ? <></> : <p>{correctAnswer}</p>}
-
-            {!choices ? <></> : choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>})}
+            {!answered && choices ? <p>{correctAnswer}</p> : <></>}
+            {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>}) : <></>}
+        
+            {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
+            {answered ? <h3>Nice Work!</h3> : <></>}
         </>
         
     )
