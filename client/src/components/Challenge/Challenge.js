@@ -27,7 +27,7 @@ function Challenge({ category }){
     const [data, setData] = React.useState([])
     const [nextData, setNextData] = React.useState([])
 
-    // const [count, setCount] = React.useState(0)
+    const [count, setCount] = React.useState(0)
     // const [answered, setAnswered] = React.useState([])
     
     useEffect(() => {
@@ -86,6 +86,7 @@ function Challenge({ category }){
                     item.rendered = false
                 }
             });
+            setCount(count + 1)
             console.log(newData)
         }
 
@@ -106,6 +107,7 @@ function Challenge({ category }){
     return (
         <>
             <h2>Challenge Game!</h2>
+            <h3>Times Played: {count}</h3>
             {!choices ? <></> : <p>{correctAnswer}</p>}
 
             {!choices ? <></> : choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>})}
