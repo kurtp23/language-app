@@ -38,6 +38,7 @@ import API from '../../utils/API.js'
 
 function Challenges() {
     // TODO: Need CATEGORY Images!!!
+    // STYLING!
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
 
