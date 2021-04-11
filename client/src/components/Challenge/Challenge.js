@@ -65,7 +65,17 @@ function Challenge({ category }){
     function handleChoice(e) {
         console.log(e.target.value)
         console.log(e.target.value === correctAnswer)
-        // somehow get the picked === matching to work.
+        // show the target's english value
+        // IF answer = wrong, do wrong
+        // IF answer = correct
+            // set all data as "rendered = false"
+            // set item === correct as "rendered = true"
+            // prompt to "gotonext"
+                // re-render!
+    }
+
+    function wrongAnswer(){
+        console.log("wrong!")
     }
 
     return (
