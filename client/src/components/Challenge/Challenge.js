@@ -29,28 +29,31 @@ function Challenge({ category }){
         // get data from MongoDB
         API.getChallengeData(category)
         .then((data) => {
-            console.log("got category data", data.data)
 
-            setData(data.data)
+            let dataTransformed = []
+            
+            data.data.forEach((data) => {
+               dataTransformed.push({
+                   name: data,
+                   rendered: false
+               }) 
+            })
+            dataTransformed.sort(function() { return 0.5 - Math.random() });
+
+            setData(dataTransformed)
         })
 
     }, [])
 
-    function renderChoices(){
-        let choicesArr = []
-        for (let i = 0; i < 4; i++) {
-                
-            choicesArr.push(<h2>{data[i]}</h2>)
-            
+    const choices = data.map((thing, i) => {
+        if (i < 4) {
+            return <p key={i}>{thing.name}</p>
         }
-
-        return choicesArr
-    }
-    
-    const choices = renderChoices();
+    })
 
     return (
         <>
+            <h2>Challenge Game!</h2>
             {!choices ? <></> : choices}
         </>
         

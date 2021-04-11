@@ -7,7 +7,6 @@ export default {
   },
   getChallengeData: function(query) {
     const queryURL = "api/challenge/" + query
-    console.log(queryURL)
     return axios.get(queryURL)
   }
 };
