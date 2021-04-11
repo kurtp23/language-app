@@ -84,8 +84,9 @@ function Challenge({ category }){
     return (
         <>
             <h2>Challenge Game!</h2>
-            {!choices ? <></> : choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>})}
             {!choices ? <></> : <p>{correctAnswer}</p>}
+
+            {!choices ? <></> : choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>})}
         </>
         
     )

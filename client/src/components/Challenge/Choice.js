@@ -1,8 +1,6 @@
 import React from 'react'
 import { Card, Button, Image } from 'semantic-ui-react'
 
-import './Challenge.css'
-
 function Choice ({ value, correct, onChange }) {
     const [picked, setPicked] = React.useState(false)
     const imgString = value + ".PNG"
@@ -18,8 +16,10 @@ function Choice ({ value, correct, onChange }) {
         <Card>
         <Image src={imgString} wrapped ui={false} />
         <Card.Content>
-            {!picked ? <></> : revealedAnswer}
-          <Button value={value} onClick={onSelection}>Pick Me!</Button>
+          <Button value={value} onClick={onSelection}>Choose</Button>
+        </Card.Content>
+        <Card.Content>
+          {!picked ? <></> : revealedAnswer}
         </Card.Content>
       </Card>
     )
