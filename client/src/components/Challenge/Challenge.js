@@ -25,6 +25,7 @@ function Challenge({ category }){
     const [count, setCount] = React.useState(0)
     const [answered, setAnswered] = React.useState([])
     
+    
     useEffect(() => {
         // get data from MongoDB
         API.getChallengeData(category)
@@ -59,8 +60,11 @@ function Challenge({ category }){
 
     const choices = renderChoices()
 
+    const correctAnswer = choices[Math.floor(Math.random() * 4)]
+
     function handleChoice(e) {
         console.log(e.target.value)
+        console.log(e.target.value === correctAnswer)
         // somehow get the picked === matching to work.
     }
 
@@ -68,7 +72,7 @@ function Challenge({ category }){
         <>
             <h2>Challenge Game!</h2>
             {!choices ? <></> : choices.map((item, i) => {return <button onClick={handleChoice} key={i} value={item}>{item}</button>})}
-            {!choices ? <></> : <p>{choices[Math.floor(Math.random() * 4)]}</p>}
+            {!choices ? <></> : <p>{correctAnswer}</p>}
         </>
         
     )
