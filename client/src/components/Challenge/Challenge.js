@@ -7,8 +7,7 @@ import Choice from './Choice.js'
 import API from '../../utils/API.js'
 
 // semantic ui
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import { Link } from 'react-router-dom'
 
 function Challenge({ category }){
     // TODO LIST:
@@ -88,6 +87,13 @@ function Challenge({ category }){
 
     function handleExit() {
         // send data to stats schema here
+        const stat = {
+            user: '',
+            activity: 'challenge',
+            value: count,
+            date: new Date()
+        }
+        console.log("This will go to stats schema: ", stat)
     }
     return (
         <>
@@ -98,7 +104,7 @@ function Challenge({ category }){
         
             {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
             {answered ? <h3>Nice Work!</h3> : <></>}
-            {answered ? <a href="/"><button>Exit</button></a> : <></>}
+            {answered ? <Link to="/"><button onClick={handleExit}>Exit</button></Link> : <></>}
             
         </>
         
