@@ -13,6 +13,10 @@ const userSchema = new Schema({
     unique: true,
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
+  fire_id: {
+    type: String,
+    unique: true,
+  },
 
   userCreated: {
     type: Date,
