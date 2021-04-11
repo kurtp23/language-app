@@ -41,20 +41,28 @@ function Challenge({ category }){
             dataTransformed.sort(function() { return 0.5 - Math.random() });
 
             setData(dataTransformed)
+
         })
 
     }, [])
 
-    const choices = data.map((thing, i) => {
-        if (i < 4) {
-            return <p key={i}>{thing.name}</p>
-        }
-    })
+    function renderChoices() {
+        let choices = []
+        data.forEach((item) => {
+            if (!item.rendered && choices.length < 4) {
+                choices.push(item.name)
+            }
+        })
+        
+        return choices
+    }
+
+    const choices = renderChoices()
 
     return (
         <>
             <h2>Challenge Game!</h2>
-            {!choices ? <></> : choices}
+            {!choices ? <></> : choices.map((item, i) => {return <p key={i}>{item}</p>})}
         </>
         
     )
