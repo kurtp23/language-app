@@ -98,7 +98,7 @@ function Challenge({ category }){
         
             {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
             {answered ? <h3>Nice Work!</h3> : <></>}
-            {answered ? <a href="/" class="button">Go to Exit</a> : <></>}
+            {answered ? <a href="/"><button>Exit</button></a> : <></>}
             
         </>
         
