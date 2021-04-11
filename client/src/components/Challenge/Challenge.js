@@ -14,10 +14,7 @@ function Challenge({ category }){
     // STYLING
     // modulation!
     const [data, setData] = React.useState([])
-    const [nextData, setNextData] = React.useState([])
-
     const [count, setCount] = React.useState(0)
-
     const [answered, setAnswered] = React.useState(false)
     
     useEffect(() => {
@@ -33,28 +30,25 @@ function Challenge({ category }){
                    rendered: false
                }) 
             })
+            // randomizes the list
             dataTransformed.sort(function() { return 0.5 - Math.random() });
-
             setData(dataTransformed)
-
         })
 
     }, [])
 
     function renderChoices() {
+        // this gets rendered into components
         let choices = []
-        
+        // this ensures a "correct" answer isn't re-selected on next render
         let newData = [...data]
-
         data.forEach((item, i) => {
             if (!item.rendered && choices.length < 4) {
                 newData[i].rendered = true
                 choices.push(item.name)
             }
         })
-        
 
-        console.log(choices)
         return choices
 
     }
@@ -67,10 +61,11 @@ function Challenge({ category }){
         
         console.log("Answered? ", e.target.value === correctAnswer)
         if (e.target.value === correctAnswer) {
-            console.log("New Render")
+            // helps reset the dataset, unlocking for next round
             let newData = [...data]
 
             newData.forEach(item => {
+                // make sure not to allow the same answer two times in a row
                 if (item.name !== e.target.value) {
                     item.rendered = false
                 }
@@ -81,10 +76,9 @@ function Challenge({ category }){
             
         }
     }
-    console.log("is answered?", answered)
-    console.log("Status: ", !answered && !choices)
 
     function handleNextClick(){
+        // this effectively gives the user the option to either EXIT or CONTINUE the game
         setAnswered(false)
     }
 
@@ -97,6 +91,8 @@ function Challenge({ category }){
         
             {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
             {answered ? <h3>Nice Work!</h3> : <></>}
+            {answered ? <button>Click here to EXIT (not working yet)</button> : <></>}
+            
         </>
         
     )
