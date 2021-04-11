@@ -62,7 +62,6 @@ function Challenge({ category }){
 
     function handleAnswer(e) {
         
-        console.log("Answered? ", e.target.value === correctAnswer)
         if (e.target.value === correctAnswer) {
             // helps reset the dataset, unlocking for next round
             let newData = [...data]
