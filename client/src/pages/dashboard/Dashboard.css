@@ -1,4 +1,10 @@
 .dash-container {
-    background-color: #fa8072;
-    height: 100vh;
+    height: 100%
 }
+.header{
+    color: #fa8072;
+}
+
+
+
+
