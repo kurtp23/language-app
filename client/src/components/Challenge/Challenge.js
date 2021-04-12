@@ -29,7 +29,8 @@ function Challenge({ category }){
             
             data.data.forEach((data) => {
                dataTransformed.push({
-                   name: data,
+                   english: data.eng,
+                   spanish: data.spa,
                    rendered: false
                }) 
             })
