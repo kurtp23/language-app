@@ -38,7 +38,7 @@ function Challenge({ category }){
             setData(dataTransformed)
         })
 
-    }, [])
+    }, [category])
 
     function renderChoices() {
         // this gets rendered into components

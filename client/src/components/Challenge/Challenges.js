@@ -37,7 +37,6 @@ import API from '../../utils/API.js'
 // semantic ui
 
 function Challenges() {
-    // TODO: Need CATEGORY Images!!!
     // STYLING!
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
@@ -47,12 +46,12 @@ function Challenges() {
         API.getChallenges()
         .then((data) => {
             let list = []        
-            data.data[0].names.map(name => {
+            data.data[0].names.map(name => 
                 list.push({
                     cat: name.cat,
                     description: name.description,
                 })
-            })
+            )
     
             setCategoryList(list)
         })
