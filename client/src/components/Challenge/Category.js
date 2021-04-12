@@ -1,21 +1,23 @@
 import React from 'react'
 
 import { Card, Button, Image } from 'semantic-ui-react'
-
+ 
 function Category({ category, onChange, description }) {
 
     function handleClick(e){
         onChange(e.target.value)
     }
     
+    const imgUrl = "/images/Challenge/" + category.replace(/\s/g, "") + ".PNG"
+
     return (
         <>
             <Card>
                 <Card.Content>
                     <Image
                     floated='right'
-                    size='mini'
-                    src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
+                    size='medium'
+                    src={imgUrl}
                     />
                     <Card.Header>{category}</Card.Header>
                     <Card.Description>

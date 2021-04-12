@@ -11,7 +11,7 @@ var challengeSeed = [
       {cat: 'Zoo Animals', key: 'zooAnimals', description: 'Exotic, Interesting Critters!'}, 
       {cat:'Farm Animals', key:'farmAnimals', description: 'Animals with Jobs!'}, 
       {cat:'Places', key:'places', description: 'Locations and Spaces!'}, 
-      {cat:'Fruits & Veggies', key:'fruitsVegetables', description: 'The Freshest Things You Eat!'}
+      {cat:'Fruits and Veggies', key:'fruitsVegetables', description: 'The Freshest Things You Eat!'}
     ],
     data: {
         zooAnimals: [
