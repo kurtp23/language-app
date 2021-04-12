@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon } from "semantic-ui-react";
-
+/*
 const NavBar = (props) => {
   return (
     <>
       {console.log(props.auth.signOut)}
-      <div>
+      <div >
         <Link to="/">
           <h1>Home</h1>
         </Link>
@@ -39,16 +39,40 @@ function SignOut(props) {
     </Button>
   );
 }
-export default NavBar;
 
-// () => {
-//     alert("hello");
-//     props.auth
-//       .signOut()
-//       .then(() => {
-//         // Sign-out successful.
-//       })
-//       .catch((error) => {
-//         // An error happened.
-//       });
-//   }}
+function NewNav(){
+  return(
+<div class="ui secondary vertical pointing menu">
+  <a class="active item">
+    <Link to="/">
+      <h1>Home</h1>
+    </Link>
+  </a>
+  <a class="item">
+  <Link to="/stats">
+      <h1>Stats</h1>
+    </Link>
+  </a>
+  <a class="item">
+    Friends
+  </a>
+</div>
+)}
+export default NewNav;
+*/
+import { Dropdown, Menu } from 'semantic-ui-react'
+
+const MenuExampleDropdownItem = () => (
+  <Menu vertical>
+    <Dropdown item text='Categories'>
+      <Dropdown.Menu>
+        <Dropdown.Item>Electronics</Dropdown.Item>
+        <Dropdown.Item>Automotive</Dropdown.Item>
+        <Dropdown.Item>Home</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  </Menu>
+)
+
+export default MenuExampleDropdownItem
+

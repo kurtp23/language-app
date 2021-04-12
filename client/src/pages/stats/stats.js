@@ -1,15 +1,14 @@
 import React from "react";
 import Chart from "../../components/Chart/Chart"
+import "./stats.css"
 
-function Stats({username}) {
+function Stats() {
   return (
     <>
-       <div class="ui raised very padded text container segment">
-        <h2 class="ui header">{username}'s Daily Stats</h2>
-        <p>The charts below show your daily game stats!</p>
+       <div className="ui raised very padded text container segment">
+        <h2 className="ui orange header" textAlign='center'> Daily Stats</h2>
        </div> 
       <Chart/>
-      
     </>
   );
 }

@@ -3,6 +3,7 @@ import { Card } from 'semantic-ui-react';
 
 const FlashCardTemplate = (props) => {
     return (
+        <div className="ui raised very padded text container segment">
         <Card>
             <Card.Content>
             <Card.Header>Flash Card</Card.Header>
@@ -14,6 +15,7 @@ const FlashCardTemplate = (props) => {
             </Card.Description>
             </Card.Content>
         </Card>
+        </div>
     )
 }
 

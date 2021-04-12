@@ -4,7 +4,9 @@ import FlashCardTemplate from '../../components/flash-card-template/FlashCardTem
 const FlashCard = () => {
     return (
         <div>
-            <h1>This is the flash card page</h1>
+        <div className="ui raised very padded text container segment">
+            <h2 className="ui orange header"> This is the flash card page</h2>
+        </div>  
             <FlashCardTemplate />
         </div>
 

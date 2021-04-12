@@ -1,0 +1,11 @@
+html, body {
+    background-color: #fa8072!important;
+}
+p {
+    align-content: center;
+    color:darkgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 6em;
+}
