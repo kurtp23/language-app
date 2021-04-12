@@ -27,27 +27,33 @@
 
 import React, { useEffect } from 'react';
 
-import categories from './ChallengesDB.js'
+// Components
 import Category from './Category.js'
 import Challenge from './Challenge.js'
 
+// API calls
+import API from '../../utils/API.js'
 
 // semantic ui
 
-
 function Challenges() {
-
+    // TODO: Need CATEGORY Images!!!
+    // STYLING!
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
 
     useEffect(() => {
-
-        let list = []        
-        categories.names.map(name => {
-            list.push(name.cat)
+        // get data from MongoDB
+        API.getChallenges()
+        .then((data) => {
+            let list = []        
+            data.data[0].names.map(name => {
+                list.push(name.cat)
+            })
+    
+            setCategoryList(list)
         })
 
-        setCategoryList(list)
     }, [])
     
     const RenderCategories = categoryList.map((cat, i) => {
@@ -57,7 +63,6 @@ function Challenges() {
     function handleSelection(sel){
         setSelection(sel)
     }
-    console.log("This is the selection:", selection)
 
     return (
         <>

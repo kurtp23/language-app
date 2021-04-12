@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon } from "semantic-ui-react";
-/*
+import { Dropdown, Menu } from 'semantic-ui-react'
+
 const NavBar = (props) => {
   return (
     <>
@@ -40,39 +41,50 @@ function SignOut(props) {
   );
 }
 
-function NewNav(){
-  return(
-<div class="ui secondary vertical pointing menu">
-  <a class="active item">
-    <Link to="/">
-      <h1>Home</h1>
-    </Link>
-  </a>
-  <a class="item">
-  <Link to="/stats">
-      <h1>Stats</h1>
-    </Link>
-  </a>
-  <a class="item">
-    Friends
-  </a>
-</div>
-)}
-export default NewNav;
-*/
-import { Dropdown, Menu } from 'semantic-ui-react'
 
-const MenuExampleDropdownItem = () => (
+
+
+const MenuExampleDropdownItem = (props) => (
   <Menu vertical>
     <Dropdown item text='Categories'>
       <Dropdown.Menu>
-        <Dropdown.Item>Electronics</Dropdown.Item>
-        <Dropdown.Item>Automotive</Dropdown.Item>
-        <Dropdown.Item>Home</Dropdown.Item>
+        <Dropdown.Item>
+        {props.auth.currentUser ? SignOut(props) : "didnt work"}
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <Link to="/">
+          <h1>Home</h1>
+        </Link>
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <Link to="/stats">
+          <h1>Stats</h1>
+        </Link>
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <Link to="/challenge">
+          <h1>Challenge</h1>
+        </Link>
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <Link to="/game">
+          <h1>Game</h1>
+        </Link>
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <Link to="/flashcard">
+          <h1>FlashCard</h1>
+        </Link>
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <Link to="/teambio">
+          <h1>Team Bio</h1>
+        </Link>
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   </Menu>
 )
 
-export default MenuExampleDropdownItem
+export default MenuExampleDropdownItem;
 
