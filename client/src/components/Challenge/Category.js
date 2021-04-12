@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Card, Button, Image } from 'semantic-ui-react'
 
-function Category({ category, onChange }) {
+function Category({ category, onChange, description }) {
 
     function handleClick(e){
         onChange(e.target.value)
@@ -19,7 +19,7 @@ function Category({ category, onChange }) {
                     />
                     <Card.Header>{category}</Card.Header>
                     <Card.Description>
-                    Replace this with a description!
+                        {description}
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>

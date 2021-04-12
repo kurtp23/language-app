@@ -48,7 +48,10 @@ function Challenges() {
         .then((data) => {
             let list = []        
             data.data[0].names.map(name => {
-                list.push(name.cat)
+                list.push({
+                    cat: name.cat,
+                    description: name.description,
+                })
             })
     
             setCategoryList(list)
@@ -57,7 +60,7 @@ function Challenges() {
     }, [])
     
     const RenderCategories = categoryList.map((cat, i) => {
-        return <Category key={i} category={cat} onChange={handleSelection}/>
+        return <Category key={i} category={cat.cat} description={cat.description} onChange={handleSelection}/>
     })
     
     function handleSelection(sel){

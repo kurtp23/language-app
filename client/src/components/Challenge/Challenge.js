@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom'
 
 function Challenge({ category }){
     // TODO LIST:
-    // Add translations into the mix
     // Add Images
     // Add "Exit Game" Button
     // STYLING
