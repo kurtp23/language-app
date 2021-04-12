@@ -7,6 +7,7 @@ const FlashCard = () => {
 
     const [flashCardList, setFlashCardList] = useState([])
     const [activeFlashCard, setActiveFlashCard] = useState(1)
+    const [flashCardsViewed, updateFlashCardsViewed] = useState(1)
 
     const handlePaginationChange = (e, { activePage }) => setActiveFlashCard(activePage)
 
@@ -23,6 +24,11 @@ const FlashCard = () => {
             setFlashCardList(fcList);
             })
     }, [])
+    
+    useEffect(() => {
+        updateFlashCardsViewed(flashCardsViewed + 1)
+        console.log('flashcards viewed is', flashCardsViewed);
+    }, [activeFlashCard])
 
     return (
         <div>
