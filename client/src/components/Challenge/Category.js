@@ -8,7 +8,7 @@ function Category({ category, onChange, description }) {
         onChange(e.target.value)
     }
     
-    const imgUrl = "/images/Challenge/" + category.replace(/\s/g, "") + ".PNG"
+    const imgUrl = "/images/Challenge/Category/" + category.replace(/\s/g, "") + ".PNG"
 
     return (
         <>
