@@ -29,8 +29,8 @@ function Challenge({ category }){
             
             data.data.forEach((data) => {
                dataTransformed.push({
-                   english: data.eng,
-                   spanish: data.spa,
+                   eng: data.eng,
+                   spa: data.spa,
                    rendered: false
                }) 
             })
@@ -49,10 +49,10 @@ function Challenge({ category }){
         data.forEach((item, i) => {
             if (!item.rendered && choices.length < 4) {
                 newData[i].rendered = true
-                choices.push(item.name)
+                choices.push(item.spa)
             }
         })
-
+        
         return choices
 
     }
