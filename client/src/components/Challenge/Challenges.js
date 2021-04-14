@@ -37,7 +37,6 @@ import API from '../../utils/API.js'
 // semantic ui
 
 function Challenges() {
-    // TODO: Need CATEGORY Images!!!
     // STYLING!
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
@@ -47,9 +46,12 @@ function Challenges() {
         API.getChallenges()
         .then((data) => {
             let list = []        
-            data.data[0].names.map(name => {
-                list.push(name.cat)
-            })
+            data.data[0].names.map(name => 
+                list.push({
+                    cat: name.cat,
+                    description: name.description,
+                })
+            )
     
             setCategoryList(list)
         })
@@ -57,7 +59,7 @@ function Challenges() {
     }, [])
     
     const RenderCategories = categoryList.map((cat, i) => {
-        return <Category key={i} category={cat} onChange={handleSelection}/>
+        return <Category key={i} category={cat.cat} description={cat.description} onChange={handleSelection}/>
     })
     
     function handleSelection(sel){
@@ -67,9 +69,11 @@ function Challenges() {
     return (
         <>
         <div className="ui raised very padded text container segment">
-            <h2 className="ui orange header">Select a Category!</h2>
-        </div>
+            
+            {!selection ? <h2 className="ui orange header">Select a Category!</h2> : <></>}
+
             {!selection ? RenderCategories : <Challenge category={selection}/>}
+        </div>
         </>
         
     )
