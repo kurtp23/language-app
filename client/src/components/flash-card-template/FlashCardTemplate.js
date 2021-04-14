@@ -16,7 +16,7 @@ const FlashCardTemplate = (props) => {
             <a.div class="c back" style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
                 <Card className="ui raised card">
                     <Card.Content>
-                    <Card.Header>Flash Card</Card.Header>
+                    <Card.Header className="ui ribbon label" style={{ backgroundColor: '#fa8072', color: 'white' }}>{props.category}</Card.Header>
                     <Card.Meta>
                         <span className='cardNum'>Card #{props.cardNumber}</span>
                     </Card.Meta>
@@ -29,7 +29,7 @@ const FlashCardTemplate = (props) => {
             <a.div class="c front" style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
                 <Card>
                     <Card.Content>
-                    <Card.Header>Flash Card</Card.Header>
+                    <Card.Header className="ui ribbon label" style={{ backgroundColor: '#fa8072', color: 'white' }}>{props.category}</Card.Header>
                     <Card.Meta>
                         <span className='cardNum'>Card #{props.cardNumber}</span>
                     </Card.Meta>
