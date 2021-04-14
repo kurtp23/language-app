@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
-import FlashCard from "./pages/flash-cards/FlashCard";
+import FlashCardSelector from "./pages/flash-cards/FlashCardSelector";
 import NavBar from "./components/nav/NavBar";
 import Login from "./components/landingpage/login";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -42,7 +42,7 @@ function App() {
                 <Challenges />
               </Route>
               <Route path="/flashcards">
-                <FlashCard />
+                <FlashCardSelector />
               </Route>
               <Route path="/stats">
                 <Stats />
