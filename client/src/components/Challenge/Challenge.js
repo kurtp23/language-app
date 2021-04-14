@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom'
 
 function Challenge({ category }){
     // TODO LIST:
-    // Add translations into the mix
     // Add Images
     // Add "Exit Game" Button
     // STYLING
@@ -29,7 +28,8 @@ function Challenge({ category }){
             
             data.data.forEach((data) => {
                dataTransformed.push({
-                   name: data,
+                   eng: data.eng,
+                   spa: data.spa,
                    rendered: false
                }) 
             })
@@ -38,7 +38,7 @@ function Challenge({ category }){
             setData(dataTransformed)
         })
 
-    }, [])
+    }, [category])
 
     function renderChoices() {
         // this gets rendered into components
@@ -48,10 +48,10 @@ function Challenge({ category }){
         data.forEach((item, i) => {
             if (!item.rendered && choices.length < 4) {
                 newData[i].rendered = true
-                choices.push(item.name)
+                choices.push(item.spa)
             }
         })
-
+        
         return choices
 
     }
@@ -99,7 +99,7 @@ function Challenge({ category }){
             <h2>Challenge Game!</h2>
             <h3>Times Played: {count}</h3>
             {!answered && choices ? <p>{correctAnswer}</p> : <></>}
-            {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>}) : <></>}
+            {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) : <></>}
         
             {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
             {answered ? <h3>Nice Work!</h3> : <></>}

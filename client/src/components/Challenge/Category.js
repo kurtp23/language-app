@@ -1,13 +1,15 @@
 import React from 'react'
 
 import { Card, Button, Image } from 'semantic-ui-react'
-
-function Category({ category, onChange }) {
+ 
+function Category({ category, onChange, description }) {
 
     function handleClick(e){
         onChange(e.target.value)
     }
     
+    const imgUrl = "/images/Challenge/Category/" + category.replace(/\s/g, "") + ".PNG"
+
     return (
         <>
         <div className="ui raised very padded text container segment">
@@ -15,12 +17,12 @@ function Category({ category, onChange }) {
                 <Card.Content>
                     <Image
                     floated='right'
-                    size='mini'
-                    src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
+                    size='medium'
+                    src={imgUrl}
                     />
                     <Card.Header>{category}</Card.Header>
                     <Card.Description>
-                    Replace this with a description!
+                        {description}
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
