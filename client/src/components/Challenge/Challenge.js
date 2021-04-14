@@ -99,7 +99,7 @@ function Challenge({ category }){
             <h2>Challenge Game!</h2>
             <h3>Times Played: {count}</h3>
             {!answered && choices ? <p>{correctAnswer}</p> : <></>}
-            {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item}>{item}</Choice>}) : <></>}
+            {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) : <></>}
         
             {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
             {answered ? <h3>Nice Work!</h3> : <></>}

@@ -69,9 +69,11 @@ function Challenges() {
     return (
         <>
         <div className="ui raised very padded text container segment">
-            <h2 className="ui orange header">Select a Category!</h2>
-        </div>
+            
+            {!selection ? <h2 className="ui orange header">Select a Category!</h2> : <></>}
+
             {!selection ? RenderCategories : <Challenge category={selection}/>}
+        </div>
         </>
         
     )
