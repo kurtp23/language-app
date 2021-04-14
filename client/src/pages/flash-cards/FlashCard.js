@@ -31,9 +31,8 @@ const FlashCard = () => {
     }, [activeFlashCard])
 
     return (
-        <div>
-            <h1>This is the flash card page</h1>
-
+        <div className="ui raised very padded text container segment">
+            <h2 className="ui orange header"> This is the flash card page</h2>
             <FlashCardTemplate cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} englishWord={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].englishWord : 'loading'}/>
         
             <Grid columns={1} verticalAlign='middle'>
