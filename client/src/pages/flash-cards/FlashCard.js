@@ -34,13 +34,13 @@ const FlashCard = ({category}) => {
 
     return (
         <div className="ui raised text container segment">
-            <h2 className="ui orange header"> This is the flash card page</h2>
+            <h2 className="ui orange header">Flash Cards: {category} </h2>
             <div>
                 <Grid columns={1} verticalAlign='bottom'>
                     <Grid.Row>
                         <Grid.Column>
                             <div style={{ height: '50vh', margins: '5px' }}>
-                                <FlashCardTemplate cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} englishWord={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].englishWord : 'loading'}/>
+                                <FlashCardTemplate category={category} cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} englishWord={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].englishWord : 'loading'}/>
                             </div>
                         </Grid.Column>
                     </Grid.Row>
