@@ -12,6 +12,7 @@ function Category({ category, onChange, description }) {
 
     return (
         <>
+        <div className="ui raised very padded text container segment">
             <Card>
                 <Card.Content>
                     <Image
@@ -32,6 +33,7 @@ function Category({ category, onChange, description }) {
                     </div>
                 </Card.Content>
             </Card>
+            </div>
         </>
     )
 }
