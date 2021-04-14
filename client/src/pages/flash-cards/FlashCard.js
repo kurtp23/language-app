@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FlashCardTemplate from '../../components/flash-card-template/FlashCardTemplate';
-import { Grid, Pagination } from 'semantic-ui-react';
+import { Grid, Pagination, Divider } from 'semantic-ui-react';
 import API from '../../utils/API';
 
 const FlashCard = () => {
@@ -31,19 +31,29 @@ const FlashCard = () => {
     }, [activeFlashCard])
 
     return (
-        <div className="ui raised very padded text container segment">
+        <div className="ui raised text container segment">
             <h2 className="ui orange header"> This is the flash card page</h2>
-            <FlashCardTemplate cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} englishWord={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].englishWord : 'loading'}/>
-        
-            <Grid columns={1} verticalAlign='middle'>
-                <Grid.Column>
-                <Pagination
-                    activePage={activeFlashCard}
-                    onPageChange={handlePaginationChange}
-                    totalPages={flashCardList.length}
-                />
-                </Grid.Column>
-            </Grid>
+            <div>
+                <Grid columns={1} verticalAlign='bottom'>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <div style={{ height: '50vh', margins: '5px' }}>
+                                <FlashCardTemplate cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} englishWord={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].englishWord : 'loading'}/>
+                            </div>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Divider horizontal>Welcome To Language Learner</Divider>
+                    <Grid.Row>
+                        <Grid.Column>
+                        <Pagination
+                            activePage={activeFlashCard}
+                            onPageChange={handlePaginationChange}
+                            totalPages={flashCardList.length}
+                        />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </div>
         </div>
     )
 }
