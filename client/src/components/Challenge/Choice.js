@@ -3,7 +3,7 @@ import { Card, Button, Image } from 'semantic-ui-react'
 
 function Choice ({ name, value, correct, onChange }) {
     const [picked, setPicked] = React.useState(false)
-    const imgString = "/images/Challenge/Choices/" + name + ".PNG"
+    const imgString = "/images/Challenge/Choices/" + name.replace(/\s/g, "") + ".PNG"
 
     useEffect(() => {
         setPicked(false)
