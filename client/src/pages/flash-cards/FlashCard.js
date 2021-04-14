@@ -12,17 +12,18 @@ const FlashCard = () => {
     const handlePaginationChange = (e, { activePage }) => setActiveFlashCard(activePage)
 
     useEffect(() => {
-        API.getFlashcards()
+        API.getChallenges()
         .then((data) => {
-            let fcList = []
-            data.data.map(item => {
-                fcList.push({                  
-                    word: item.word, 
-                    englishWord: item.englishWord
-                }) 
-            })
-            setFlashCardList(fcList);
-            })
+            console.log('data is', data.data[0].data.farmAnimals);
+             let fcList = []
+             data.data[0].data.farmAnimals.map(item => {
+                 fcList.push({                  
+                     word: item.spa, 
+                     englishWord: item.eng
+                 }) 
+             })
+             setFlashCardList(fcList);
+             })
     }, [])
     
     useEffect(() => {
