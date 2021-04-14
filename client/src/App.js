@@ -11,7 +11,7 @@ import "firebase/auth";
 import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
-import './app.css';
+import "./app.css";
 import CardExampleCard from "./pages/teampage/teampage.js";
 
 // hard-wiring in the Challenge for dev purposes
@@ -51,7 +51,7 @@ function App() {
                 <h1>Hello from settings</h1>
               </Route>
               <Route path="/teambio">
-                <CardExampleCard />
+                <div>settings maybe</div>
               </Route>
               <Route path="/">
                 <Dashboard />
