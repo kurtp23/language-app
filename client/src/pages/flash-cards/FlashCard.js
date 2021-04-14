@@ -3,7 +3,7 @@ import FlashCardTemplate from '../../components/flash-card-template/FlashCardTem
 import { Grid, Pagination, Divider } from 'semantic-ui-react';
 import API from '../../utils/API';
 
-const FlashCard = () => {
+const FlashCard = ({category}) => {
 
     const [flashCardList, setFlashCardList] = useState([])
     const [activeFlashCard, setActiveFlashCard] = useState(1)
@@ -12,11 +12,12 @@ const FlashCard = () => {
     const handlePaginationChange = (e, { activePage }) => setActiveFlashCard(activePage)
 
     useEffect(() => {
-        API.getChallenges()
+        API.getChallengeData(category)
         .then((data) => {
-            console.log('data is', data.data[0].data.farmAnimals);
+            // console.log('data is', data.data[0].data.farmAnimals);
              let fcList = []
-             data.data[0].data.farmAnimals.map(item => {
+             console.log(data)
+             data.data.forEach((item) => {
                  fcList.push({                  
                      word: item.spa, 
                      englishWord: item.eng
