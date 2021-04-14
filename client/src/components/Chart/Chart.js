@@ -1,4 +1,5 @@
 import React from 'react';
+import './Chart.css';
 
 function Chart() {
     //const value = //database //day of activity
@@ -15,11 +16,20 @@ function Chart() {
     const chartEx4 = "https://image-charts.com/chart?chco=fdb45c%2C27c9c2%2C1869b7&chd=s%3AFOETHECat%2Clkjtf3asv%2CKATYPSNXJ&chs=700x125&cht=lc&chxl=0%3A%7COct%7CNov%7CDec%7C1%3A%7C%7C20K%7C%7C60K%7C%7C100K&chxt=x%2Cy" 
     return (
     <>
+    <div class="ui raised very padded text container segment">
         <img src={chartEx} alt="chart"/>
+    </div>
+    <div class="ui raised very padded text container segment">
         <img src={chartEx2} alt="chart"/>
+    </div>
+    <div class="ui raised very padded text container segment">
         <img src={chartEx3} alt="chart"/>
+    </div>
+    <div class="ui raised very padded text container segment">
         <img src={chartEx4} alt="chart"/>
+    </div>
     </>
+    
   );
 }
 

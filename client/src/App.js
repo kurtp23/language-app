@@ -11,6 +11,7 @@ import "firebase/auth";
 import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
+import './app.css';
 import CardExampleCard from "./pages/teampage/teampage.js";
 
 // hard-wiring in the Challenge for dev purposes
@@ -44,9 +45,7 @@ function App() {
                 <FlashCard />
               </Route>
               <Route path="/stats">
-                <h1>
-                  <Stats />
-                </h1>
+                <Stats />
               </Route>
               <Route path="/settings">
                 <h1>Hello from settings</h1>
