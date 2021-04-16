@@ -15,7 +15,7 @@ import "./app.css";
 
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
-
+import Settings from "./pages/settingsPage/settings.js";
 const auth = firebase.auth();
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
                 <Stats userState={userState} />
               </Route>
               <Route path="/settings">
-                <h1>Hello from settings</h1>
+                <Settings userState={userState} />
               </Route>
               <Route path="/teambio"></Route>
               <Route path="/">
