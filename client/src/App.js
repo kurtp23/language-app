@@ -44,13 +44,13 @@ function App() {
                 <h1>Hello from Game</h1>
               </Route>
               <Route path="/challenge">
-                <Challenges />
+                <Challenges userState={userState} />
               </Route>
               <Route path="/flashcards">
-                <FlashCardSelector />
+                <FlashCardSelector userState={userState} />
               </Route>
               <Route path="/stats">
-                <Stats />
+                <Stats userState={userState} />
               </Route>
               <Route path="/settings">
                 <h1>Hello from settings</h1>
@@ -59,7 +59,7 @@ function App() {
                 <CardExampleCard />
               </Route>
               <Route path="/">
-                <Dashboard />
+                <Dashboard userState={userState} />
               </Route>
             </Switch>
           </div>
