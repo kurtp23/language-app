@@ -13,4 +13,7 @@ export default {
   getFlashcards: function() {
     return axios.get("/api/flashcards");
   },
+  getStats: function() {
+    return axios.get("/api/stats");
+  },
 };
