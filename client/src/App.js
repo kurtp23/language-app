@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
 import FlashCardSelector from "./pages/flash-cards/FlashCardSelector";
@@ -12,7 +12,6 @@ import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
 import "./app.css";
-import CardExampleCard from "./pages/teampage/teampage.js";
 
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
@@ -55,9 +54,7 @@ function App() {
               <Route path="/settings">
                 <h1>Hello from settings</h1>
               </Route>
-              <Route path="/teambio">
-                <CardExampleCard />
-              </Route>
+              <Route path="/teambio"></Route>
               <Route path="/">
                 <Dashboard userState={userState} />
               </Route>
