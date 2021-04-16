@@ -3,6 +3,7 @@
     height: 50%;
     cursor: pointer;
     will-change: transform, opacity;
+    margin: auto;
   }
   
 .front,
