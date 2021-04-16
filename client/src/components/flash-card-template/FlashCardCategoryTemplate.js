@@ -29,7 +29,7 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
     return (
 
         <a.div
-        class="card"
+        class="card" fluid
         onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
         style={{ transform: props.xys.interpolate(trans), backgroundColor: '#40e0d0' }}>
@@ -37,7 +37,7 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
                 <Card.Header>
                 </Card.Header>
                 <Card.Content className='categoryContent'>
-                    <Label as='a' className='categoryLabel' ribbon>
+                    <Label as='a' className='cat categoryLabel' ribbon>
                             {category}
                     </Label>    
                     <Image
@@ -46,7 +46,7 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
                     style={{ marginTop: '5px' }}
                     src={imgUrl}
                     />
-                    <Card.Description>
+                    <Card.Description className='cat categoryDescription'>
                         {description}
                     </Card.Description>
                 </Card.Content>
