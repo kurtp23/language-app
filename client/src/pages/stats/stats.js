@@ -2,6 +2,7 @@ import React from "react";
 import Chart from "../../components/Chart/Chart"
 import "./stats.css"
 
+
 function Stats() {
   return (
     <>
@@ -14,3 +15,4 @@ function Stats() {
 }
 
 export default Stats;
+

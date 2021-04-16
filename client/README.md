@@ -128,7 +128,6 @@ my-app/
   package.json
   public/
     index.html
-    favicon.ico
   src/
     App.css
     App.js
