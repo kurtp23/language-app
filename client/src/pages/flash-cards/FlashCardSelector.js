@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
+import { Card } from 'semantic-ui-react';
 import FlashCard from './FlashCard';
-import Category from '../../components/Challenge/Category';
+import FlashCardCategoryTemplate from '../../components/flash-card-template/FlashCardCategoryTemplate';
 
 import API from '../../utils/API.js';
 
@@ -26,7 +26,9 @@ const FlashCardSelector = () => {
 
 
     const RenderCategories = categoryList.map((cat, i) => {
-        return <Category key={i} category={cat.cat} description={cat.description} onChange={handleSelection} />
+        return (
+                <FlashCardCategoryTemplate key={i} category={cat.cat} description={cat.description} onChange={handleSelection} />
+        )
     })
 
     function handleSelection(sel) {
@@ -39,7 +41,7 @@ const FlashCardSelector = () => {
             
             {!selection ? <h2 className="ui orange header">Select a Category!</h2> : <></>}
 
-            {!selection ? RenderCategories : <FlashCard category={selection}/>}
+            {!selection ? <Card.Group fluid itemsPerRow={1}> {RenderCategories} </Card.Group>: <FlashCard category={selection}/>}
         </div>
         </>
         
