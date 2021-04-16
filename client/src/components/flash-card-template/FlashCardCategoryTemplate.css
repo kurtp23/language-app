@@ -3,6 +3,16 @@
     height: 100%;
 }
 
+.catSelBtn {
+    background-color: #40e0d0 !important;
+}
+
+.categoryLabel {
+    background-color: #fa8072 !important; 
+    color: white !important;
+    font-size: 20px !important;
+}
+
 @media (max-device-width: 600px) {
     .categoryCard {
         margin: 0;
@@ -17,7 +27,7 @@
 
     }
 
-    .catSelBtn {
+    .catSelDiv {
         opacity: 1 !important;
 
     }

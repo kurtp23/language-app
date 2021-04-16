@@ -20,7 +20,6 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
     const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 20, tension: 150, friction: 100 } }))
 
     function handleClick(e){
-
         // set selection to button value
         onChange(e.target.value)
     }
@@ -38,7 +37,7 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
                 <Card.Header>
                 </Card.Header>
                 <Card.Content className='categoryContent'>
-                    <Label as='a' style={{ backgroundColor: '#fa8072', color: 'white', fontSize: '20px' }} ribbon>
+                    <Label as='a' className='categoryLabel' ribbon>
                             {category}
                     </Label>    
                     <Image
@@ -53,11 +52,11 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
                 </Card.Content>
                 <Card.Content className='categoryContent' extra>
                     <div className='ui two buttons'>
-                    <a.div style={{ opacity: x.interpolate({ range: [0, 1], output: [1.0, 0.5] }), transform: x.interpolate({ range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1], output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]}).interpolate(x => `scale(${x})`) }} className='catSelBtn'>
-                        <Button value={category} style={{ backgroundColor: '#40e0d0' }} onClick={handleClick} onMouseEnter={() => toggle(!state)} onMouseLeave={() => toggle(!state)}>
-                            Select
-                        </Button>
-                    </a.div>
+                        <a.div style={{ opacity: x.interpolate({ range: [0, 1], output: [1.0, 0.5] }), transform: x.interpolate({ range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1], output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]}).interpolate(x => `scale(${x})`) }} className='catSelDiv'>
+                            <Button className='catSelBtn' value={category} onClick={handleClick} onMouseEnter={() => toggle(!state)} onMouseLeave={() => toggle(!state)}>
+                                Select
+                            </Button>
+                        </a.div>
                     </div>
                 </Card.Content>
             </Card>
@@ -66,20 +65,3 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
 }
 
 export default FlashCardCategoryTemplate
-
-// const CardExampleColumnCount = () => (
-//     <Card.Group itemsPerRow={6}>
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//       <Card raised image={src} />
-//     </Card.Group>
-//   )
