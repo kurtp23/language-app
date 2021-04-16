@@ -41,7 +41,7 @@ const FlashCardSelector = () => {
             
             {!selection ? <h2 className="ui orange header">Select a Category!</h2> : <></>}
 
-            {!selection ? <Card.Group fluid itemsPerRow={1}> {RenderCategories} </Card.Group>: <FlashCard category={selection}/>}
+            {!selection ? <Card.Group fluid> {RenderCategories} </Card.Group>: <FlashCard category={selection}/>}
         </div>
         </>
         

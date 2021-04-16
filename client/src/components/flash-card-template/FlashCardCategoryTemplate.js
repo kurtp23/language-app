@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSpring, animated as a } from 'react-spring';
 import { Card, Button, Image } from 'semantic-ui-react';
-import './FlashCardTemplate.css';
+import './FlashCardCategoryTemplate.css'
 
 // Card animation constants
 
@@ -33,9 +33,9 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
         class="card"
         onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
-        style={{ transform: props.xys.interpolate(trans) }}>
-            <Card style={{ outline: '3px solid #40e0d0', height: '100%' }} className="ui raised very padded text container segment">
-                <Card.Content>
+        style={{ transform: props.xys.interpolate(trans), backgroundColor: '#4cab4c' }}>
+            <Card fluid className="categoryCard ui raised text container segment">
+                <Card.Content className='categoryContent'>
                     <Image
                     floated='right'
                     size='medium'
@@ -46,9 +46,9 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
                         {description}
                     </Card.Description>
                 </Card.Content>
-                <Card.Content extra>
+                <Card.Content className='categoryContent' extra>
                     <div className='ui two buttons'>
-                    <a.div style={{ opacity: x.interpolate({ range: [0, 1], output: [1.0, 0.5] }), transform: x.interpolate({ range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1], output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]}).interpolate(x => `scale(${x})`) }}>
+                    <a.div style={{ opacity: x.interpolate({ range: [0, 1], output: [1.0, 0.5] }), transform: x.interpolate({ range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1], output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]}).interpolate(x => `scale(${x})`) }} className='catSelBtn'>
                         <Button value={category} color='green' onClick={handleClick} onMouseEnter={() => toggle(!state)} onMouseLeave={() => toggle(!state)}>
                             Select
                         </Button>

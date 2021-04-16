@@ -1,0 +1,24 @@
+.categoryCard {
+    outline: 3px solid #40e0d0; 
+    height: 100%;
+}
+
+@media (max-device-width: 600px) {
+    .categoryCard {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        outline: 3px solid #f47835;
+    }
+
+    .categoryContent {
+        margin: 0px;
+        padding: 0px;
+
+    }
+
+    .catSelBtn {
+        opacity: 1 !important;
+
+    }
+}
