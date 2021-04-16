@@ -4,6 +4,9 @@ import { Card, Container, Icon, Image, Grid, Segment, Header } from "semantic-ui
 const TeamPage = () => (
   <>
     <br />
+    <Header size="huge" textAlign="center" inverted={true}>
+      <Header.Content>Meet The Team</Header.Content>
+    </Header>
     <Grid centered={true} columns="5">
       <Grid.Row>
         <Grid.Column>
