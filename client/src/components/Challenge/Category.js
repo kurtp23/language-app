@@ -11,15 +11,13 @@ function Category({ category, onChange, description }) {
       config: { mass: 5, tension: 600, friction: 40 }
     })
 
-
     function handleClick(e){
         const pickedCategory = e.target.value
         set(state => !state)
 
         setTimeout(function(){
             onChange(pickedCategory)
-       }, 2000);//wait 2 seconds
-       
+       }, 1000);
     }
     
     const imgUrl = "/images/Challenge/Category/" + category.replace(/\s/g, "") + ".PNG"

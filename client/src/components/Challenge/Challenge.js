@@ -62,13 +62,13 @@ function Challenge({ category }){
 
     function handleAnswer(e) {
         
-        if (e.target.value === correctAnswer) {
+        if (e === correctAnswer) {
             // helps reset the dataset, unlocking for next round
             let newData = [...data]
 
             newData.forEach(item => {
                 // make sure not to allow the same answer two times in a row
-                if (item.name !== e.target.value) {
+                if (item.name !== e) {
                     item.rendered = false
                 }
             });
