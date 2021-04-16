@@ -14,12 +14,13 @@ function Choice ({ name, value, correct, onChange }) {
   
     function onSelection(e) {
         const answerPicked = e.target.value
-        
+
         setFlipped(state => !state)
 
         setTimeout(function(){      
           onChange(answerPicked)
        }, 2000);
+
     }
 
     const revealedAnswer = <Card.Header style={{ fontSize: '24px', color: correct ? 'green' : 'red'}}>{value}</Card.Header>
@@ -27,18 +28,18 @@ function Choice ({ name, value, correct, onChange }) {
     return (
 
           <Card>
-        <Image src={imgString} wrapped ui={false} />
-        <Card.Content>
-          <Button color='green' fluid={true} value={value} onClick={onSelection}>Choose</Button>
-        </Card.Content>
-        <Card.Content>
-        <animated.div
-          style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
-          >
-            {revealedAnswer}
-          </animated.div>
-        </Card.Content>
-      </Card>
+            <Image src={imgString} wrapped ui={false} />
+            <Card.Content>
+              <Button color='green' fluid={true} value={value} onClick={onSelection}>Choose</Button>
+            </Card.Content>
+            <Card.Content>
+            <animated.div
+              style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
+              >
+                {revealedAnswer}
+              </animated.div>
+            </Card.Content>
+          </Card>
     )
 }
 
