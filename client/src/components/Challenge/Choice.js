@@ -1,32 +1,45 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { Card, Button, Image } from 'semantic-ui-react'
+import { useSpring, animated } from 'react-spring'
 
 function Choice ({ name, value, correct, onChange }) {
-    const [picked, setPicked] = React.useState(false)
     const imgString = "/images/Challenge/Choices/" + name.replace(/\s/g, "") + ".PNG"
 
-    useEffect(() => {
-        setPicked(false)
-    }, [])
-
-
+    const [flipped, setFlipped] = useState(false)
+    const { transform, opacity } = useSpring({
+      opacity: flipped ? 0 : 1,
+      transform: `perspective(300px) rotateY(${flipped ? 360 : 0}deg)`,
+      config: { mass: 5, tension: 600, friction: 40 }
+    })
+  
     function onSelection(e) {
-        setPicked(true)
-        onChange(e)
+        const answerPicked = e.target.value
+
+        setFlipped(state => !state)
+
+        setTimeout(function(){      
+          onChange(answerPicked)
+       }, 2000);
+
     }
 
-    const revealedAnswer = <Card.Header style={correct ? { color: 'green'} : { color: 'red'}}>{value}</Card.Header>
+    const revealedAnswer = <Card.Header style={{ fontSize: '24px', color: correct ? 'green' : 'red'}}>{value}</Card.Header>
 
-    return(
-        <Card>
-        <Image src={imgString} wrapped ui={false} />
-        <Card.Content>
-          <Button value={value} onClick={onSelection}>Choose</Button>
-        </Card.Content>
-        <Card.Content>
-          {!picked ? <></> : revealedAnswer}
-        </Card.Content>
-      </Card>
+    return (
+
+          <Card>
+            <Image src={imgString} wrapped ui={false} />
+            <Card.Content>
+              <Button color='green' fluid={true} value={value} onClick={onSelection}>Choose</Button>
+            </Card.Content>
+            <Card.Content>
+            <animated.div
+              style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
+              >
+                {revealedAnswer}
+              </animated.div>
+            </Card.Content>
+          </Card>
     )
 }
 
