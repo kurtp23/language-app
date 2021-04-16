@@ -22,17 +22,17 @@ function Choice ({ name, value, correct, onChange }) {
        }, 2000);
     }
 
-    const revealedAnswer = <Card.Header style={correct ? { color: 'green'} : { color: 'red'}}>{value}</Card.Header>
+    const revealedAnswer = <Card.Header style={{ fontSize: '24px', color: correct ? 'green' : 'red'}}>{value}</Card.Header>
 
     return (
         <Card>
         <Image src={imgString} wrapped ui={false} />
         <Card.Content>
-          <Button value={value} onClick={onSelection}>Choose</Button>
+          <Button color='green' fluid={true} value={value} onClick={onSelection}>Choose</Button>
         </Card.Content>
         <Card.Content>
         <animated.div
-          style={{ opacity: opacity.interpolate(o => 1 - o), transform }}
+          style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
           >
             {revealedAnswer}
           </animated.div>
