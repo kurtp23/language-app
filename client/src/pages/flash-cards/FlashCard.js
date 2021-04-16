@@ -33,7 +33,7 @@ const FlashCard = ({category}) => {
     }, [activeFlashCard])
 
     return (
-        <div className="ui raised text container segment">
+        <div style={{ width: '100%' }} className="ui raised text container segment">
             <h2 className="ui orange header">Flash Cards: {category} </h2>
             <div>
                 <Grid columns={1} verticalAlign='bottom'>
@@ -44,13 +44,18 @@ const FlashCard = ({category}) => {
                             </div>
                         </Grid.Column>
                     </Grid.Row>
-                    <Divider horizontal>Welcome To Language Learner</Divider>
+                    <Divider horizontal style={{ content: 'center' }}>Language Learner</Divider>
                     <Grid.Row>
                         <Grid.Column>
                         <Pagination
                             activePage={activeFlashCard}
                             onPageChange={handlePaginationChange}
                             totalPages={flashCardList.length}
+                            siblingRange={1}
+                            boundaryRange={0}
+                            ellipsisItem={null}
+                            firstItem={null}
+                            lastItem={null}
                         />
                         </Grid.Column>
                     </Grid.Row>
