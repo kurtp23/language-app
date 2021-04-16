@@ -3,11 +3,7 @@ import { Card, Container, Icon, Image, Grid, Segment, Header } from "semantic-ui
 
 const TeamPage = () => (
   <>
-    <Header as="h2" icon textAlign="center">
-      <Icon name="users" circular />
-      Meet The Team
-    </Header>
-
+    <br />
     <Grid centered={true} columns="5">
       <Grid.Row>
         <Grid.Column>
