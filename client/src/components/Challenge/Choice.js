@@ -5,17 +5,17 @@ import { useSpring, animated } from 'react-spring'
 function Choice ({ name, value, correct, onChange }) {
     const imgString = "/images/Challenge/Choices/" + name.replace(/\s/g, "") + ".PNG"
 
-    const [flipped, set] = useState(false)
+    const [flipped, setFlipped] = useState(false)
     const { transform, opacity } = useSpring({
       opacity: flipped ? 0 : 1,
-      transform: `perspective(300px) rotateX(${flipped ? 360 : 0}deg)`,
+      transform: `perspective(300px) rotateY(${flipped ? 360 : 0}deg)`,
       config: { mass: 5, tension: 600, friction: 40 }
     })
-
+  
     function onSelection(e) {
-
         const answerPicked = e.target.value
-        set(state => !state)
+        
+        setFlipped(state => !state)
 
         setTimeout(function(){      
           onChange(answerPicked)
@@ -25,7 +25,8 @@ function Choice ({ name, value, correct, onChange }) {
     const revealedAnswer = <Card.Header style={{ fontSize: '24px', color: correct ? 'green' : 'red'}}>{value}</Card.Header>
 
     return (
-        <Card>
+
+          <Card>
         <Image src={imgString} wrapped ui={false} />
         <Card.Content>
           <Button color='green' fluid={true} value={value} onClick={onSelection}>Choose</Button>
