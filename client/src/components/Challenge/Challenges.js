@@ -33,6 +33,7 @@ import Challenge from './Challenge.js'
 
 // API calls
 import API from '../../utils/API.js'
+import { Card } from 'semantic-ui-react';
 
 // semantic ui
 
@@ -72,7 +73,13 @@ function Challenges() {
             
             {!selection ? <h2 className="ui orange header">Select a Category!</h2> : <></>}
 
-            {!selection ? RenderCategories : <Challenge category={selection}/>}
+            <Card.Group>
+                {!selection ? RenderCategories : <></>}
+            </Card.Group>
+            
+            {selection ? <Challenge category={selection}/> : <></>}
+
+
         </div>
         </>
         
