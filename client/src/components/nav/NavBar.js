@@ -78,6 +78,11 @@ const MenuExampleDropdownItem = (props) => (
               <h1>Team Bio</h1>
             </Link>
           </Dropdown.Item>
+          <Dropdown.Item>
+            <Link to="/settings">
+              <h1>Settings</h1>
+            </Link>
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </Menu>
