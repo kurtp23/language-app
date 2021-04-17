@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import { Link } from 'react-router-dom'
 import { Card, Button, Icon, Image } from 'semantic-ui-react'
 
