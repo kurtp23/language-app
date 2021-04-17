@@ -12,7 +12,10 @@ import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
 import "./app.css";
+import Bot from "./pages/bot/bot.js";
 
+import CardExampleCard from "./pages/teampage/teampage.js";
+import Board from "./pages/memory/Board";
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
 import Settings from "./pages/settingsPage/settings.js";
@@ -39,7 +42,7 @@ function App() {
 
             <Switch>
               <Route path="/game">
-                <h1>Hello from Game</h1>
+                <Board/>
               </Route>
               <Route path="/challenge">
                 <Challenges userState={userState} />
@@ -53,7 +56,9 @@ function App() {
               <Route path="/settings">
                 <Settings userState={userState} setUserState={setUserState} />
               </Route>
-              <Route path="/teambio"></Route>
+              <Route path="/translate">
+                <Bot></Bot>
+              </Route>
               <Route path="/">
                 <Dashboard userState={userState} />
               </Route>
