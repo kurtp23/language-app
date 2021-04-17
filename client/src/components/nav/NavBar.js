@@ -74,8 +74,8 @@ const MenuExampleDropdownItem = (props) => (
             </Link>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Link to="/teambio">
-              <h1>Team Bio</h1>
+            <Link to="/translate">
+              <h1>translate</h1>
             </Link>
           </Dropdown.Item>
           <Dropdown.Item>

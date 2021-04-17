@@ -12,6 +12,7 @@ import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
 import "./app.css";
+import Bot from "./pages/bot/bot.js";
 
 import CardExampleCard from "./pages/teampage/teampage.js";
 import Board from "./pages/memory/Board";
@@ -55,7 +56,9 @@ function App() {
               <Route path="/settings">
                 <Settings userState={userState} setUserState={setUserState} />
               </Route>
-              <Route path="/teambio"></Route>
+              <Route path="/translate">
+                <Bot></Bot>
+              </Route>
               <Route path="/">
                 <Dashboard userState={userState} />
               </Route>
