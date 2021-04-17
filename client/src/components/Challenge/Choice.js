@@ -23,7 +23,7 @@ function Choice ({ name, value, correct, onChange }) {
 
     }
 
-    const revealedAnswer = <Card.Header style={{ fontSize: '500%', color: correct ? 'green' : 'red'}}>{value}</Card.Header>
+    const revealedAnswer = <Card.Header style={{ fontSize: '15px', color: correct ? 'green' : 'red'}}>{value}</Card.Header>
 
     return (
 
