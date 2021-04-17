@@ -24,7 +24,7 @@ function CorrectAnswerHeader({ correctAnswer }) {
                 {correctAnswer}
             </Header>
             <Header textAlign='center' as='h3'>
-                {sound ? <Icon onClick={playSound} name='language' /> : 'Loading Sound...'}                
+                {sound ? <Icon onClick={playSound} name='assistive listening systems' /> : 'Loading Sound...'}                
             </Header>
         </>
     )
