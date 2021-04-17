@@ -53,7 +53,7 @@ function App() {
               <Route path="/settings">
                 <Settings userState={userState} setUserState={setUserState} />
               </Route>
-              <Route path="/teambio"></Route>
+              <Route path="/translate"></Route>
               <Route path="/">
                 <Dashboard userState={userState} />
               </Route>
