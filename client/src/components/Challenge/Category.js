@@ -31,8 +31,8 @@ function Category({ category, onChange, description }) {
                     size='medium'
                     src={imgUrl}
                     />
-                    <Card.Header>{category}</Card.Header>
-                    <Card.Description>
+                    <Card.Header style={{fontSize: '11px'}}>{category}</Card.Header>
+                    <Card.Description style={{fontSize: '10px'}}>
                         {description}
                     </Card.Description>
                 </Card.Content>

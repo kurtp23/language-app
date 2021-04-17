@@ -37,11 +37,11 @@ const FlashCardSelector = () => {
 
     return (
         <>
-        <div className="ui raised very padded text container segment">
+        <div className="ui raised text container segment">
             
             {!selection ? <h2 className="ui orange header">Select a Category!</h2> : <></>}
 
-            {!selection ? <Card.Group fluid itemsPerRow={1}> {RenderCategories} </Card.Group>: <FlashCard category={selection}/>}
+            {!selection ? <Card.Group fluid itemsPerRow={2}> {RenderCategories} </Card.Group>: <FlashCard category={selection}/>}
         </div>
         </>
         

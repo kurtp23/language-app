@@ -18,7 +18,7 @@ const FlashCardTemplate = (props) => {
                     <Card.Content>
                     <Card.Header className="ui ribbon label" style={{ backgroundColor: '#fa8072', color: 'white' }}>{props.category}</Card.Header>
                     <Card.Meta>
-                        <span className='cardNum'>Card #{props.cardNumber}</span>
+                        <span className='cardNum'>Card #{props.cardNumber} - English</span>
                     </Card.Meta>
                     <Card.Description>
                         <h1>{props.englishWord}</h1>
@@ -31,7 +31,7 @@ const FlashCardTemplate = (props) => {
                     <Card.Content>
                     <Card.Header className="ui ribbon label" style={{ backgroundColor: '#fa8072', color: 'white' }}>{props.category}</Card.Header>
                     <Card.Meta>
-                        <span className='cardNum'>Card #{props.cardNumber}</span>
+                        <span className='cardNum'>Card #{props.cardNumber} - Spanish</span>
                     </Card.Meta>
                     <Card.Description>
                         <h1>{props.word}</h1>

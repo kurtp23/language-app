@@ -1,13 +1,12 @@
 import React from "react";
 import { Card, Container, Icon, Image, Grid, Segment, Header } from "semantic-ui-react";
 
-const CardExampleCard = () => (
+const TeamPage = () => (
   <>
-    <Header as="h2" icon textAlign="center">
-      <Icon name="users" circular />
-      Meet The Team
+    <br />
+    <Header size="huge" textAlign="center" inverted={true}>
+      <Header.Content>Meet The Team</Header.Content>
     </Header>
-
     <Grid centered={true} columns="5">
       <Grid.Row>
         <Grid.Column>
@@ -117,49 +116,4 @@ const CardExampleCard = () => (
   </>
 );
 
-export default CardExampleCard;
-
-// import React from "react";
-// import { Card } from "semantic-ui-react";
-
-// const kurtSrc = "./images/biopic.jpg";
-// const items = [
-//   {
-//     header: "Destiny Fleming ",
-//     description: "Leverage agile frameworks to provide a robust synopsis for high level overviews.",
-//     meta: "ROI: 30%",
-//   },
-//   {
-//     header: "Erik Portillo",
-//     description: "Bring to the table win-win survival strategies to ensure proactive domination.",
-//     meta: "ROI: 34%",
-//   },
-//   {
-//     header: "Charles Latrobe-Bateman ",
-//     description: "Bring to the table win-win survival strategies to ensure proactive domination.",
-//     meta: "ROI: 34%",
-//   },
-// ];
-// const items2 = [
-//   {
-//     header: "Steve Eliuth",
-//     description: "Bring to the table win-win survival strategies to ensure proactive domination.",
-//     meta: "ROI: 34%",
-//   },
-//   {
-//     image: kurtSrc,
-//     header: "Kurt Phillips",
-//     description: "Bring to the table win-win survival strategies to ensure proactive domination.",
-//     meta: "is not good at semantic",
-//   },
-// ];
-
-// const CardExampleGroupCentered = () => {
-//   return (
-//     <>
-//       <Card.Group centered items={items} />
-//       <Card.Group centered items={items2} />
-//     </>
-//   );
-// };
-// export default CardExampleGroupCentered;
+export default TeamPage;
