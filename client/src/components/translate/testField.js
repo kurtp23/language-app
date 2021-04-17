@@ -8,7 +8,7 @@ function InputField(props) {
       onChange={props.handleInputChange}
       class="input is-link"
       type="text"
-      placeholder="Link input"
+      placeholder="Translate"
     />
   );
 }
