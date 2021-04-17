@@ -12,17 +12,15 @@ import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
 import "./app.css";
-import CardExampleCard from "./pages/teampage/teampage.js";
 
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
-
+import Settings from "./pages/settingsPage/settings.js";
 const auth = firebase.auth();
 
 function App() {
   const [user] = useAuthState(auth);
   const [userState, setUserState] = useState({});
-  console.log(user);
 
   useEffect(() => {
     if (user) {
@@ -37,7 +35,7 @@ function App() {
       {user ? (
         <Router>
           <div>
-            <NavBar user={user} auth={auth} />
+            <NavBar user={user} auth={auth} userState={userState} />
 
             <Switch>
               <Route path="/game">
@@ -53,11 +51,9 @@ function App() {
                 <Stats userState={userState} />
               </Route>
               <Route path="/settings">
-                <h1>Hello from settings</h1>
+                <Settings userState={userState} setUserState={setUserState} />
               </Route>
-              <Route path="/teambio">
-                <CardExampleCard />
-              </Route>
+              <Route path="/teambio"></Route>
               <Route path="/">
                 <Dashboard userState={userState} />
               </Route>
