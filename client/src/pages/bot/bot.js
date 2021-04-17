@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-
+import { Header } from "semantic-ui-react";
 // import { translate } from "web-translate";
 
-import Input from "../../components/translate/testField.js";
+import InputField from "../../components/translate/testField.js";
 import Message from "../../components/translate/messageField.js";
 import SendBtn from "../../components/translate/sendBtn.js";
 import Translate from "../../utils/spanish.js";
+import { Card, Container } from "semantic-ui-react";
 
 function Bot() {
   const [message, setMessage] = useState("");
@@ -28,14 +29,27 @@ function Bot() {
       setTranslate(data.data[0].shortdef[0]);
       setFl(data.data[0].fl);
     });
+    console.log(arr);
   };
 
   return (
     <div>
-      {/* <Nav /> */}
-      <Message send={sentMessage} translate={translateMessage} fl={fl} />
-      <Input handleInputChange={handleInputChange} />
-      <SendBtn onClick={onSend} />
+      <Header inverted textAlign={"centered"}>
+        Translate Words Below
+      </Header>
+      <Message
+        send={sentMessage}
+        translate={translateMessage}
+        fl={fl}
+        onClick={onSend}
+        handleInputChange={handleInputChange}
+      />
+      <Container>
+        <Card centered={true}>
+          <InputField centered={true} handleInputChange={handleInputChange} />
+          <SendBtn centered={true} onClick={onSend} />
+        </Card>
+      </Container>
     </div>
   );
 }
