@@ -9,7 +9,7 @@ import CorrectAnswerHeader from './CorrectAnswerHeader.js'
 import API from '../../utils/API.js'
 
 // semantic ui
-import { Card } from 'semantic-ui-react'
+import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react'
 
 function Challenge({ category }){
     const [data, setData] = React.useState([])
@@ -95,6 +95,11 @@ function Challenge({ category }){
 
     return (
         <>
+            {answered ? 
+                <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='book' />Nice Work!</Header></Container> : 
+                <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='question circle' />Match the Word to the Image!</Header></Container>
+            }
+
             {!answered && choices ? <CorrectAnswerHeader correctAnswer={correctAnswer}/>: <></>}
             
             <Card.Group centered itemsPerRow={2}>
@@ -103,8 +108,9 @@ function Challenge({ category }){
                         return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) 
                 : <></>}
                 
-                {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} category={category}/>: <></>}
             </Card.Group>
+            
+            {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} category={category}/>: <></>}
             
         </>
     )

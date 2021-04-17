@@ -43,11 +43,9 @@ function Challenges() {
             <Container centered className="ui raised centered text container segment" >
                 
                 {!selection ? 
-                    <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='book' />Choose a Category</Header></Container> : 
-                    <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='question circle' />Match the Word to the Image!</Header></Container>
-                }
+                    <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='book' />Choose a Category</Header></Container>
+                : <></>}
                 
-                <Divider />
 
                 <Card.Group centered itemsPerRow={2}>
                     {!selection ? RenderCategories : <></>}

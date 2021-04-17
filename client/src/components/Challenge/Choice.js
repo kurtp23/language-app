@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // semantic ui
-import { Card, Button, Image } from 'semantic-ui-react'
+import { Card, Button, Image, Icon } from 'semantic-ui-react'
 
 // react-spring
 import { useSpring, animated } from 'react-spring'
@@ -34,8 +34,8 @@ function Choice ({ name, value, correct, onChange }) {
             <Image size='medium' circular />
             <Image src={imgString} size='medium' circular />
 
-            <Card.Content>  
-              <Button color='green' fluid={true} value={value} onClick={onSelection}>Choose</Button>
+            <Card.Content>
+              <Button color='green' fluid={true} value={value} onClick={onSelection}><Icon name="like" />Choose</Button>
             </Card.Content>
             <Card.Content style={{ padding: '5px'}}>
               <animated.div
