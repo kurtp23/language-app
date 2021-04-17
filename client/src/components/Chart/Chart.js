@@ -7,15 +7,17 @@ const Chart = () => {
     const [flashCard, setFlashCard] = useState(0)
     const [challenge, setChallenge] = useState(0)
     const [date, setDate] = useState('')
+    const [userID, setUserID] = useState('')
 
    
     useEffect(() => {
         API.getStats()
         .then((data) => {
             console.log(data)
-            setFlashCard (data.data[0].flashcardVal)
-            setChallenge (data.data[0].challengeVal)
-            setDate (data.data[0].date)
+            setFlashCard (data.data[0].stats[0].flashcardVal)
+            setChallenge (data.data[0].stats[0].challengeVal)
+            setDate (data.data[0].stats[0].date)
+            setUserID(data.data[0].userID)
             })
     }, [])
 
