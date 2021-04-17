@@ -82,7 +82,7 @@ const MenuExampleDropdownItem = (props) => (
       </Dropdown>
     </Menu>
     <div>
-      <Header inverted={true}>{props.user.displayName}</Header>
+      <Header inverted={true}>{props.userState.displayName}</Header>
     </div>
   </>
 );

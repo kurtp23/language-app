@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   Container,
@@ -19,32 +19,50 @@ const languageOptions = [
   { key: "se", value: "se", text: "Something Else" },
 ];
 
-const Settings = () => (
-  <>
-    <Header color="teal ">Settings</Header>
-    <Grid celled="internally">
-      <Grid.Row>
-        <Grid.Column width={10}>
-          <Header inverted={true}>Change Display Name</Header>
-          <Input></Input>
-          <Button>Save Name</Button>
-        </Grid.Column>
-      </Grid.Row>
+function Settings(props) {
+  const [changeName, setChangeName] = useState();
+  function handleInputChange(event) {
+    console.log(changeName);
+    setChangeName(event.target.value);
+  }
+  return (
+    <>
+      <Header color="teal ">Settings</Header>
+      <Grid celled="internally">
+        <Grid.Row>
+          <Grid.Column centered={true} width={10}>
+            <Header inverted={true}>Change Display Name</Header>
+            <Input onChange={handleInputChange}></Input>
+            <Button
+              onClick={() => {
+                props.setUserState({
+                  displayName: changeName,
+                  userId: props.userState.userId,
+                  language: props.userState.language,
+                  theme: props.userState.theme,
+                });
+              }}
+            >
+              Save Name
+            </Button>
+          </Grid.Column>
+        </Grid.Row>
 
-      <Grid.Row>
-        <Grid.Column width={10}>
-          <Header inverted={true}>Toggle Theme</Header>
-          <Checkbox toggle></Checkbox>
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column width={10}>
-          <Header inverted={true}>Select Language</Header>
-          <Select placeholder="Select Language" options={languageOptions} />
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
-  </>
-);
+        <Grid.Row>
+          <Grid.Column width={10}>
+            <Header inverted={true}>Toggle Theme</Header>
+            <Checkbox toggle></Checkbox>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={10}>
+            <Header inverted={true}>Select Language</Header>
+            <Select placeholder="Select Language" options={languageOptions} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </>
+  );
+}
 
 export default Settings;
