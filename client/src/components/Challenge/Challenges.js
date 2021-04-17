@@ -52,7 +52,7 @@ function Challenges() {
             
             <Divider />
 
-            <Card.Group centered>
+            <Card.Group centered itemsPerRow={2}>
                 {!selection ? RenderCategories : <></>}
             </Card.Group>
             

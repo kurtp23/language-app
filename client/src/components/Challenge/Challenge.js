@@ -94,7 +94,7 @@ function Challenge({ category }){
     return (
         <>
             {!answered && choices ? <Header textAlign='center' as='h1'><Icon name='language' />{correctAnswer}</Header> : <></>}
-            <Card.Group centered four doubling cards>
+            <Card.Group centered itemsPerRow={2}>
             {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) : <></>}
             </Card.Group>
             {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} />: <></>}
