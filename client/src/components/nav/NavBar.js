@@ -69,7 +69,7 @@ const MenuExampleDropdownItem = (props) => (
             </Link>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Link to="/flashcard">
+            <Link to="/flashcards">
               <h1>FlashCard</h1>
             </Link>
           </Dropdown.Item>
