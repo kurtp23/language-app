@@ -1,15 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'semantic-ui-react';
 import { useSpring, animated as a } from 'react-spring'
 import './FlashCardTemplate.css';
+import Translate from '../../utils/spanish';
 
 const FlashCardTemplate = (props) => {
+
+    // Animation states
+
     const [flipped, set] = useState(false)
     const { transform, opacity } = useSpring({
       opacity: flipped ? 1 : 0,
       transform: `perspective(300px) rotateX(${flipped ? 180 : 0}deg)`,
       config: { mass: 5, tension: 600, friction: 40 }
     })
+
+    // Audio State
+
+    const [audioObj, setAudioObj] = useState({subDirectory: 'd', fileName: 'default'})
+
+    useEffect(() => {
+        console.log(props.word);
+        try{
+            Translate.search(props.word).then((data) => {
+                // if (data.data[0].hwi.prs) {
+                     console.log('data is: ', data.data)
+                //     console.log('data is:', data.data[0].hwi.prs[0]);
+                //     setAudioObj({
+                //         subDirectory: data.data[0].hwi.prs[0].sound.audio.charAt(0),
+                //         fileName: data.data[0].hwi.prs[0].sound.audio, 
+                //     })
+                // }
+                // else {
+                //     console.log('no sound has been found')
+                // }
+            })
+        }
+        catch(err) {console.log(err)}
+    }, [props.word])
+
+
+    // const playSound = (e) => {
+    //     console.log('playing sound')
+    //     let URL = `https://media.merriam-webster.com/audio/prons/es/me/mp3/${audioObj.subDirectory}/${audioObj.fileName}.mp3`
+    //     var a = new Audio(URL);
+    //     a.play();
+    // }
+
+
     return (
         <div className='templateContainer'>
             <div onClick={() => set(state => !state)}>
@@ -35,6 +73,15 @@ const FlashCardTemplate = (props) => {
                     </Card.Meta>
                     <Card.Description>
                         <h1>{props.word}</h1>
+                        {/* <button onClick={(e) => {
+                            e.stopPropagation();
+                            playSound()
+                        }}>Click Me</button> */}
+                        <button onClick={(e) => {
+                            e.stopPropagation(); 
+                            console.log('player') 
+                            }}>click me
+                       </button>
                     </Card.Description>
                     </Card.Content>
                 </Card>
