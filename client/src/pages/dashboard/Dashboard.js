@@ -22,7 +22,7 @@ const Dashboard = () => (
       <Grid.Row>
         <Grid.Column width={4} className="dash-container">
           <Link to="translate">
-            <DashButton children="Team!" />
+            <DashButton children="Translate!" />
           </Link>
         </Grid.Column>
         <Grid.Column width={8} className="dash-container">

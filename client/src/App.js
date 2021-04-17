@@ -12,6 +12,7 @@ import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
 import Stats from "./pages/stats/stats";
 import "./app.css";
+import Bot from "./pages/bot/bot.js";
 
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
@@ -53,7 +54,9 @@ function App() {
               <Route path="/settings">
                 <Settings userState={userState} setUserState={setUserState} />
               </Route>
-              <Route path="/translate"></Route>
+              <Route path="/translate">
+                <Bot></Bot>
+              </Route>
               <Route path="/">
                 <Dashboard userState={userState} />
               </Route>
