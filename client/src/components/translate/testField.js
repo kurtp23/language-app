@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Input } from "semantic-ui-react";
 
-function Input(props) {
+function InputField(props) {
   return (
-    <input
+    <Input
       value={props.message}
       onChange={props.handleInputChange}
       class="input is-link"
@@ -11,4 +12,4 @@ function Input(props) {
     />
   );
 }
-export default Input;
+export default InputField;

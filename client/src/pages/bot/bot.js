@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // import { translate } from "web-translate";
 
-import Input from "../../components/translate/testField.js";
+import InputField from "../../components/translate/testField.js";
 import Message from "../../components/translate/messageField.js";
 import SendBtn from "../../components/translate/sendBtn.js";
 import Translate from "../../utils/spanish.js";
@@ -34,7 +34,7 @@ function Bot() {
     <div>
       {/* <Nav /> */}
       <Message send={sentMessage} translate={translateMessage} fl={fl} />
-      <Input handleInputChange={handleInputChange} />
+      <InputField handleInputChange={handleInputChange} />
       <SendBtn onClick={onSend} />
     </div>
   );
