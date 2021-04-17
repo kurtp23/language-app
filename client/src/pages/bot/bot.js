@@ -34,6 +34,9 @@ function Bot() {
 
   return (
     <div>
+      <Header inverted textAlign={"centered"}>
+        Translate Words Below
+      </Header>
       <Message
         send={sentMessage}
         translate={translateMessage}
@@ -41,9 +44,6 @@ function Bot() {
         onClick={onSend}
         handleInputChange={handleInputChange}
       />
-      <Header inverted textAlign={"centered"}>
-        Translate Words Below
-      </Header>
       <Container>
         <Card centered={true}>
           <InputField centered={true} handleInputChange={handleInputChange} />
