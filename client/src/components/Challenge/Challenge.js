@@ -2,19 +2,14 @@ import React, { useEffect } from 'react'
 
 // components
 import Choice from './Choice.js'
-
+import EndGame from './EndGame.js'
 // API calls
 import API from '../../utils/API.js'
 
 // semantic ui
-import { Link } from 'react-router-dom'
+import { Header } from 'semantic-ui-react'
 
 function Challenge({ category }){
-    // TODO LIST:
-    // Add Images
-    // Add "Exit Game" Button
-    // STYLING
-    // modulation!
     const [data, setData] = React.useState([])
     const [count, setCount] = React.useState(0)
     const [answered, setAnswered] = React.useState(false)
@@ -62,13 +57,13 @@ function Challenge({ category }){
 
     function handleAnswer(e) {
         
-        if (e.target.value === correctAnswer) {
+        if (e === correctAnswer) {
             // helps reset the dataset, unlocking for next round
             let newData = [...data]
 
             newData.forEach(item => {
                 // make sure not to allow the same answer two times in a row
-                if (item.name !== e.target.value) {
+                if (item.name !== e) {
                     item.rendered = false
                 }
             });
@@ -92,18 +87,17 @@ function Challenge({ category }){
             value: count,
             date: new Date()
         }
+        
         console.log("This will go to stats schema: ", stat)
     }
+
     return (
         <>
+
             <h2>Challenge Game!</h2>
-            <h3>Times Played: {count}</h3>
-            {!answered && choices ? <p>{correctAnswer}</p> : <></>}
+            {!answered && choices ? <Header>{correctAnswer}</Header> : <></>}
             {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) : <></>}
-        
-            {answered ? <button onClick={handleNextClick}>Click here to goto next!</button> : <></>}
-            {answered ? <h3>Nice Work!</h3> : <></>}
-            {answered ? <Link to="/"><button onClick={handleExit}>Exit</button></Link> : <></>}
+            {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} />: <></>}
             
         </>
         
