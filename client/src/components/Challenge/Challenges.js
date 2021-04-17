@@ -40,7 +40,7 @@ function Challenges() {
 
     return (
         <>
-            <Container className="ui raised text container segment" >
+            <Container centered className="ui raised centered text container segment" >
                 
                 {!selection ? 
                     <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='book' />Choose a Category</Header></Container> : 
@@ -51,9 +51,11 @@ function Challenges() {
 
                 <Card.Group centered itemsPerRow={2}>
                     {!selection ? RenderCategories : <></>}
+                    
                 </Card.Group>
                 
-                {selection ? <Challenge category={selection}/> : <></>}
+                    {selection ? <Challenge category={selection}/> : <></>}
+                
 
             </Container>
         </>
