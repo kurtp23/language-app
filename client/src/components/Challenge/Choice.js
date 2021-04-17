@@ -28,8 +28,10 @@ function Choice ({ name, value, correct, onChange }) {
     return (
 
           <Card color='teal'>
-            <Image src={imgString} wrapped ui={false} />
-            <Card.Content>
+            <Image size='medium' circular />
+            <Image src={imgString} size='medium' circular />
+
+            <Card.Content>  
               <Button color='green' fluid={true} value={value} onClick={onSelection}>Choose</Button>
             </Card.Content>
             <Card.Content style={{ padding: '5px'}}>
