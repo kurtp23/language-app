@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
+
+// semantic ui
 import { Card, Button, Image } from 'semantic-ui-react'
+
+// react-spring
 import { useSpring, animated } from 'react-spring'
 
 function Choice ({ name, value, correct, onChange }) {
@@ -26,7 +30,6 @@ function Choice ({ name, value, correct, onChange }) {
     const revealedAnswer = <Card.Header style={{ fontSize: '15px', color: correct ? 'green' : 'red'}}>{value}</Card.Header>
 
     return (
-
           <Card color='teal'>
             <Image size='medium' circular />
             <Image src={imgString} size='medium' circular />
@@ -35,9 +38,9 @@ function Choice ({ name, value, correct, onChange }) {
               <Button color='green' fluid={true} value={value} onClick={onSelection}>Choose</Button>
             </Card.Content>
             <Card.Content style={{ padding: '5px'}}>
-            <animated.div
-              style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
-              >
+              <animated.div
+                style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
+                >
                 {revealedAnswer}
               </animated.div>
             </Card.Content>
