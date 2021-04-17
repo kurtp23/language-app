@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { Card, Icon, Container } from "semantic-ui-react";
+import InputField from "../../components/translate/testField.js";
+import SendBtn from "../../components/translate/sendBtn.js";
 
 function messageField(props) {
   return (
-    <div class="box has-background-primary-light">
-      <div>{props.fl}</div>
-      <div>English: {props.send}</div>
-      <div>spanish: {props.translate}</div>
-    </div>
+    <>
+      <Container>
+        <Card centered={true}>
+          <Card.Content header={"English: " + props.send} />
+          <Card.Content header={"Spanish: " + props.translate} />
+          <Card.Content header={props.fl} extra />
+        </Card>
+      </Container>
+    </>
   );
 }
 export default messageField;
