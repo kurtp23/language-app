@@ -9,7 +9,7 @@ import CorrectAnswerHeader from './CorrectAnswerHeader.js'
 import API from '../../utils/API.js'
 
 // semantic ui
-import { Header, Card, Icon } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 function Challenge({ category }){
     const [data, setData] = React.useState([])
