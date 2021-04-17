@@ -7,7 +7,7 @@ import EndGame from './EndGame.js'
 import API from '../../utils/API.js'
 
 // semantic ui
-import { Header } from 'semantic-ui-react'
+import { Header, Card } from 'semantic-ui-react'
 
 function Challenge({ category }){
     const [data, setData] = React.useState([])
@@ -96,7 +96,9 @@ function Challenge({ category }){
 
             <h2>Challenge Game!</h2>
             {!answered && choices ? <Header>{correctAnswer}</Header> : <></>}
+            <Card.Group>
             {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) : <></>}
+            </Card.Group>
             {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} />: <></>}
             
         </>
