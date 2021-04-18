@@ -9,24 +9,23 @@ import CorrectAnswerHeader from './CorrectAnswerHeader.js'
 import API from '../../utils/API.js'
 
 // semantic ui
-import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react'
+import { Card, Header, Container, Icon } from 'semantic-ui-react'
 
-function Challenge({ category }){
+function Challenge({ category, language }){
     const [data, setData] = React.useState([])
     const [count, setCount] = React.useState(0)
     const [answered, setAnswered] = React.useState(false)
-    
+
     useEffect(() => {
         // get data from MongoDB
         API.getChallengeData(category)
         .then((data) => {
 
             let dataTransformed = []
-            
             data.data.forEach((data) => {
                dataTransformed.push({
                    eng: data.eng,
-                   spa: data.spa,
+                   lang: data[language],
                    rendered: false
                }) 
             })
@@ -45,7 +44,7 @@ function Challenge({ category }){
         data.forEach((item, i) => {
             if (!item.rendered && choices.length < 4) {
                 newData[i].rendered = true
-                choices.push(item.spa)
+                choices.push(item[language])
             }
         })
         
@@ -106,7 +105,7 @@ function Challenge({ category }){
                 {!answered && choices ? 
                 <><Card.Group centered itemsPerRow={2}>
                     {choices.map((item, i) => {
-                        return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) }
+                        return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o[language] === item)).eng}>{item}</Choice>}) }
                 </Card.Group></>
                 : <></>}
                 
