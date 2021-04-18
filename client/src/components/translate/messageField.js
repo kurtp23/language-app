@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Card, Icon, Container } from "semantic-ui-react";
-import InputField from "../../components/translate/testField.js";
-import SendBtn from "../../components/translate/sendBtn.js";
 
 function messageField(props) {
   return (
     <>
+      {console.log("this is arr", props.tArr)}
       <Container>
         <Card centered={true}>
           <Card.Content header={"English: " + props.send} />

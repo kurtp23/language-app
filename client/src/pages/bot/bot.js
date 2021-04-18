@@ -13,6 +13,7 @@ function Bot() {
   const [sentMessage, setMessageSend] = useState("");
   const [translateMessage, setTranslate] = useState("");
   const [fl, setFl] = useState("");
+  const [tArr, setArr] = useState([]);
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
@@ -25,7 +26,8 @@ function Bot() {
       setMessageSend(arr[i]);
     }
     Translate.search(message).then((data) => {
-      console.log(data.data);
+      console.log("this is arr", data.data);
+      setArr(data.data);
       setTranslate(data.data[0].shortdef[0]);
       setFl(data.data[0].fl);
     });
@@ -43,6 +45,7 @@ function Bot() {
         fl={fl}
         onClick={onSend}
         handleInputChange={handleInputChange}
+        tArr={tArr}
       />
       <Container>
         <Card centered={true}>
