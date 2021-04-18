@@ -1,11 +1,11 @@
 var mongoose = require("mongoose");
-var db = require("../models/");
+var db = require("../models");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learningapp", {
   useNewUrlParser: true,
 });
 
-var challengeSeed = [
+var WordDataSeed = [
   {
     names: [
       {cat: 'Zoo Animals', key: 'zooAnimals', description: 'Exotic, Interesting Critters!'}, 
@@ -118,9 +118,9 @@ var challengeSeed = [
 }
 ];
 
-db.Challenge.deleteMany({})
+db.WordData.deleteMany({})
   .then(
-    db.Challenge.collection.insertMany(challengeSeed).then((data) => {
+    db.WordData.collection.insertMany(WordDataSeed).then((data) => {
       console.log(data.result.n + " records inserted!");
       process.exit(0);
     })

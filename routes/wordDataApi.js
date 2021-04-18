@@ -1,11 +1,11 @@
 const Router = require("express").Router();
-const Challenge = require("../models/Challenge.js");
+const WordData = require("../models/wordData.js");
 
-Router.get("/api/challenges", async (req, res) => {
-    console.log("GET request for CHALLENGE")
-    Challenge.find({})
+Router.get("/api/worddata", async (req, res) => {
+    console.log("GET request for word data")
+    WordData.find({})
     .then((data) => {
-        console.log("Sending CHALLENGES")
+        console.log("Sending word data")
       res.json(data);
     })
     .catch((err) => {
@@ -13,9 +13,9 @@ Router.get("/api/challenges", async (req, res) => {
     });
 });
 
-Router.get("/api/challenge/:category", async (req, res) => {
-  console.log("GET request for CHALLENGE name: ", req.params.category)
-  Challenge.find({})
+Router.get("/api/worddata/:category", async (req, res) => {
+  console.log("GET request for word data category: ", req.params.category)
+  WordData.find({})
   .then((data) => {
       // find the category key
       const key = (data[0].names.find(o => o.cat === req.params.category)).key;
