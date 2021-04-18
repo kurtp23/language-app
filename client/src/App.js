@@ -10,11 +10,11 @@ import "firebase/firestore";
 import "firebase/auth";
 import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
+import getUser from "./utils/getUser";
 import Stats from "./pages/stats/stats";
 import "./app.css";
 import Bot from "./pages/bot/bot.js";
 
-import CardExampleCard from "./pages/teampage/teampage.js";
 import Board from "./pages/memory/Board";
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
@@ -29,6 +29,7 @@ function App() {
     if (user) {
       postUser(user);
       setUserState({ displayName: user.displayName, userId: user.uid, language: "", theme: "" });
+      getUser(user.uid);
     }
   }, [user]);
   console.log("this is user state", userState);
@@ -42,7 +43,7 @@ function App() {
 
             <Switch>
               <Route path="/game">
-                <Board/>
+                <Board />
               </Route>
               <Route path="/challenge">
                 <Challenges userState={userState} />

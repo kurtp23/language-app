@@ -13,4 +13,14 @@ Router.post("/api/addUser", async (req, res) => {
     });
 });
 
+Router.get("/api/:id", async (req, res) => {
+  User.find({ fireId: req.params.id })
+    .then((data) => {
+      console.log("this is user from db", data);
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(200).json(err);
+    });
+});
 module.exports = Router;
