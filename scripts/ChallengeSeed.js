@@ -13,6 +13,11 @@ var challengeSeed = [
       {cat:'Places', key:'places', description: 'Locations and Spaces!'}, 
       {cat:'Fruits and Veggies', key:'fruitsVegetables', description: 'The Freshest Things You Eat!'}
     ],
+    greetings: [
+      {eng: 'Welcome!', spa: '¡Bienvenidas!', fre: 'Bienvenue!'},
+      {eng: 'Good Job!', spa: '¡Buen Trabajo!', fre: 'Bon Travail!'},
+      {eng: 'Goodbye!', spa: '¡Adiós!', fre: 'Au Revoir!'},
+    ],
     data: {
         zooAnimals: [
           {eng: 'Polar Bear', spa: 'Oso Polar', fre: 'Ours Polaire',},
