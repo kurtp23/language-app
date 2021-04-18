@@ -44,7 +44,7 @@ function Challenge({ category, language }){
         data.forEach((item, i) => {
             if (!item.rendered && choices.length < 4) {
                 newData[i].rendered = true
-                choices.push(item[language])
+                choices.push(item.lang)
             }
         })
         
@@ -105,7 +105,7 @@ function Challenge({ category, language }){
                 {!answered && choices ? 
                 <><Card.Group centered itemsPerRow={2}>
                     {choices.map((item, i) => {
-                        return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o[language] === item)).eng}>{item}</Choice>}) }
+                        return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.lang === item)).eng}>{item}</Choice>}) }
                 </Card.Group></>
                 : <></>}
                 

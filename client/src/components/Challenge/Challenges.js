@@ -10,7 +10,6 @@ import API from '../../utils/API.js'
 import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react';
 
 function Challenges({ userState }) {
-    console.log("User State from Challenges", userState)
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
 
