@@ -111,6 +111,7 @@ function Challenge({ category }){
             </Card.Group>
             
             {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} category={category}/>: <></>}
+   
             
         </>
     )
