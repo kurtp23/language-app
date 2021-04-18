@@ -3,11 +3,13 @@ import React, { useEffect } from 'react'
 // components
 import Choice from './Choice.js'
 import EndGame from './EndGame.js'
+import CorrectAnswerHeader from './CorrectAnswerHeader.js'
+
 // API calls
 import API from '../../utils/API.js'
 
 // semantic ui
-import { Header, Card, Icon } from 'semantic-ui-react'
+import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react'
 
 function Challenge({ category }){
     const [data, setData] = React.useState([])
@@ -93,14 +95,24 @@ function Challenge({ category }){
 
     return (
         <>
-            {!answered && choices ? <Header textAlign='center' as='h1'><Icon name='language' />{correctAnswer}</Header> : <></>}
+            {answered ? 
+                <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='book' />Nice Work!</Header></Container> : 
+                <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='question circle' />Match the Word to the Image!</Header></Container>
+            }
+
+            {!answered && choices ? <CorrectAnswerHeader correctAnswer={correctAnswer}/>: <></>}
+            
             <Card.Group centered itemsPerRow={2}>
-            {!answered && choices ? choices.map((item, i) => {return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) : <></>}
+                {!answered && choices ? 
+                    choices.map((item, i) => {
+                        return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.spa === item)).eng}>{item}</Choice>}) 
+                : <></>}
+                
             </Card.Group>
-            {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} />: <></>}
+            
+            {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} category={category}/>: <></>}
             
         </>
-        
     )
 }
 
