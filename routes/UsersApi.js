@@ -14,7 +14,7 @@ Router.post("/api/addUser", async (req, res) => {
 });
 
 Router.get("/api/:id", async (req, res) => {
-  User.find({ fireId: req.params.id })
+  User.find({ fire_id: req.params.id })
     .then((data) => {
       console.log("this is user from db", data);
       res.json(data);

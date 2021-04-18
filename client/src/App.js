@@ -24,6 +24,7 @@ const auth = firebase.auth();
 function App() {
   const [user] = useAuthState(auth);
   const [userState, setUserState] = useState({});
+  const [dbUser, setDbUser] = useState({});
 
   useEffect(() => {
     if (user) {
