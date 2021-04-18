@@ -11,8 +11,8 @@ import { Card, Container } from "semantic-ui-react";
 function Bot() {
   const [message, setMessage] = useState("");
   const [sentMessage, setMessageSend] = useState("");
-  const [translateMessage, setTranslate] = useState("");
-  const [fl, setFl] = useState("");
+  const [translateMessage, setTranslate] = useState([]);
+  const [fl, setFl] = useState([]);
   const [tArr, setArr] = useState([]);
 
   const handleInputChange = (event) => {
@@ -28,8 +28,8 @@ function Bot() {
     Translate.search(message).then((data) => {
       console.log("this is arr", data.data);
       setArr(data.data);
-      setTranslate(data.data[0].shortdef[0]);
-      setFl(data.data[0].fl);
+      setTranslate([data.data[0].shortdef[0], data.data[1].shortdef[0], data.data[2].shortdef[0]]);
+      setFl([data.data[0].fl, data.data[1].fl, data.data[2].fl]);
     });
     console.log(arr);
   };
@@ -47,6 +47,7 @@ function Bot() {
         handleInputChange={handleInputChange}
         tArr={tArr}
       />
+      <br />
       <Container>
         <Card centered={true}>
           <InputField centered={true} handleInputChange={handleInputChange} />
