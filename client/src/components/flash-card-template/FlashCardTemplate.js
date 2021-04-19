@@ -20,11 +20,33 @@ const FlashCardTemplate = (props) => {
     const [audioObj, setAudioObj] = useState({subDirectory: 'd', fileName: 'default'})
 
     useEffect(() => {
-        console.log(props.word);
+        console.log('word is: ', props.word);
         try{
             Translate.search(props.word).then((data) => {
+                console.log(data.data)
+                if (typeof(data.data[0]) === 'string') {
+                    console.log('No sound found')
+                    return 'N/A'
+                } 
+
+                if (!data.data[0].hwi.prs) {
+                    console.log('No sound found')
+                    return 'N/A'
+                }
+                
+                if (!data.data[0].hwi.prs[0].sound) {
+                    console.log('no sound found')
+                    return 'N/A'
+                }
                 // if (data.data[0].hwi.prs) {
-                     console.log('data is: ', data.data)
+                if (data.data[0].hwi.prs[0].sound.audio) {
+                    console.log('data passed is: ', data.data[0].hwi.prs[0].sound.audio)
+                    return 'found it'
+                }
+
+                else {
+                    return 'nothing!'
+                }
                 //     console.log('data is:', data.data[0].hwi.prs[0]);
                 //     setAudioObj({
                 //         subDirectory: data.data[0].hwi.prs[0].sound.audio.charAt(0),
