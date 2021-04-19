@@ -37,7 +37,7 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
                 <Card.Header>
                 </Card.Header>
                 <Card.Content className='categoryContent'>
-                    <Label as='a' className='cat categoryLabel' ribbon>
+                    <Label className='cat label categoryLabel' ribbon>
                             {category}
                     </Label>    
                     <Image
