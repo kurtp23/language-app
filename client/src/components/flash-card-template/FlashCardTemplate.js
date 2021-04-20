@@ -4,6 +4,7 @@ import { useSpring, animated as a } from 'react-spring'
 import './FlashCardTemplate.css';
 import Translate from '../../utils/spanish';
 import ReactAudioPlayer from 'react-audio-player';
+// import {Howl, Howler} from 'howler';
 
 const FlashCardTemplate = (props) => {
 
@@ -21,7 +22,11 @@ const FlashCardTemplate = (props) => {
     const [audioObj, setAudioObj] = useState({subDirectory: 'd', fileName: 'default'})
     const [audioURL, setAudioURL] = useState('')
 
-    // 
+    //
+    
+    // const sound = new Howl({
+    //     src: audioURL
+    //   });
 
     useEffect(() => {
         console.log('word is: ', props.word);
@@ -66,6 +71,14 @@ const FlashCardTemplate = (props) => {
 
     console.log('audio URL is ', audioURL)
 
+    let audio = new Audio(audioURL)
+
+    const start = (e) => {
+      e.stopPropagation()  
+      let audio = new Audio(audioURL)
+      audio.play()
+    }
+
     return (
         <div className='templateContainer'>
             <div onClick={() => set(state => !state)}>
@@ -91,11 +104,9 @@ const FlashCardTemplate = (props) => {
                     </Card.Meta>
                     <Card.Description>
                         <h1>{props.word}</h1>
-                        <ReactAudioPlayer
-                        src={audioURL}
-                        autoPlay
-                        controls
-                        />
+                        <div>
+                            <button onClick={start}>Listen</button>
+                        </div>
                     </Card.Description>
                     </Card.Content>
                 </Card>
