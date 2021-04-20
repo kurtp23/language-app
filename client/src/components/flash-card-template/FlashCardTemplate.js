@@ -12,7 +12,7 @@ const FlashCardTemplate = (props) => {
     const { transform, opacity } = useSpring({
       opacity: flipped ? 1 : 0,
       transform: `perspective(300px) rotateX(${flipped ? 180 : 0}deg)`,
-      config: { mass: 5, tension: 600, friction: 40 }
+      config: { mass: 5, tension: 600, friction: 80 }
     })
 
     // Audio States
