@@ -23,4 +23,17 @@ Router.get("/api/:id", async (req, res) => {
       res.status(200).json(err);
     });
 });
+Router.put("/api/:id", async (req, res) => {
+  User.findOneAndUpdate(
+    { fire_id: req.params.id },
+    { $set: { username: "Test" } },
+    function (err, doc) {
+      if (err) {
+        throw err;
+      } else {
+        console.log("Updated");
+      }
+    }
+  );
+});
 module.exports = Router;
