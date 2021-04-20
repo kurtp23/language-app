@@ -20,28 +20,31 @@ const FlashCardTemplate = (props) => {
     const [audioObj, setAudioObj] = useState({subDirectory: 'd', fileName: 'default'})
     const [audioURL, setAudioURL] = useState('')
 
-    //
-    
-    // const sound = new Howl({
-    //     src: audioURL
-    //   });
-
     useEffect(() => {
         console.log('word is: ', props.word);
         try{
             Translate.search(props.word).then((data) => {
                 if (typeof(data.data[0]) === 'string') {
-                    console.log('No sound found')
+                    setAudioObj({
+                        subDirectory: '',
+                        fileName: '', 
+                    })
                     return 'N/A'
                 } 
 
                 if (!data.data[0].hwi.prs) {
-                    console.log('No sound found')
+                    setAudioObj({
+                        subDirectory: '',
+                        fileName: '', 
+                    })
                     return 'N/A'
                 }
                 
                 if (!data.data[0].hwi.prs[0].sound) {
-                    console.log('No sound found')
+                    setAudioObj({
+                        subDirectory: '',
+                        fileName: '', 
+                    })
                     return 'N/A'
                 }
                 // if (data.data[0].hwi.prs) {
@@ -54,7 +57,10 @@ const FlashCardTemplate = (props) => {
                 }
 
                 else {
-                    console.log('else is nothing', )
+                    setAudioObj({
+                        subDirectory: '',
+                        fileName: '', 
+                    })
                     return 'nothing!'
                 }
             })
@@ -66,10 +72,6 @@ const FlashCardTemplate = (props) => {
     useEffect(() => {
             setAudioURL(`https://media.merriam-webster.com/audio/prons/es/me/mp3/${audioObj.subDirectory}/${audioObj.fileName}.mp3`)
     }, [audioObj])
-
-    console.log('audio URL is ', audioURL)
-
-    let audio = new Audio(audioURL)
 
     const start = (e) => {
       e.stopPropagation()  
