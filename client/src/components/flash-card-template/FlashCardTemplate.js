@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 import { useSpring, animated as a } from 'react-spring'
 import './FlashCardTemplate.css';
 import Translate from '../../utils/spanish';
@@ -47,7 +47,7 @@ const FlashCardTemplate = (props) => {
                     })
                     return 'N/A'
                 }
-                // if (data.data[0].hwi.prs) {
+
                 if (data.data[0].hwi.prs[0].sound.audio) {
                     setAudioObj({
                         subDirectory: data.data[0].hwi.prs[0].sound.audio.charAt(0),
@@ -68,12 +68,11 @@ const FlashCardTemplate = (props) => {
         catch(err) {console.log(err)}
     }, [props.word])
 
-
     useEffect(() => {
             setAudioURL(`https://media.merriam-webster.com/audio/prons/es/me/mp3/${audioObj.subDirectory}/${audioObj.fileName}.mp3`)
     }, [audioObj])
 
-    const start = (e) => {
+    const playAudio = (e) => {
       e.stopPropagation()  
       let audio = new Audio(audioURL)
       audio.play()
@@ -104,9 +103,7 @@ const FlashCardTemplate = (props) => {
                     </Card.Meta>
                     <Card.Description>
                         <h1>{props.word}</h1>
-                        <div>
-                            <button onClick={start}>Listen</button>
-                        </div>
+                        <Button size='mini' circular icon='volume up' onClick={playAudio} color={audioObj.subDirectory ? 'teal' : 'grey'} />
                     </Card.Description>
                     </Card.Content>
                 </Card>
