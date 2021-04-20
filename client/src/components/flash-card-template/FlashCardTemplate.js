@@ -3,8 +3,6 @@ import { Card } from 'semantic-ui-react';
 import { useSpring, animated as a } from 'react-spring'
 import './FlashCardTemplate.css';
 import Translate from '../../utils/spanish';
-import ReactAudioPlayer from 'react-audio-player';
-// import {Howl, Howler} from 'howler';
 
 const FlashCardTemplate = (props) => {
 
