@@ -17,7 +17,6 @@ const FlashCardTemplate = (props) => {
 
     // Audio States
 
-    const [audioObj, setAudioObj] = useState({subDirectory: 'd', fileName: 'default'})
     const [audioURL, setAudioURL] = useState('')
 
     useEffect(() => {
@@ -25,52 +24,33 @@ const FlashCardTemplate = (props) => {
         try{
             Translate.search(props.word).then((data) => {
                 if (typeof(data.data[0]) === 'string') {
-                    setAudioObj({
-                        subDirectory: '',
-                        fileName: '', 
-                    })
-                    return 'N/A'
+                    setAudioURL('')
+                    return
                 } 
 
                 if (!data.data[0].hwi.prs) {
-                    setAudioObj({
-                        subDirectory: '',
-                        fileName: '', 
-                    })
-                    return 'N/A'
+                    setAudioURL('')
+                    return
                 }
                 
                 if (!data.data[0].hwi.prs[0].sound) {
-                    setAudioObj({
-                        subDirectory: '',
-                        fileName: '', 
-                    })
-                    return 'N/A'
+                    setAudioURL('')
+                    return
                 }
 
                 if (data.data[0].hwi.prs[0].sound.audio) {
-                    setAudioObj({
-                        subDirectory: data.data[0].hwi.prs[0].sound.audio.charAt(0),
-                        fileName: data.data[0].hwi.prs[0].sound.audio, 
-                    })
-                    return 'found it'
+                    setAudioURL(`https://media.merriam-webster.com/audio/prons/es/me/mp3/${data.data[0].hwi.prs[0].sound.audio.charAt(0)}/${data.data[0].hwi.prs[0].sound.audio}.mp3`)
+                    return
                 }
 
                 else {
-                    setAudioObj({
-                        subDirectory: '',
-                        fileName: '', 
-                    })
-                    return 'nothing!'
+                    setAudioURL('')
+                    return
                 }
             })
         }
         catch(err) {console.log(err)}
     }, [props.word])
-
-    useEffect(() => {
-            setAudioURL(`https://media.merriam-webster.com/audio/prons/es/me/mp3/${audioObj.subDirectory}/${audioObj.fileName}.mp3`)
-    }, [audioObj])
 
     const playAudio = (e) => {
       e.stopPropagation()  
@@ -103,7 +83,7 @@ const FlashCardTemplate = (props) => {
                     </Card.Meta>
                     <Card.Description>
                         <h1>{props.word}</h1>
-                        <Button size='mini' circular icon='volume up' onClick={playAudio} color={audioObj.subDirectory ? 'teal' : 'grey'} />
+                        <Button size='mini' circular icon='volume up' onClick={playAudio} color={audioURL ? 'teal' : 'grey'} />
                     </Card.Description>
                     </Card.Content>
                 </Card>
