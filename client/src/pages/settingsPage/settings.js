@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   Container,
@@ -12,13 +12,13 @@ import {
   Form,
   Select,
   Button,
-} from "semantic-ui-react";
-import "./settings.css";
-import putUser from "../../utils/putUser";
+} from 'semantic-ui-react';
+import './settings.css';
+import putUser from '../../utils/putUser';
 const languageOptions = [
-  { key: "spa", value: "spa", text: "Spanish" },
-  { key: "fre", value: "fre", text: "French" },
-  { key: "se", value: "se", text: "Something Else" },
+  { key: 'spa', value: 'spa', text: 'Spanish' },
+  { key: 'fre', value: 'fre', text: 'French' },
+  { key: 'se', value: 'se', text: 'Something Else' },
 ];
 
 function Settings(props) {
@@ -28,8 +28,8 @@ function Settings(props) {
   }
   return (
     <>
-      <Header color="teal ">Settings</Header>
-      <Grid celled="internally">
+      <Header color='teal '>Settings</Header>
+      <Grid celled='internally'>
         <Grid.Row>
           <Grid.Column centered={true} width={10}>
             <Header inverted={true}>Change Display Name</Header>
@@ -41,7 +41,7 @@ function Settings(props) {
                     props.setUserState({ ...props.userState, displayName: changeName });
                   })
                   .catch((err) => {
-                    console.log("errinput user:", err);
+                    console.log('errinput user:', err);
                   });
               }}
             >
@@ -59,7 +59,7 @@ function Settings(props) {
         <Grid.Row>
           <Grid.Column width={10}>
             <Header inverted={true}>Select Language</Header>
-            <Select placeholder="Select Language" options={languageOptions} />
+            <Select placeholder='Select Language' options={languageOptions} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

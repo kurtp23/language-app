@@ -1,8 +1,8 @@
-const Router = require("express").Router();
-const Stats = require("../models/stats.js");
+const Router = require('express').Router();
+const Stats = require('../models/stats.js');
 
-Router.get("/", async (req, res) => {
-  console.log("get stats");
+Router.get('/', async (req, res) => {
+  console.log('get stats');
   Stats.find({})
     .then((data) => {
       console.log(data);

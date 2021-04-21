@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const postUser = (data) => {
-  return axios.post("/api/users", {
+  return axios.post('/api/users', {
     username: data.displayName,
     email: data.email,
     fire_id: data.uid,

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-var firebase = require("firebase");
-var firebaseui = require("firebaseui");
+import React, { useEffect, useState } from 'react';
+var firebase = require('firebase');
+var firebaseui = require('firebaseui');
 
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-ui.start("#firebaseui-auth-container", {
+ui.start('#firebaseui-auth-container', {
   signInOptions: [
     firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     // List of OAuth providers supported.
@@ -19,8 +19,8 @@ function fire() {
   return (
     <div>
       <h1>Welcome to My Awesome App</h1>
-      <div id="firebaseui-auth-container"></div>
-      <div id="loader">Loading...</div>
+      <div id='firebaseui-auth-container'></div>
+      <div id='loader'>Loading...</div>
     </div>
   );
 }

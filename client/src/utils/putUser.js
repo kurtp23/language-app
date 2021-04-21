@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
 const putUser = (id, name) => {
   return axios({
-    method: "put",
-    url: "/api/users/" + id,
+    method: 'put',
+    url: '/api/users/' + id,
     headers: {},
     data: {
       username: name,
