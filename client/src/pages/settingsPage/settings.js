@@ -14,7 +14,8 @@ import {
   Button,
 } from "semantic-ui-react";
 import "./settings.css";
-import putUser from "../../utils/putUser";
+
+import API from "../../utils/userAPI.js";
 const languageOptions = [
   { key: "spa", value: "spa", text: "Spanish" },
   { key: "fre", value: "fre", text: "French" },
@@ -23,6 +24,18 @@ const languageOptions = [
 
 function Settings(props) {
   const [changeName, setChangeName] = useState();
+  const [changeLanguage, setLanguage] = useState("");
+  const handleOnChange = (e, data) => {
+    console.log(data.value);
+    setLanguage(data.value);
+    API.putLanguage(props.userState.userId, data.value)
+      .then(() => {
+        props.setUserState({ ...props.userState, language: data.value });
+      })
+      .catch((err) => {
+        console.log("errinput lang:", err);
+      });
+  };
   function handleInputChange(event) {
     setChangeName(event.target.value);
   }
@@ -36,7 +49,7 @@ function Settings(props) {
             <Input onChange={handleInputChange}></Input>
             <Button
               onClick={() => {
-                putUser(props.userState.userId, changeName)
+                API.putUser(props.userState.userId, changeName)
                   .then(() => {
                     props.setUserState({ ...props.userState, displayName: changeName });
                   })
@@ -59,7 +72,12 @@ function Settings(props) {
         <Grid.Row>
           <Grid.Column width={10}>
             <Header inverted={true}>Select Language</Header>
-            <Select placeholder="Select Language" options={languageOptions} />
+            <Select
+              selection
+              onChange={handleOnChange}
+              placeholder="Select Language"
+              options={languageOptions}
+            />
           </Grid.Column>
         </Grid.Row>
       </Grid>
