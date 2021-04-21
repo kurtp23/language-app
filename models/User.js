@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const infoSchema = new Schema({
+  date: { type: Date, default: Date.now },
+  flashcardVal: { type: Number, default:0 },
+  challengeVal: { type: Number, default:0 }
+})
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -17,11 +23,20 @@ const userSchema = new Schema({
     type: String,
     unique: true,
   },
+  
+  language: {
+    type: String,
+    default: 'spa',
+  },
 
   userCreated: {
     type: Date,
     default: Date.now,
   },
+
+  stats:[infoSchema]
+
+
 });
 
 

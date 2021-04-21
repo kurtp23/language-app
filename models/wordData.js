@@ -6,8 +6,9 @@ const categorySchema = new Schema({
     key: { type: String, required: true },
 })
 
-const challengeSchema = new Schema({
+const wordDataSchema = new Schema({
     names: [categorySchema],
+    greetings: { any: Array },
     data: {
         zooAnimals: { any: Array },
         farmAnimals: { any: Array },
@@ -16,6 +17,6 @@ const challengeSchema = new Schema({
     },
 });
 
-const Challenge = mongoose.model('Challenge', challengeSchema);
+const WordData = mongoose.model('WordData', wordDataSchema);
 
-module.exports = Challenge;
+module.exports = WordData;

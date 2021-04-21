@@ -9,7 +9,7 @@ import FlashCardCategoryTemplate from '../flash-card-template/FlashCardCategoryT
 import API from '../../utils/API.js'
 import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react';
 
-function Challenges() {
+function Challenges({ userState }) {
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
 
@@ -37,22 +37,23 @@ function Challenges() {
     function handleSelection(sel){
         setSelection(sel)
     }
-
+    
     return (
         <>
-            <Container centered className="ui raised centered text container segment" >
+            <Container centered padded className="ui raised centered text container segment" >
                 
                 {!selection ? 
-                    <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='book' />Choose a Category</Header></Container>
+                    <>
+                        <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='book' />Choose a Category</Header></Container>
+                        <Divider />
+                    </>
                 : <></>}
-                
 
-                <Card.Group centered itemsPerRow={2}>
-                    {!selection ? RenderCategories : <></>}
+               
+                    {!selection ?  <Card.Group centered itemsPerRow={2}>{RenderCategories}</Card.Group> : <></>}
                     
-                </Card.Group>
                 
-                    {selection ? <Challenge category={selection}/> : <></>}
+                    {selection ? <Challenge userState={userState} language={userState.language} category={selection}/> : <></>}
                 
 
             </Container>

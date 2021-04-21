@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const infoSchema = new Schema({
   date: { type: Date, default: Date.now },
+
+
   flashcardVal: { type: Number, default:0 },
   challengeVal: { type: Number, default:0 }
 })
