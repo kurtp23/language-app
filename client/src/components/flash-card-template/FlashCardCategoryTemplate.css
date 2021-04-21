@@ -7,7 +7,7 @@
     background-color: #40e0d0 !important;
 }
 
-a.cat.categoryLabel {
+.cat.label.categoryLabel {
     background-color: #40e0d0; 
     color: white;
     font-size: 24px;
@@ -27,7 +27,7 @@ a.cat.categoryLabel {
 
     }
 
-    a.cat.categoryLabel {
+    .cat.label.categoryLabel {
         font-size: 12px;
         background-color: #fa8072
     }
