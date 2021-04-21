@@ -2,18 +2,18 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getChallenges: function() {
+  getChallenges: function () {
     return axios.get("/api/challenges");
   },
-  getChallengeData: function(query) {
-    const queryURL = "api/challenge/" + query
-    return axios.get(queryURL)
+  getChallengeData: function (query) {
+    const queryURL = "api/challenges/" + query;
+    return axios.get(queryURL);
   },
   // Gets all flashcards
-  getFlashcards: function() {
+  getFlashcards: function () {
     return axios.get("/api/flashcards");
   },
-  getStats: function() {
+  getStats: function () {
     return axios.get("/api/stats");
   },
 };
