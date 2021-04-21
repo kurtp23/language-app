@@ -19,6 +19,7 @@ import Board from "./pages/memory/Board";
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
 import Settings from "./pages/settingsPage/settings.js";
+import PS from "./components/PS/Ps.js";
 const auth = firebase.auth();
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         <Router>
           <div>
             <NavBar user={user} auth={auth} userState={userState} />
+            <PS/>
             <Switch>
               <Route path="/game">
                 <Board />
