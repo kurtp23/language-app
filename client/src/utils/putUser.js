@@ -1,9 +1,13 @@
 import axios from "axios";
 
-const putUser = (id) => {
-  return axios.put("/api/" + id, (req, res) => {
-    console.log("this is res", res);
-    console.log("this is req", req);
+const putUser = (id, name) => {
+  return axios({
+    method: "put",
+    url: "/api/" + id,
+    headers: {},
+    data: {
+      username: name,
+    },
   });
 };
 export default putUser;

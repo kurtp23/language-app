@@ -28,11 +28,20 @@ function App() {
 
   useEffect(() => {
     if (user) {
-      postUser(user);
-      setUserState({ displayName: user.displayName, userId: user.uid, language: "", theme: "" });
-      getUser(user.uid);
+      postUser(user).then(() => {
+        getUser(user.uid).then((data) => {
+          const newUser = {
+            displayName: data.data[0].username,
+            userId: data.data[0].fire_id,
+            language: "",
+            theme: "",
+          };
+          setUserState(newUser);
+        });
+      });
     }
   }, [user]);
+
   console.log("this is user state", userState);
 
   return (
@@ -41,7 +50,6 @@ function App() {
         <Router>
           <div>
             <NavBar user={user} auth={auth} userState={userState} />
-
             <Switch>
               <Route path="/game">
                 <Board />

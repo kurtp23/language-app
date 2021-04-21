@@ -23,7 +23,6 @@ const languageOptions = [
 function Settings(props) {
   const [changeName, setChangeName] = useState();
   function handleInputChange(event) {
-    console.log(changeName);
     setChangeName(event.target.value);
   }
   return (
@@ -36,13 +35,14 @@ function Settings(props) {
             <Input onChange={handleInputChange}></Input>
             <Button
               onClick={() => {
-                putUser("IiWs7X03RQMYyCFp3zSRGSdP1pD2");
-                // props.setUserState({
-                //   displayName: changeName,
-                //   userId: props.userState.userId,
-                //   language: props.userState.language,
-                //   theme: props.userState.theme,
-                // });
+                putUser(props.userState.userId, changeName)
+                  .then(() => {
+                    props.setUserState({ ...props.userState, displayName: changeName });
+                    console.log("after put user user state is", props.userState);
+                  })
+                  .catch((err) => {
+                    console.log("errinput user:", err);
+                  });
               }}
             >
               Save Name

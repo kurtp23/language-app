@@ -26,12 +26,13 @@ Router.get("/api/:id", async (req, res) => {
 Router.put("/api/:id", async (req, res) => {
   User.findOneAndUpdate(
     { fire_id: req.params.id },
-    { $set: { username: "Test" } },
+    { $set: { username: req.body.username } },
     function (err, doc) {
       if (err) {
         throw err;
       } else {
         console.log("Updated");
+        res.send("ok");
       }
     }
   );
