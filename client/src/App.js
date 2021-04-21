@@ -49,11 +49,12 @@ function App() {
 
   return (
     <div>
+      <PS/>
       {user ? (
         <Router>
           <div>
             <NavBar user={user} auth={auth} userState={userState} />
-            <PS/>
+
             <Switch>
               <Route path="/game">
                 <Board />
