@@ -23,6 +23,7 @@ function Challenge({ category, language, userState }){
 
             let dataTransformed = []
             data.data.forEach((data) => {
+                console.log("Language", language)
                dataTransformed.push({
                    eng: data.eng,
                    lang: data[language],
@@ -42,12 +43,14 @@ function Challenge({ category, language, userState }){
         // this ensures a "correct" answer isn't re-selected on next render
         let newData = [...data]
         data.forEach((item, i) => {
+            
             if (!item.rendered && choices.length < 4) {
                 newData[i].rendered = true
                 choices.push(item.lang)
             }
         })
         
+
         return choices
 
     }
