@@ -11,7 +11,6 @@ Router.post('/', async (req, res) => {
     .catch((err) => {
       res.json(err);
     });
-    
 });
 
 Router.get('/:id', async (req, res) => {
@@ -39,29 +38,45 @@ Router.put('/:id', async (req, res) => {
     }
   );
 });
+Router.put('/lang/:id', async (req, res) => {
+  User.findOneAndUpdate(
+    { fire_id: req.params.id },
+    { $set: { language: req.body.language } },
+    function (err, doc) {
+      if (err) {
+        throw err;
+      } else {
+        console.log('Updated');
+        res.send('ok');
+      }
+    }
+  );
+});
 
 // puts a stat based on fire_id into user's stats array
 Router.put('/stats/:id', async (req, res) => {
   console.log('PUT for new Stat: ', req.params.id, ' and ', req.body);
 
-  User.findOne({ fire_id: req.params.id })
-    .then((data) => {
-      console.log('Found User', data);
-      // now inject new book data
-      const newStatsArray = [...data.stats, req.body];
+  User.findOne({ fire_id: req.params.id }).then((data) => {
+    console.log('Found User', data);
+    // now inject new book data
+    const newStatsArray = [...data.stats, req.body];
 
-      User.updateOne({ fire_id: req.params.id }, {
-        stats: newStatsArray
-      })
-        .then((data) => {
+    User.updateOne(
+      { fire_id: req.params.id },
+      {
+        stats: newStatsArray,
+      }
+    )
+      .then((data) => {
         // final
-          res.status(200).json(data);
-        })
-        .catch((err) => {
-          console.log('error in put stats request ', err);
-          res.status(500).json(err);
-        });
-    });
+        res.status(200).json(data);
+      })
+      .catch((err) => {
+        console.log('error in put stats request ', err);
+        res.status(500).json(err);
+      });
+  });
 });
 
 module.exports = Router;
