@@ -38,7 +38,6 @@ function Settings(props) {
                 putUser(props.userState.userId, changeName)
                   .then(() => {
                     props.setUserState({ ...props.userState, displayName: changeName });
-                    console.log("after put user user state is", props.userState);
                   })
                   .catch((err) => {
                     console.log("errinput user:", err);
