@@ -2,14 +2,28 @@ import React, { useEffect, useState } from 'react';
 import FlashCardTemplate from '../../components/flash-card-template/FlashCardTemplate';
 import { Grid, Pagination, Divider, Button } from 'semantic-ui-react';
 import API from '../../utils/API';
+import { Link } from 'react-router-dom';
 
-const FlashCard = ({category}) => {
+const FlashCard = ({category, userState}) => {
 
     const [flashCardList, setFlashCardList] = useState([])
     const [activeFlashCard, setActiveFlashCard] = useState(1)
     const [flashCardsViewed, updateFlashCardsViewed] = useState(1)
 
     const handlePaginationChange = (e, { activePage }) => setActiveFlashCard(activePage)
+
+    const handleExit = () => {
+        // send data to stats schema here
+        const stat = {
+            flashcardVal: flashCardsViewed,
+            challengeVal: 0,
+            date: new Date()
+        }
+        
+        console.log("This will go to stats schema: ", stat)
+        API.putStat(userState.userId, stat)
+
+    }
 
     useEffect(() => {
         API.getChallengeData(category)
@@ -58,10 +72,12 @@ const FlashCard = ({category}) => {
                             lastItem={null}
                         />
                         </Grid.Column>
-                        <Grid.Column style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }} onClick={()=> console.log('I have been clicked!')}>
-                            <Button style={{ margin: '5px', backgroundColor: '#f47835', color: 'white' }} onClick={()=> console.log('I have been clicked!')}>
-                                Exit
-                            </Button>
+                        <Grid.Column style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }} onClick={handleExit}>
+                            <Link to="">
+                                <Button style={{ margin: '5px', backgroundColor: '#f47835', color: 'white' }} onClick={()=> console.log('I have been clicked!')}>
+                                    Exit
+                                </Button>
+                            </Link>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
