@@ -16,4 +16,12 @@ export default {
   getStats: function () {
     return axios.get("/api/stats");
   },
+  putStat: function(userid, newStat) {
+    const url = "/api/users/stats/" + userid
+    return axios({
+      method: 'put',
+      url: url,
+      data: newStat,
+    });
+  },
 };

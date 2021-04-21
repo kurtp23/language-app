@@ -11,7 +11,7 @@ import API from '../../utils/API.js'
 // semantic ui
 import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react'
 
-function Challenge({ category }){
+function Challenge({ category, userState }){
     const [data, setData] = React.useState([])
     const [count, setCount] = React.useState(0)
     const [answered, setAnswered] = React.useState(false)
@@ -84,13 +84,14 @@ function Challenge({ category }){
     function handleExit() {
         // send data to stats schema here
         const stat = {
-            user: '',
-            activity: 'challenge',
-            value: count,
+            flashcardVal: 0,
+            challengeVal: count,
             date: new Date()
         }
         
         console.log("This will go to stats schema: ", stat)
+        API.putStat(userState.userId, stat)
+
     }
 
     return (

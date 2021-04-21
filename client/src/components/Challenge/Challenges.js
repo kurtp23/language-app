@@ -9,7 +9,7 @@ import FlashCardCategoryTemplate from '../flash-card-template/FlashCardCategoryT
 import API from '../../utils/API.js'
 import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react';
 
-function Challenges() {
+function Challenges({ userState }) {
     const [categoryList, setCategoryList] = React.useState([])
     const [selection, setSelection] = React.useState('')
 
@@ -52,7 +52,7 @@ function Challenges() {
                     
                 </Card.Group>
                 
-                    {selection ? <Challenge category={selection}/> : <></>}
+                    {selection ? <Challenge userState={userState} category={selection}/> : <></>}
                 
 
             </Container>
