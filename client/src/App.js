@@ -10,11 +10,11 @@ import "firebase/firestore";
 import "firebase/auth";
 import "./utils/fireUtil";
 import postUser from "./utils/userApiPost.js";
+import getUser from "./utils/getUser";
 import Stats from "./pages/stats/stats";
 import "./app.css";
 import Bot from "./pages/bot/bot.js";
 
-import CardExampleCard from "./pages/teampage/teampage.js";
 import Board from "./pages/memory/Board";
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
@@ -25,13 +25,24 @@ const auth = firebase.auth();
 function App() {
   const [user] = useAuthState(auth);
   const [userState, setUserState] = useState({});
+  const [dbUser, setDbUser] = useState({});
 
   useEffect(() => {
     if (user) {
-      postUser(user);
-      setUserState({ displayName: user.displayName, userId: user.uid, language: "", theme: "" });
+      postUser(user).then(() => {
+        getUser(user.uid).then((data) => {
+          const newUser = {
+            displayName: data.data[0].username,
+            userId: data.data[0].fire_id,
+            language: "",
+            theme: "",
+          };
+          setUserState(newUser);
+        });
+      });
     }
   }, [user]);
+
   console.log("this is user state", userState);
 
   return (
@@ -43,7 +54,7 @@ function App() {
             <PS/>
             <Switch>
               <Route path="/game">
-                <Board/>
+                <Board />
               </Route>
               <Route path="/challenge">
                 <Challenges userState={userState} />
