@@ -17,8 +17,7 @@ export default {
     return axios.get("/api/stats");
   },
   putStat: function(userid, newStat) {
-    const url = "/api/users/" + userid
-
+    const url = "/api/users/stats/" + userid
     return axios({
       method: 'put',
       url: url,
