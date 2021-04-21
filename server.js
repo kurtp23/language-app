@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+const UsersRoutes = require("./routes/UsersApi.js");
 const WordDataRoutes = require("./routes/wordDataApi.js");
 const FlashcardRoutes = require("./routes/flashCardApi");
 const StatsRoutes = require("./routes/StatsApi.js");
