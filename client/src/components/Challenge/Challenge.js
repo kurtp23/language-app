@@ -23,7 +23,6 @@ function Challenge({ category, language, userState }){
 
             let dataTransformed = []
             data.data.forEach((data) => {
-                console.log("Language", language)
                dataTransformed.push({
                    eng: data.eng,
                    lang: data[language],

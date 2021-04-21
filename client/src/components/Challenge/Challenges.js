@@ -37,7 +37,7 @@ function Challenges({ userState }) {
     function handleSelection(sel){
         setSelection(sel)
     }
-    console.log("userstate", userState)
+    
     return (
         <>
             <Container centered padded className="ui raised centered text container segment" >
