@@ -15,7 +15,8 @@ import {
 } from "semantic-ui-react";
 import "./settings.css";
 const languageOptions = [
-  { key: "es", value: "es", text: "Spanish" },
+  { key: "spa", value: "spa", text: "Spanish" },
+  { key: "fre", value: "fre", text: "French" },
   { key: "se", value: "se", text: "Something Else" },
 ];
 
