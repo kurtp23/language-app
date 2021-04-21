@@ -23,6 +23,11 @@ const userSchema = new Schema({
     type: String,
     unique: true,
   },
+  
+  language: {
+    type: String,
+    default: 'spa',
+  },
 
   userCreated: {
     type: Date,
