@@ -1,0 +1,13 @@
+import axios from "axios";
+
+const putUser = (id, name) => {
+  return axios({
+    method: "put",
+    url: "/api/users/" + id,
+    headers: {},
+    data: {
+      username: name,
+    },
+  });
+};
+export default putUser;
