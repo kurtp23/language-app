@@ -29,12 +29,14 @@ function App() {
 
   useEffect(() => {
     if (user) {
+      postUser(user);
+      setUserState({ displayName: user.displayName, userId: user.uid, language: "spa", theme: "" });
       postUser(user).then(() => {
         getUser(user.uid).then((data) => {
           const newUser = {
             displayName: data.data[0].username,
             userId: data.data[0].fire_id,
-            language: "",
+            language: "spa",
             theme: "",
           };
           setUserState(newUser);
