@@ -1,7 +1,7 @@
 const Router = require("express").Router();
 const Challenge = require("../models/Challenge.js");
 
-Router.get("/api/challenges", async (req, res) => {
+Router.get("/", async (req, res) => {
   console.log("GET request for CHALLENGE");
   Challenge.find({})
     .then((data) => {
@@ -10,11 +10,11 @@ Router.get("/api/challenges", async (req, res) => {
     })
     .catch((err) => {
       console.log("this is challenge", err);
-      res.status(200).json(err);
+      res.status(500).json(err);
     });
 });
 
-Router.get("/api/challenge/:category", async (req, res) => {
+Router.get("/:category", async (req, res) => {
   console.log("GET request for CHALLENGE name: ", req.params.category);
   Challenge.find({})
     .then((data) => {
@@ -29,7 +29,7 @@ Router.get("/api/challenge/:category", async (req, res) => {
     })
     .catch((err) => {
       console.log("this is challenge category:", err);
-      res.status(200).json(err);
+      res.status(500).json(err);
     });
 });
 

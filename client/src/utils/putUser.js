@@ -3,7 +3,7 @@ import axios from "axios";
 const putUser = (id, name) => {
   return axios({
     method: "put",
-    url: "/api/" + id,
+    url: "/api/users/" + id,
     headers: {},
     data: {
       username: name,

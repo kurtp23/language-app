@@ -1,7 +1,7 @@
 const Router = require("express").Router();
 const { Flashcard } = require("../models");
 
-Router.get("/api/flashcards", async (req, res) => {
+Router.get("/", async (req, res) => {
   console.log("getting flashcards...");
   Flashcard.find({})
     .then((data) => {
