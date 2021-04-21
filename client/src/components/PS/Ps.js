@@ -5,7 +5,7 @@ import './Ps.css';
 function Test(){
     return (
          
-      <Particles className="test2"
+      <Particles style={{ position: 'absolute' }} className="test2"
       
         params={{
           particles: {
