@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   putLanguage: function (id, lang) {
     return axios({
-      method: "put",
-      url: "/api/users/lang/" + id,
+      method: 'put',
+      url: '/api/users/lang/' + id,
       headers: {},
       data: {
         language: lang,
@@ -13,8 +13,8 @@ export default {
   },
   putUser: function (id, name) {
     return axios({
-      method: "put",
-      url: "/api/users/" + id,
+      method: 'put',
+      url: '/api/users/' + id,
       headers: {},
       data: {
         username: name,
@@ -22,13 +22,13 @@ export default {
     });
   },
   getUser: function (id) {
-    return axios.get("/api/users/" + id, (req, res) => {
-      // console.log("this is res", res);
-      // console.log("this is req", req);
+    return axios.get('/api/users/' + id, (req, res) => {
+      // console.log('this is res', res);
+      // console.log('this is req', req);
     });
   },
   postUser: function (data) {
-    return axios.post("/api/users", {
+    return axios.post('/api/users', {
       username: data.displayName,
       email: data.email,
       fire_id: data.uid,

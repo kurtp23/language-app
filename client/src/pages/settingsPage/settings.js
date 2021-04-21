@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   Container,
@@ -12,19 +12,19 @@ import {
   Form,
   Select,
   Button,
-} from "semantic-ui-react";
-import "./settings.css";
+} from 'semantic-ui-react';
+import './settings.css';
 
-import API from "../../utils/userAPI.js";
+import API from '../../utils/userAPI.js';
 const languageOptions = [
-  { key: "spa", value: "spa", text: "Spanish" },
-  { key: "fre", value: "fre", text: "French" },
-  { key: "se", value: "se", text: "Something Else" },
+  { key: 'spa', value: 'spa', text: 'Spanish' },
+  { key: 'fre', value: 'fre', text: 'French' },
+  { key: 'se', value: 'se', text: 'Something Else' },
 ];
 
 function Settings(props) {
   const [changeName, setChangeName] = useState();
-  const [changeLanguage, setLanguage] = useState("");
+  const [changeLanguage, setLanguage] = useState('');
   const handleOnChange = (e, data) => {
     console.log(data.value);
     setLanguage(data.value);
@@ -33,7 +33,7 @@ function Settings(props) {
         props.setUserState({ ...props.userState, language: data.value });
       })
       .catch((err) => {
-        console.log("errinput lang:", err);
+        console.log('errinput lang:', err);
       });
   };
   function handleInputChange(event) {
@@ -41,8 +41,8 @@ function Settings(props) {
   }
   return (
     <>
-      <Header color="teal ">Settings</Header>
-      <Grid celled="internally">
+      <Header color='teal '>Settings</Header>
+      <Grid celled='internally'>
         <Grid.Row>
           <Grid.Column centered={true} width={10}>
             <Header inverted={true}>Change Display Name</Header>
@@ -54,7 +54,7 @@ function Settings(props) {
                     props.setUserState({ ...props.userState, displayName: changeName });
                   })
                   .catch((err) => {
-                    console.log("errinput user:", err);
+                    console.log('errinput user:', err);
                   });
               }}
             >
@@ -75,7 +75,7 @@ function Settings(props) {
             <Select
               selection
               onChange={handleOnChange}
-              placeholder="Select Language"
+              placeholder='Select Language'
               options={languageOptions}
             />
           </Grid.Column>

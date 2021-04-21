@@ -1,124 +1,121 @@
-import React, { useEffect } from 'react'
-
-// components
-import Choice from './Choice.js'
-import EndGame from './EndGame.js'
-import CorrectAnswerHeader from './CorrectAnswerHeader.js'
-
-// API calls
-import API from '../../utils/API.js'
-
-// semantic ui
-import { Card, Header, Container, Icon } from 'semantic-ui-react'
+import React, { useEffect } from 'react';
+import Choice from './Choice.js';
+import EndGame from './EndGame.js';
+import CorrectAnswerHeader from './CorrectAnswerHeader.js';
+import API from '../../utils/API.js';
+import { Card, Header, Container, Icon } from 'semantic-ui-react';
 
 function Challenge({ category, language, userState }){
-    const [data, setData] = React.useState([])
-    const [count, setCount] = React.useState(0)
-    const [answered, setAnswered] = React.useState(false)
+  const [data, setData] = React.useState([]);
+  const [count, setCount] = React.useState(0);
+  const [answered, setAnswered] = React.useState(false);
 
-    useEffect(() => {
-        // get data from MongoDB
-        API.getChallengeData(category)
-        .then((data) => {
+  useEffect(() => {
+    // get data from MongoDB
+    API.getChallengeData(category)
+      .then((data) => {
 
-            let dataTransformed = []
-            data.data.forEach((data) => {
-               dataTransformed.push({
-                   eng: data.eng,
-                   lang: data[language],
-                   rendered: false
-               }) 
-            })
-            // randomizes the list
-            dataTransformed.sort(function() { return 0.5 - Math.random() });
-            setData(dataTransformed)
-        })
+        let dataTransformed = [];
+        data.data.forEach((data) => {
+          dataTransformed.push({
+            eng: data.eng,
+            lang: data[language],
+            rendered: false
+          }); 
+        });
+        // randomizes the list
+        dataTransformed.sort(function() { 
+          return 0.5 - Math.random(); 
+        });
+        setData(dataTransformed);
+      });
 
-    }, [category])
+  }, [category]);
 
-    function renderChoices() {
-        // this gets rendered into components
-        let choices = []
-        // this ensures a "correct" answer isn't re-selected on next render
-        let newData = [...data]
-        data.forEach((item, i) => {
-            
-            if (!item.rendered && choices.length < 4) {
-                newData[i].rendered = true
-                choices.push(item.lang)
-            }
-        })
+  function renderChoices() {
+    // this gets rendered into components
+    let choices = [];
+    // this ensures a 'correct' answer isn't re-selected on next render
+    let newData = [...data];
+    data.forEach((item, i) => {
         
-
-        return choices
-
-    }
+      if (!item.rendered && choices.length < 4) {
+        newData[i].rendered = true;
+        choices.push(item.lang);
+      }
+    });
     
-    let choices = renderChoices()
 
-    const correctAnswer = choices[Math.floor(Math.random() * 4)]
+    return choices;
 
-    function handleAnswer(e) {
-        
-        if (e === correctAnswer) {
-            // helps reset the dataset, unlocking for next round
-            let newData = [...data]
+  }
 
-            newData.forEach(item => {
-                // make sure not to allow the same answer two times in a row
-                if (item.name !== e) {
-                    item.rendered = false
-                }
-            });
-            data.sort(function() { return 0.5 - Math.random() });
-            setAnswered(true)
-            setCount(count + 1)
-            
+  let choices = renderChoices();
+
+  const correctAnswer = choices[Math.floor(Math.random() * 4)];
+
+  function handleAnswer(e) {
+    
+    if (e === correctAnswer) {
+      // helps reset the dataset, unlocking for next round
+      let newData = [...data];
+
+      newData.forEach(item => {
+        // make sure not to allow the same answer two times in a row
+        if (item.name !== e) {
+          item.rendered = false;
         }
-    }
-
-    function handleNextClick(){
-        // this effectively gives the user the option to either EXIT or CONTINUE the game
-        setAnswered(false)
-    }
-
-    function handleExit() {
-        // send data to stats schema here
-        const stat = {
-            flashcardVal: 0,
-            challengeVal: count,
-            date: new Date()
-        }
+      });
+      data.sort(function() { 
+        return 0.5 - Math.random(); 
+      });
+      setAnswered(true);
+      setCount(count + 1);
         
-        console.log("This will go to stats schema: ", stat)
-        API.putStat(userState.userId, stat)
-
     }
+  }
 
-    return (
-        <>
-            {answered ? 
-                <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='book' />Nice Work!</Header></Container> : 
-                <Container textAlign='center'><Header className="ui orange header" as='h2'><Icon name='question circle' />Match the Word to the Image!</Header></Container>
-            }
+  function handleNextClick(){
+    // this effectively gives the user the option to either EXIT or CONTINUE the game
+    setAnswered(false);
+  }
 
-            {!answered && choices ? <CorrectAnswerHeader correctAnswer={correctAnswer}/>: <></>}
+  function handleExit() {
+    // send data to stats schema here
+    const stat = {
+      flashcardVal: 0,
+      challengeVal: count,
+      date: new Date()
+    };
+    
+    console.log('This will go to stats schema: ', stat);
+    API.putStat(userState.userId, stat);
+
+  }
+
+  return (
+    <>
+      {answered ? 
+        <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='book' />Nice Work!</Header></Container> : 
+        <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='question circle' />Match the Word to the Image!</Header></Container>
+      }
+
+      {!answered && choices ? <CorrectAnswerHeader correctAnswer={correctAnswer}/>: <></>}
+           
+      {!answered && choices ? 
+        <><Card.Group centered itemsPerRow={2}>
+          {choices.map((item, i) => {
+            return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.lang === item)).eng}>{item}</Choice>;}) }
+        </Card.Group></>
+        : <></>}
             
-            
-                {!answered && choices ? 
-                <><Card.Group centered itemsPerRow={2}>
-                    {choices.map((item, i) => {
-                        return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.lang === item)).eng}>{item}</Choice>}) }
-                </Card.Group></>
-                : <></>}
-                
-            
-            
-            {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} category={category}/>: <></>}
-   
-            
-        </>
-    )
+        
+        
+      {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} category={category}/>: <></>}
+
+        
+    </>
+  );
 }
 
-export default Challenge
+export default Challenge;
