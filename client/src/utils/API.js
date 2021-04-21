@@ -3,10 +3,10 @@ import axios from "axios";
 export default {
   // Gets all books
   getChallenges: function() {
-    return axios.get("/api/challenges");
+    return axios.get("/api/worddata");
   },
   getChallengeData: function(query) {
-    const queryURL = "api/challenge/" + query
+    const queryURL = "api/worddata/" + query
     return axios.get(queryURL)
   },
   // Gets all flashcards

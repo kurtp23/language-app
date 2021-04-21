@@ -3,9 +3,10 @@ const WordData = require("../models/wordData.js");
 
 Router.get("/api/worddata", async (req, res) => {
     console.log("GET request for word data")
+
     WordData.find({})
     .then((data) => {
-        console.log("Sending word data")
+        console.log("Sending word data", data)
       res.json(data);
     })
     .catch((err) => {

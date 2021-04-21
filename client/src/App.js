@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     if (user) {
       postUser(user);
-      setUserState({ displayName: user.displayName, userId: user.uid, language: "spa", theme: "" });
+      setUserState({ displayName: user.displayName, userId: user.uid, language: "fre", theme: "" });
     }
   }, [user]);
   console.log("this is user state", userState);
