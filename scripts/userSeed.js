@@ -14,6 +14,8 @@ var userSeed = [
     fire_id: "1233wwedx",
 
     userCreated: new Date(Date.now()),
+
+    language: "spa"
   },
   {
     username: "user2",
@@ -23,6 +25,8 @@ var userSeed = [
     fire_id: "12fdsghg",
 
     userCreated: new Date(Date.now()),
+    
+    language: "spa"
   },
 ];
 db.User.deleteMany({})

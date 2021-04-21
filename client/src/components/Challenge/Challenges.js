@@ -53,8 +53,7 @@ function Challenges({ userState }) {
                     {!selection ?  <Card.Group centered itemsPerRow={2}>{RenderCategories}</Card.Group> : <></>}
                     
                 
-
-                    {selection ? <Challenge language={userState.language} category={selection}/> : <></>}
+                    {selection ? <Challenge userState={userState} language={userState.language} category={selection}/> : <></>}
                 
 
             </Container>

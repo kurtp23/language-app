@@ -14,6 +14,7 @@ import {
   Button,
 } from "semantic-ui-react";
 import "./settings.css";
+import putUser from "../../utils/putUser";
 const languageOptions = [
   { key: "spa", value: "spa", text: "Spanish" },
   { key: "fre", value: "fre", text: "French" },
@@ -23,7 +24,6 @@ const languageOptions = [
 function Settings(props) {
   const [changeName, setChangeName] = useState();
   function handleInputChange(event) {
-    console.log(changeName);
     setChangeName(event.target.value);
   }
   return (
@@ -36,12 +36,13 @@ function Settings(props) {
             <Input onChange={handleInputChange}></Input>
             <Button
               onClick={() => {
-                props.setUserState({
-                  displayName: changeName,
-                  userId: props.userState.userId,
-                  language: props.userState.language,
-                  theme: props.userState.theme,
-                });
+                putUser(props.userState.userId, changeName)
+                  .then(() => {
+                    props.setUserState({ ...props.userState, displayName: changeName });
+                  })
+                  .catch((err) => {
+                    console.log("errinput user:", err);
+                  });
               }}
             >
               Save Name

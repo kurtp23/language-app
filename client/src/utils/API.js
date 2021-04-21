@@ -10,10 +10,18 @@ export default {
     return axios.get(queryURL)
   },
   // Gets all flashcards
-  getFlashcards: function() {
+  getFlashcards: function () {
     return axios.get("/api/flashcards");
   },
-  getStats: function() {
+  getStats: function () {
     return axios.get("/api/stats");
+  },
+  putStat: function(userid, newStat) {
+    const url = "/api/users/stats/" + userid
+    return axios({
+      method: 'put',
+      url: url,
+      data: newStat,
+    });
   },
 };

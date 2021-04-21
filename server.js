@@ -16,14 +16,13 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-const UsersRoutes = require("./routes/UsersApi.js");
-const FlashcardRoutes = require("./routes/flashCardApi")
 const WordDataRoutes = require("./routes/wordDataApi.js");
+const FlashcardRoutes = require("./routes/flashCardApi");
 const StatsRoutes = require("./routes/StatsApi.js");
-app.use(UsersRoutes);
-app.use(FlashcardRoutes);
-app.use(WordDataRoutes);
-app.use(StatsRoutes);
+app.use("/api/users/", UsersRoutes);
+app.use("/api/flashcards/", FlashcardRoutes);
+app.use("/api/worddata/", WordDataRoutes);
+app.use("/api/stats", StatsRoutes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -35,13 +34,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learningapp", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-  useFindAndModify: false
+  useFindAndModify: false,
 });
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('connected to db!');
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  console.log("connected to db!");
 });
 
 app.listen(PORT, () => {
