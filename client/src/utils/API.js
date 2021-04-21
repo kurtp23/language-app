@@ -9,10 +9,6 @@ export default {
     const queryURL = "api/worddata/" + query
     return axios.get(queryURL)
   },
-  // Gets all flashcards
-  getFlashcards: function () {
-    return axios.get("/api/flashcards");
-  },
   getStats: function () {
     return axios.get("/api/stats");
   },
