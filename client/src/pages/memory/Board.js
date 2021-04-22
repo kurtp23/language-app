@@ -1,10 +1,9 @@
 import React from 'react';
 import Card from '../../components/CardBoard/Card';
 
-
 class Board extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     const fronts = [
       '🐝',
       '💕',
@@ -17,7 +16,7 @@ class Board extends React.Component {
       '🍦',
       '👾',
       '🚀',
-    ]
+    ];
     const deck = fronts
       .concat(fronts)
       .sort(() => Math.random() - 0.5)
@@ -25,12 +24,12 @@ class Board extends React.Component {
         return {
           content: f,
           faceUp: false,
-        }
-      })
+        };
+      });
     this.state = {
       deck: deck,
       firstCard: null,
-    }
+    };
   }
 
   flipCardTo(cardIdx, faceUp) {
@@ -40,12 +39,12 @@ class Board extends React.Component {
           return {
             content: f.content,
             faceUp: !f.faceUp,
-          }
+          };
         } else {
           return f;
         }
       })
-    })
+    });
   }
 
   flip(cardIdx) {
@@ -58,14 +57,14 @@ class Board extends React.Component {
         this.setState({firstCard: null});
       } else {
         setTimeout(() => {
-          this.flipCardTo(this.state.firstCard, false)
-          this.flipCardTo(cardIdx, false)
+          this.flipCardTo(this.state.firstCard, false);
+          this.flipCardTo(cardIdx, false);
           this.setState({firstCard: null});
-        }, 2000)
+        }, 2000);
       }
     }
 
-    this.flipCardTo(cardIdx, !this.state.deck[cardIdx].faceUp)
+    this.flipCardTo(cardIdx, !this.state.deck[cardIdx].faceUp);
   }
 
   render () {
@@ -74,13 +73,13 @@ class Board extends React.Component {
       this.state.deck.map((f, i) => {
         return (<div className="Board">
           <Card
-            flip={() => {this.flip(i)}}
+            flip={() => {this.flip(i);}}
             content={f.content}
             faceUp={f.faceUp} />
-        </div>)
+        </div>);
       })
-    )
-  }
+    );
+}
 }
 
 export default Board;

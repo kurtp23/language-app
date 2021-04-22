@@ -6,24 +6,24 @@ import { Link } from 'react-router-dom';
 
 const FlashCard = ({category, userState}) => {
 
-    const [flashCardList, setFlashCardList] = useState([])
-    const [activeFlashCard, setActiveFlashCard] = useState(1)
-    const [flashCardsViewed, updateFlashCardsViewed] = useState(1)
+  const [flashCardList, setFlashCardList] = useState([]);
+  const [activeFlashCard, setActiveFlashCard] = useState(1);
+  const [flashCardsViewed, updateFlashCardsViewed] = useState(1);
 
-    const handlePaginationChange = (e, { activePage }) => setActiveFlashCard(activePage)
+  const handlePaginationChange = (e, { activePage }) => setActiveFlashCard(activePage);
 
-    const handleExit = () => {
-        // send data to stats schema here
-        const stat = {
-            flashcardVal: flashCardsViewed,
-            challengeVal: 0,
-            date: new Date()
-        }
+  const handleExit = () => {
+    // send data to stats schema here
+    const stat = {
+      flashcardVal: flashCardsViewed,
+      challengeVal: 0,
+      date: new Date()
+    };
         
-        console.log("This will go to stats schema: ", stat)
-        API.putStat(userState.userId, stat)
+    console.log('This will go to stats schema: ', stat);
+    API.putStat(userState.userId, stat);
 
-    }
+  };
 
     useEffect(() => {
         API.getChallengeData(category)

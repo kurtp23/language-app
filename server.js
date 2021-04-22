@@ -1,37 +1,38 @@
-const express = require("express");
-const morgan = require("morgan");
-const path = require("path");
-const mongoose = require("mongoose");
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(morgan("tiny"));
+app.use(morgan('tiny'));
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
 }
 
 // Define API routes here
-const UsersRoutes = require("./routes/UsersApi.js");
-const WordDataRoutes = require("./routes/wordDataApi.js");
-const FlashcardRoutes = require("./routes/flashCardApi");
-const StatsRoutes = require("./routes/StatsApi.js");
-app.use("/api/users/", UsersRoutes);
-app.use("/api/flashcards/", FlashcardRoutes);
-app.use("/api/worddata/", WordDataRoutes);
-app.use("/api/stats", StatsRoutes);
+const UsersRoutes = require('./routes/UsersApi.js');
+const WordDataRoutes = require('./routes/wordDataApi.js');
+const FlashcardRoutes = require('./routes/flashCardApi');
+const StatsRoutes = require('./routes/StatsApi.js');
+
+app.use('/api/users/', UsersRoutes);
+app.use('/api/flashcards/', FlashcardRoutes);
+app.use('/api/worddata/', WordDataRoutes);
+app.use('/api/stats', StatsRoutes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/public/index.html"));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/public/index.html'));
 });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learningapp", {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/learningapp', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -39,9 +40,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/learningapp", {
 });
 
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("connected to db!");
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('connected to db!');
 });
 
 app.listen(PORT, () => {

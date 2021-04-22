@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { Card } from "semantic-ui-react";
-import FlashCard from "./FlashCard";
-import FlashCardCategoryTemplate from "../../components/flash-card-template/FlashCardCategoryTemplate";
+import React, { useState, useEffect } from 'react';
+import { Card } from 'semantic-ui-react';
+import FlashCard from './FlashCard';
+import FlashCardCategoryTemplate from '../../components/flash-card-template/FlashCardCategoryTemplate';
 
-import API from "../../utils/API.js";
+import API from '../../utils/API.js';
 
 const FlashCardSelector = ({userState}) => {
   const [categoryList, setCategoryList] = useState([]);
-  const [selection, setSelection] = useState("");
+  const [selection, setSelection] = useState('');
 
   useEffect(() => {
     API.getChallenges().then((data) => {
-      console.log("this is challenge data", data);
+      console.log('this is challenge data', data);
       let list = [];
       data.data[0].names.map((name) => {
         list.push({
@@ -22,6 +22,10 @@ const FlashCardSelector = ({userState}) => {
       setCategoryList(list);
     });
   }, []);
+
+  function handleSelection(sel) {
+    setSelection(sel);
+  }
 
   const RenderCategories = categoryList.map((cat, i) => {
     return (
@@ -34,19 +38,15 @@ const FlashCardSelector = ({userState}) => {
     );
   });
 
-  function handleSelection(sel) {
-    setSelection(sel);
-  }
-
   return (
     <>
-      <div className="ui raised text container segment">
-        {!selection ? <h2 className="ui orange header">Select a Category!</h2> : <></>}
+      <div className='ui raised text container segment'>
+        {!selection ? <h2 className='ui orange header'>Select a Category!</h2> : <></>}
 
         {!selection ? (
           <Card.Group fluid itemsPerRow={2}>
-            {" "}
-            {RenderCategories}{" "}
+            {' '}
+            {RenderCategories}{' '}
           </Card.Group>
         ) : (
           <FlashCard userState={userState} category={selection} />
