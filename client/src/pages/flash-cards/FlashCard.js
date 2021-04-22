@@ -25,7 +25,7 @@ const FlashCard = ({category, userState}) => {
 
   };
 
-    useEffect(() => {
+  useEffect(() => {
         API.getChallengeData(category)
         .then((data) => {
             // console.log('data is', data.data[0].data.farmAnimals);

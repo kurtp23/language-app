@@ -9,13 +9,10 @@ export default {
     const queryURL = 'api/worddata/' + query;
     return axios.get(queryURL);
   },
-<<<<<<< HEAD
-=======
   // Gets all flashcards
   getFlashcards: function () {
     return axios.get('/api/flashcards');
   },
->>>>>>> master
   getStats: function () {
     return axios.get('/api/stats');
   },
