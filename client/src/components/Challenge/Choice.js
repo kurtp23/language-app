@@ -16,9 +16,9 @@ function Choice ({ name, value, correct, onPicked }) {
     config: { mass: 5, tension: 600, friction: 40 }
   });
 
-  function onSelection(e) {
-    const answerPicked = e.target.value;
-
+  function onSelection() {
+    const answerPicked = value;
+    console.log("Picked this: ", answerPicked)
     setFlipped(state => !state);
 
     setTimeout(function(){      

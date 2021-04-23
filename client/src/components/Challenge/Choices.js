@@ -35,6 +35,7 @@ function Choices({ choices, onStatusChange }){
     }
 
     function handleCorrect(ans){
+        console.log("Comparing ", ans, " to ", correctAns)
         onStatusChange(ans === correctAns)
     }
 
