@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Button, Icon, Image, Container } from 'semantic-ui-react';
 
-function EndGame({ onContinue, onExit, count, category }) {
+function EndGame({ onContinue, onExit, score, category }) {
   const imgUrl = '/images/Challenge/Category/' + category.replace(/\s/g, '') + '.PNG';
 
   return (
@@ -11,7 +11,7 @@ function EndGame({ onContinue, onExit, count, category }) {
         <Image floated='right' src={imgUrl} size='small' circular />       
         <Header as='h2'>Nice Job!</Header>
 
-        You have played <Icon name='arrow alternate circle right'/> {count} times!
+        Your Score: {score}%
 
         <Button onClick={onContinue} basic color='green'>
           <Icon name='like' />

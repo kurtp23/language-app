@@ -37,10 +37,9 @@ function Challenge({ category, language, userState }){
       return 0.5 - Math.random(); 
     }))
     
-  }, [data])
+  }, [data, gameEnd])
 
   useEffect(() => {
-    console.log("Game end check, count is: ", count > 4)
     if (count > 4) {
       console.log("End Game Reached")
       setGameEnd(true);
@@ -76,13 +75,12 @@ function Challenge({ category, language, userState }){
 
   function handleNextClick(){
     // this effectively gives the user the option to either EXIT or CONTINUE the game
-    console.log("Handling NExt")
-
-
+    console.log("Handling Next")
+    setCount(0)
+    setScore(0)
+    setChoices([])
+    setGameEnd(false)
   }
-
-  console.log("Score so far, ", score)
-  console.log("Count so far, ", count)
 
   return (
     <>
@@ -93,7 +91,7 @@ function Challenge({ category, language, userState }){
 
       {!gameEnd && choices.length > 0 ? <Choices onStatusChange={handleStatusChanges} choices={choices} /> : <></>}
             
-      {gameEnd ? <EndGame onContinue={handleNextClick} count={count} category={category}/>: <></>}
+      {gameEnd ? <EndGame onContinue={handleNextClick} score={100 * score / count} category={category}/>: <></>}
 
         
     </>

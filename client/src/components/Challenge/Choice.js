@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // semantic ui
 import { Card, Button, Image, Icon } from 'semantic-ui-react';
