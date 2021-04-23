@@ -65,7 +65,7 @@ function NewBoard() {
         {deck.map((f, i) => {
             return (<div className="Board">
               <Card
-                flip={() => flip(i)}
+                flip={flip}
                 content={f.content}
                 faceUp={f.faceUp} />
             </div>);
