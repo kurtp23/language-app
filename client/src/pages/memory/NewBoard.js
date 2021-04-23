@@ -8,6 +8,8 @@ function NewBoard() {
   const [firstCardIndex, setFirstCardIndex] = React.useState(-1)
   
   useEffect(() => {
+
+    // do the API call here!
       setFronts(
           ['🐝','💕','🌻','🧠','🚗','🚲','🚂','🧸','🍦','👾','🚀']
       )
