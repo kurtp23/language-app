@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // semantic ui
 import { Card, Button, Image, Icon } from 'semantic-ui-react';
@@ -6,7 +6,7 @@ import { Card, Button, Image, Icon } from 'semantic-ui-react';
 // react-spring
 import { useSpring, animated } from 'react-spring';
 
-function Choice ({ name, value, correct, onChange }) {
+function Choice ({ name, value, correct, onPicked }) {
   const imgString = '/images/Challenge/Choices/' + name.replace(/\s/g, '') + '.PNG';
 
   const [flipped, setFlipped] = useState(false);
@@ -16,13 +16,15 @@ function Choice ({ name, value, correct, onChange }) {
     config: { mass: 5, tension: 600, friction: 40 }
   });
 
+  console.log("Choice re-rendering with this state:", flipped)
+
   function onSelection(e) {
     const answerPicked = e.target.value;
 
     setFlipped(state => !state);
 
     setTimeout(function(){      
-      onChange(answerPicked);
+      onPicked(answerPicked);
     }, 2000);
 
   }
