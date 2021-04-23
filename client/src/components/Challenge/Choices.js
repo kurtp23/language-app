@@ -6,7 +6,6 @@ import Choice from './Choice.js'
 import { Card } from 'semantic-ui-react';
 
 function Choices({ choices, onStatusChange }){
-    const [choiceRecord, setChoiceRecord] = React.useState(choices)
     const [selectable, setSelectable] = React.useState([])
     const [correctAns, setCorrectAns] = React.useState('')
 
@@ -25,7 +24,6 @@ function Choices({ choices, onStatusChange }){
             i++
         }
 
-        setChoiceRecord(arr)
         setSelectable(newData)
         pickCorrect(newData)
         
