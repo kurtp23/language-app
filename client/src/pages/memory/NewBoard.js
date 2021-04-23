@@ -39,7 +39,10 @@ function NewBoard() {
         )
     }
 
-    function flip(cardIdx) {
+    function flip(cardContent) {
+      
+      let cardIdx = deck.indexOf(deck.find(o => o.content === cardContent))
+
         if(firstCard === null) {
           setFirstCard(cardIdx);
         } else {

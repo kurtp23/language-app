@@ -20,7 +20,7 @@ import './Card.css';
 function Card({ flip, content, faceUp }) {
   
   function handleFlip(e) {
-    console.log("THis card was clicked")
+    flip(content)
   }
 
   return (
