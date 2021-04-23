@@ -50,8 +50,6 @@ function Challenge({ category, language, userState }){
 
   }, [count])
 
-
-
   function handleStatusChanges(ans) {
     console.log("Selection made, adding to score? ", ans)
     setCount(count + 1)
@@ -68,7 +66,7 @@ function Challenge({ category, language, userState }){
     // send data to stats schema here
     const stat = {
       flashcardVal: 0,
-      challengeVal: count,
+      challengeVal: 100 * score / count,
       date: new Date()
     };
     
