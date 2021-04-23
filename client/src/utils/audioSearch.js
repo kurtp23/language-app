@@ -1,7 +1,6 @@
 import Translate from './spanish';
-import React, { useEffect } from 'react';
 
-const audioSearch = (word) => {
+function AudioSearch (word) {
   try{
     Translate.search(word).then((data) => {
       console.log('data is', data.data);
@@ -28,6 +27,6 @@ const audioSearch = (word) => {
     });
   }
   catch(err) {console.log(err);}
-};
+}
 
-export default audioSearch;
+export default AudioSearch;
