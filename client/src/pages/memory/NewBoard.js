@@ -34,8 +34,9 @@ function NewBoard() {
               if(i === cardIdx) {
                 console.log("Match! Flip over this card, ", deck[cardIdx])
                   return {
-                  content: f.content,
-                  faceUp: faceUp,
+                    content: f.content,
+                    faceUp: faceUp,
+                    index: cardIdx,
                   };
               } else {
                   return f;
