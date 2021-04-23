@@ -6,7 +6,7 @@ import { Card, Button, Image, Icon } from 'semantic-ui-react';
 // react-spring
 import { useSpring, animated } from 'react-spring';
 
-function Choice ({ name, value, correct, onChange }) {
+function Choice ({ name, value, correct, onPicked }) {
   const imgString = '/images/Challenge/Choices/' + name.replace(/\s/g, '') + '.PNG';
 
   const [flipped, setFlipped] = useState(false);
@@ -22,7 +22,7 @@ function Choice ({ name, value, correct, onChange }) {
     setFlipped(state => !state);
 
     setTimeout(function(){      
-      onChange(answerPicked);
+      onPicked(answerPicked);
     }, 2000);
 
   }

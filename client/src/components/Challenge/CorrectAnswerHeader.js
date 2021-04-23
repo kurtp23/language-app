@@ -20,11 +20,11 @@ function CorrectAnswerHeader({ correctAnswer }) {
 
   return (
     <>
-      <Header textAlign='center' as='h2'>
+      <Header textAlign='center' as='h3'>
         <Icon name='language' />
         {correctAnswer}
       </Header>
-      <Header textAlign='center' as='h3'>
+      <Header textAlign='center' as='h4'>
         {sound ? <Icon onClick={playSound} name='assistive listening systems' /> : 'Loading Sound...'}               
       </Header>
     </>
