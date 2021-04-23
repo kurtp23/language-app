@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
-import Choice from './Choice.js';
+import Choices from './Choices.js';
+
 import EndGame from './EndGame.js';
-import CorrectAnswerHeader from './CorrectAnswerHeader.js';
 import API from '../../utils/API.js';
-import { Card, Header, Container, Icon } from 'semantic-ui-react';
+import { Header, Container, Icon } from 'semantic-ui-react';
 
 function Challenge({ category, language, userState }){
   const [data, setData] = React.useState([]);
   const [count, setCount] = React.useState(0);
-  const [answered, setAnswered] = React.useState(false);
+  const [score, setScore] = React.useState(0);
+  const [gameEnd, setGameEnd] = React.useState(false);
+  const [choices, setChoices] = React.useState([])
 
   useEffect(() => {
     // get data from MongoDB
@@ -23,95 +25,68 @@ function Challenge({ category, language, userState }){
             rendered: false
           }); 
         });
-        // randomizes the list
-        dataTransformed.sort(function() { 
-          return 0.5 - Math.random(); 
-        });
+  
         setData(dataTransformed);
       });
 
   }, [category]);
 
-  function renderChoices() {
-    // this gets rendered into components
-    let choices = [];
-    // this ensures a 'correct' answer isn't re-selected on next render
-    let newData = [...data];
-    data.forEach((item, i) => {
-        
-      if (!item.rendered && choices.length < 4) {
-        newData[i].rendered = true;
-        choices.push(item.lang);
-      }
-    });
+  useEffect(() => {
     
+    setChoices(data.sort(function() { 
+      return 0.5 - Math.random(); 
+    }))
+    
+  }, [data, gameEnd])
 
-    return choices;
+  useEffect(() => {
+    if (count > 4) {
+      setGameEnd(true);
+      handleEndGame();
 
+    }
+
+  }, [count])
+
+  function handleStatusChanges(ans) {
+    setCount(count + 1)
+
+    if (ans) {setScore(score + 1)}
+    setChoices([])
+    setChoices(data.sort(function() { 
+      return 0.5 - Math.random(); 
+    }))
   }
 
-  let choices = renderChoices();
-
-  const correctAnswer = choices[Math.floor(Math.random() * 4)];
-
-  function handleAnswer(e) {
+  function handleEndGame(){
+    // send data to stats schema here
+    const stat = {
+      flashcardVal: 0,
+      challengeVal: 100 * score / count,
+      date: new Date()
+    };
     
-    if (e === correctAnswer) {
-      // helps reset the dataset, unlocking for next round
-      let newData = [...data];
-
-      newData.forEach(item => {
-        // make sure not to allow the same answer two times in a row
-        if (item.name !== e) {
-          item.rendered = false;
-        }
-      });
-      data.sort(function() { 
-        return 0.5 - Math.random(); 
-      });
-      setAnswered(true);
-      setCount(count + 1);
-        
-    }
+    API.putStat(userState.userId, stat);
   }
 
   function handleNextClick(){
     // this effectively gives the user the option to either EXIT or CONTINUE the game
-    setAnswered(false);
-  }
-
-  function handleExit() {
-    // send data to stats schema here
-    const stat = {
-      flashcardVal: 0,
-      challengeVal: count,
-      date: new Date()
-    };
-    
-    console.log('This will go to stats schema: ', stat);
-    API.putStat(userState.userId, stat);
-
+    setCount(0)
+    setScore(0)
+    setChoices([])
+    setGameEnd(false)
   }
 
   return (
     <>
-      {answered ? 
+      {gameEnd ? 
         <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='book' />Nice Work!</Header></Container> : 
         <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='question circle' />Match the Word to the Image!</Header></Container>
       }
 
-      {!answered && choices ? <CorrectAnswerHeader correctAnswer={correctAnswer}/>: <></>}
-           
-      {!answered && choices ? 
-        <><Card.Group centered itemsPerRow={2}>
-          {choices.map((item, i) => {
-            return <Choice correct={correctAnswer === item} onChange={handleAnswer} key={i} value={item} name={(data.find(o => o.lang === item)).eng}>{item}</Choice>;}) }
-        </Card.Group></>
-        : <></>}
+      {!gameEnd && choices.length > 0 ? <Choices onStatusChange={handleStatusChanges} choices={choices} /> : <></>}
             
-        
-        
-      {answered ? <EndGame onContinue={handleNextClick} onExit={handleExit} count={count} category={category}/>: <></>}
+      {gameEnd ? <EndGame onContinue={handleNextClick} score={100 * score / count} category={category}/>: <></>}
 
         
     </>
