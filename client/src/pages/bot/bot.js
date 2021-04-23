@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Header } from 'semantic-ui-react';
+import React, { useEffect, useState } from "react";
+import { Header } from "semantic-ui-react";
 // import { translate } from 'web-translate';
 
-import InputField from '../../components/translate/testField.js';
-import Message from '../../components/translate/messageField.js';
-import SendBtn from '../../components/translate/sendBtn.js';
-import Translate from '../../utils/spanish.js';
-import { Card, Container } from 'semantic-ui-react';
+import InputField from "../../components/translate/testField.js";
+import Message from "../../components/translate/messageField.js";
+import SendBtn from "../../components/translate/sendBtn.js";
+import Translate from "../../utils/spanish.js";
+import { Card, Container } from "semantic-ui-react";
 
-function Bot() {
-  const [message, setMessage] = useState('');
-  const [sentMessage, setMessageSend] = useState('');
+function Bot(props) {
+  const [message, setMessage] = useState("");
+  const [sentMessage, setMessageSend] = useState("");
   const [translateMessage, setTranslate] = useState([]);
   const [fl, setFl] = useState([]);
   const [tArr, setArr] = useState([]);
@@ -26,7 +26,7 @@ function Bot() {
       setMessageSend(arr[i]);
     }
     Translate.search(message).then((data) => {
-      console.log('this is arr', data.data);
+      console.log("this is arr", data.data);
       setArr(data.data);
       setTranslate([data.data[0].shortdef[0], data.data[1].shortdef[0], data.data[2].shortdef[0]]);
       setFl([data.data[0].fl, data.data[1].fl, data.data[2].fl]);
@@ -36,7 +36,7 @@ function Bot() {
 
   return (
     <div>
-      <Header inverted textAlign={'centered'}>
+      <Header inverted textAlign={"centered"}>
         Translate Words Below
       </Header>
       <Message
