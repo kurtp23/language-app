@@ -36,14 +36,11 @@ function Challenge({ category, language, userState }){
     setChoices(data.sort(function() { 
       return 0.5 - Math.random(); 
     }))
+    
   }, [data])
 
-  function handleStatusChanges(ans) {
-    console.log("Selection made, adding to score? ", ans)
-    setCount(count + 1)
-
-    if (ans) {setScore(score + 1)}
-
+  useEffect(() => {
+    console.log("Game end check, count is: ", count > 4)
     if (count > 4) {
       console.log("End Game Reached")
       setGameEnd(true);
@@ -51,6 +48,19 @@ function Challenge({ category, language, userState }){
 
     }
 
+  }, [count])
+
+
+
+  function handleStatusChanges(ans) {
+    console.log("Selection made, adding to score? ", ans)
+    setCount(count + 1)
+
+    if (ans) {setScore(score + 1)}
+    setChoices([])
+    setChoices(data.sort(function() { 
+      return 0.5 - Math.random(); 
+    }))
   }
 
   function handleEndGame(){
@@ -68,18 +78,8 @@ function Challenge({ category, language, userState }){
 
   function handleNextClick(){
     // this effectively gives the user the option to either EXIT or CONTINUE the game
-    let newData = [...data];
+    console.log("Handling NExt")
 
-    newData.forEach(item => {
-      // make sure not to allow the same answer two times in a row
-    
-      item.rendered = false;
-
-    });
-
-    setChoices(data.sort(function() { 
-      return 0.5 - Math.random(); 
-    }))
 
   }
 
