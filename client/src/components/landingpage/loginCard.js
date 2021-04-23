@@ -6,8 +6,10 @@ import LoginBtn from './LoginBtn.js';
 import './login.css';
 
 const LoginCard = (props) => (
-  <Card centered={true}>
-    <Card.Content textAlign='center' />
+  <Card centered={true} className='loginCard'>
+    <Card.Content textAlign='center'>
+      Login or Create an Account Here
+    </Card.Content>
     <Card.Content textAlign='center'>
       <LoginBtn login={props.login} />
     </Card.Content>

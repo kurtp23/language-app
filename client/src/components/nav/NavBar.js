@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
-import { Dropdown, Menu, Header } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 
 function SignOut(props) {
   return (
@@ -27,54 +27,62 @@ function SignOut(props) {
   );
 }
 
-const MenuExampleDropdownItem = (props) => (
-  <>
-    <Menu vertical>
-      <Dropdown item text='Categories'>
-        <Dropdown.Menu>
-          <Dropdown.Item>{props.auth.currentUser ? SignOut(props) : 'didnt work'}</Dropdown.Item>
-          <Dropdown.Item>
-            <Link to='/'>
-              <h1>Home</h1>
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to='/stats'>
-              <h1>Stats</h1>
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to='/challenge'>
-              <h1>Challenge</h1>
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to='/game'>
-              <h1>Game</h1>
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to='/flashcards'>
-              <h1>FlashCard</h1>
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to='/translate'>
-              <h1>translate</h1>
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to='/settings'>
-              <h1>Settings</h1>
-            </Link>
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    </Menu>
-    <div>
-      <Header inverted={true}>{props.userState.displayName}</Header>
-    </div>
-  </>
+const NavBar = (props) => (
+  <Menu stackable>
+    <Menu.Item>
+      <img src='../../project3-icon.png' />
+      <h4> Language Learning App</h4>
+    </Menu.Item>
+    <Menu.Item>
+      <p>{props.userState.displayName}</p>
+    </Menu.Item>
+    
+    <Menu.Menu position='right'>
+      <Menu.Item>
+        <Dropdown item text='Pages' >
+          <Dropdown.Menu>
+            <Dropdown.Item>
+              <Link to='/game'>
+                <p>Game</p>
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to='/challenge'>
+                <p>Challenges</p>
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to='/flashcards'>
+                <p>Flashcards</p>
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to='/translate'>
+                <p>Translate</p>
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to='/stats'>
+                <p>Stats</p>
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to='/settings'>
+                <p> Settings</p>
+              </Link>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to='/'>
+          <p>Home</p>
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        {props.auth.currentUser ? SignOut(props) : 'didnt work'}
+      </Menu.Item>
+    </Menu.Menu>
+  </Menu>
 );
-
-export default MenuExampleDropdownItem;
+export default NavBar;
