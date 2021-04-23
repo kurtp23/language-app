@@ -18,7 +18,7 @@ function Choice ({ name, value, correct, onPicked }) {
 
   function onSelection() {
     const answerPicked = value;
-    console.log("Picked this: ", answerPicked)
+    
     setFlipped(state => !state);
 
     setTimeout(function(){      

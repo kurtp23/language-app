@@ -50,10 +50,7 @@ function Challenge({ category, language, userState }){
 
   function handleStatusChanges(ans) {
     setCount(count + 1)
-    console.log("Answer: ", ans)
-    if (ans) {
-      console.log("Setting new score")
-      setScore(score + 1)}
+    if (ans) {setScore(score + 1)}
     
     setChoices([])
     setChoices(data.sort(function() { 
