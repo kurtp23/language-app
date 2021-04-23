@@ -30,6 +30,7 @@ function NewBoard() {
       .map((card, index) => {
           return {
           content: card.spa,
+          keyName: card.eng,
           faceUp: false,
           index: index,
           };
@@ -40,15 +41,16 @@ function NewBoard() {
 
   function flipCardTo(cardIdx, faceUp) {
 
-      setDeck(deck.map((f, i) => {
+      setDeck(deck.map((card, i) => {
               if(i === cardIdx) {
                   return {
-                    content: f.content,
+                    content: card.content,
+                    keyName: card.keyName,
                     faceUp: faceUp,
                     index: cardIdx,
                   };
               } else {
-                  return f;
+                  return card;
               }
           })
       )
@@ -88,6 +90,7 @@ function NewBoard() {
         <Card
           key={i}
           index={card.index}
+          imgKey={card.keyName}
           flip={flip}
           content={card.content}
           faceUp={card.faceUp} />
