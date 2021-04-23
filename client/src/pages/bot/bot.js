@@ -13,9 +13,9 @@ import translate from "translate";
 function Bot(props) {
   const [message, setMessage] = useState("");
   const [sentMessage, setMessageSend] = useState("");
-  const [translateMessage, setTranslate] = useState([]);
-  const [fl, setFl] = useState([]);
-  const [tArr, setArr] = useState([]);
+  const [translateMessage, setTranslate] = useState("");
+  const [fl, setFl] = useState("");
+  const [tArr, setArr] = useState("");
 
   const googleTranslate = async () => {
     const lang = props.userState.language;
@@ -28,6 +28,10 @@ function Bot(props) {
       key: "AIzaSyCBNb7aSu6QxdN3zVkR7ZxKGcMBbPMbJiU",
     }).then((text) => {
       console.log(text); // Hola mundo
+
+      setTranslate(text);
+      setFl(lang);
+      setMessageSend(message);
     });
   };
 
