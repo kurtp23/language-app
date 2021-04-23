@@ -10,6 +10,7 @@ function Challenge({ category, language, userState }){
   const [count, setCount] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [gameEnd, setGameEnd] = React.useState(false);
+  const [choices, setChoices] = React.useState([])
 
   useEffect(() => {
     // get data from MongoDB
@@ -24,22 +25,30 @@ function Challenge({ category, language, userState }){
             rendered: false
           }); 
         });
-
+  
         setData(dataTransformed);
       });
 
   }, [category]);
 
-  function handleStatusChanges(cat) {
-    console.log("Going to iterate this category", cat)
+  useEffect(() => {
+    
+    setChoices(data.sort(function() { 
+      return 0.5 - Math.random(); 
+    }))
+  }, [data])
 
-    if (cat === 'count') {setCount(count + 1)}
-    if (cat === 'score') {setScore(score + 1)}
+  function handleStatusChanges(ans) {
+    console.log("Selection made, adding to score? ", ans)
+    setCount(count + 1)
+
+    if (ans) {setScore(score + 1)}
 
     if (count > 4) {
-      
+      console.log("End Game Reached")
       setGameEnd(true);
       handleEndGame();
+
     }
 
   }
@@ -68,13 +77,14 @@ function Challenge({ category, language, userState }){
 
     });
 
-    data.sort(function() { 
+    setChoices(data.sort(function() { 
       return 0.5 - Math.random(); 
-    });
+    }))
 
   }
 
-  console.log("this is the challenge data", data)
+  console.log("Score so far, ", score)
+  console.log("Count so far, ", count)
 
   return (
     <>
@@ -83,7 +93,7 @@ function Challenge({ category, language, userState }){
         <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='question circle' />Match the Word to the Image!</Header></Container>
       }
 
-      {!gameEnd && data.length > 0 ? <Choices onStatusChange={handleStatusChanges} choices={data} /> : <></>}
+      {!gameEnd && choices.length > 0 ? <Choices onStatusChange={handleStatusChanges} choices={choices} /> : <></>}
             
       {gameEnd ? <EndGame onContinue={handleNextClick} count={count} category={category}/>: <></>}
 

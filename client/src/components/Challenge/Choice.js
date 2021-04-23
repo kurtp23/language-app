@@ -16,8 +16,6 @@ function Choice ({ name, value, correct, onPicked }) {
     config: { mass: 5, tension: 600, friction: 40 }
   });
 
-  console.log("Choice re-rendering with this state:", flipped)
-
   function onSelection(e) {
     const answerPicked = e.target.value;
 

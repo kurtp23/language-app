@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import CorrectAnswerHeader from './CorrectAnswerHeader.js';
 import Choice from './Choice.js'
 
-import { Header, Container, Icon } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 
 function Choices({ choices, onStatusChange }){
     const [choiceRecord, setChoiceRecord] = React.useState(choices)
@@ -11,30 +11,17 @@ function Choices({ choices, onStatusChange }){
     const [correctAns, setCorrectAns] = React.useState('')
 
     useEffect(() => {
-        randomizeChoices(choices)
+        selectFourChoices(choices)
     }, [choices])
-
-    function randomizeChoices() {
-        
-        let newData = [...choices]
-        newData.sort(function() { 
-            return 0.5 - Math.random(); 
-          });
-
-        console.log("Randomized newData: ", newData)
-
-        selectFourChoices(newData)
-    }
 
     function selectFourChoices(arr) {
         let newData = []
         
         let i = 0
         while (newData.length < 4 && i < arr.length) {
-            if (!arr[i].rendered) {
-                newData.push(arr[i])
-                arr[i].rendered = true
-            }
+            
+            newData.push(arr[i])
+            
             i++
         }
 
@@ -51,6 +38,7 @@ function Choices({ choices, onStatusChange }){
 
     function handleCorrect(ans){
         console.log("You Picked ", ans)
+        onStatusChange(ans === correctAns)
     }
 
     const renderChoices = selectable.map((choice, i) => {
@@ -60,14 +48,14 @@ function Choices({ choices, onStatusChange }){
         )
     })
 
-    console.log(renderChoices)
-
     console.log("This is the selectable data", selectable)
+
     return (
         <>  
-            <Header as='h3' centered>{correctAns}</Header>
-            
-            {renderChoices}
+            <CorrectAnswerHeader correctAnswer={correctAns} />
+            <Card.Group itemsPerRow={2}>
+                {renderChoices}
+            </Card.Group>
         </>
     )
 }
