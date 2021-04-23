@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Icon, Container, Grid, Segment } from 'semantic-ui-react';
+import React from 'react';
+import { Card, Grid, Segment } from 'semantic-ui-react';
 
 function messageField(props) {
   const tArray = props.tArr;

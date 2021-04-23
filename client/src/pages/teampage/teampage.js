@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Container, Icon, Image, Grid, Segment, Header } from 'semantic-ui-react';
+import { Card, Icon, Image, Grid, Segment, Header } from 'semantic-ui-react';
 
 const TeamPage = () => (
   <>

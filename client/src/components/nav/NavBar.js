@@ -27,22 +27,6 @@ function SignOut(props) {
   );
 }
 
-
-const NavBar = (props) => {
-  return (
-    <>
-      {console.log(props.auth.signOut)}
-      <div>
-        <Link to='/'>
-          <h1>Home</h1>
-        </Link>
-
-        {props.auth.currentUser ? SignOut(props) : 'didnt work'}
-      </div>
-    </>
-  );
-};
-
 const MenuExampleDropdownItem = (props) => (
   <>
     <Menu vertical>

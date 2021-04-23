@@ -29,10 +29,10 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
   return (
  
     <a.div
-      class='card' fluid
+      className='card' fluid
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{ transform: props.xys.interpolate(trans), backgroundColor: '#40e0d0' }}>
+      style={{ transform: props.xys.to(trans), backgroundColor: '#40e0d0' }}>
       <Card fluid className='categoryCard ui raised text container segment'>
         <Card.Header>
         </Card.Header>
@@ -52,7 +52,7 @@ const FlashCardCategoryTemplate = ({ category, onChange, description }) => {
         </Card.Content>
         <Card.Content className='categoryContent' extra>
           <div className='ui two buttons'>
-            <a.div style={{ opacity: x.interpolate({ range: [0, 1], output: [1.0, 0.5] }), transform: x.interpolate({ range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1], output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]}).interpolate(x => `scale(${x})`) }} className='catSelDiv'>
+            <a.div style={{ opacity: x.to({ range: [0, 1], output: [1.0, 0.5] }), transform: x.to({ range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1], output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1]}).to(x => `scale(${x})`) }} className='catSelDiv'>
               <Button className='catSelBtn' value={category} onClick={handleClick} onMouseEnter={() => toggle(!state)} onMouseLeave={() => toggle(!state)}>
                   Select
               </Button>

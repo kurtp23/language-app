@@ -63,7 +63,7 @@ const FlashCardTemplate = (props) => {
   return (
     <div className='templateContainer'>
       <div onClick={() => set(state => !state)}>
-        <a.div class='c back' style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
+        <a.div className='c back' style={{ opacity: opacity.to(o => 1 - o), transform }}>
           <Card className='ui raised card'>
             <Card.Content>
               <Card.Header className='ui ribbon label' style={{ backgroundColor: '#fa8072', color: 'white' }}>{props.category}</Card.Header>
@@ -76,7 +76,7 @@ const FlashCardTemplate = (props) => {
             </Card.Content>
           </Card>
         </a.div>
-        <a.div class='c front' style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
+        <a.div className='c front' style={{ opacity, transform: transform.to(t => `${t} rotateX(180deg)`) }}>
           <Card>
             <Card.Content>
               <Card.Header className='ui ribbon label' style={{ backgroundColor: '#fa8072', color: 'white' }}>{props.category}</Card.Header>

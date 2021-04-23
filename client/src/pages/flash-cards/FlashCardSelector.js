@@ -12,9 +12,8 @@ const FlashCardSelector = ({userState}) => {
   useEffect(() => {
     API.getChallenges().then((data) => {
       console.log('this is challenge data', data);
-      let list = [];
-      data.data[0].names.map((name) => {
-        list.push({
+      let list = data.data[0].names.map((name) => {
+        return ({
           cat: name.cat,
           description: name.description,
         });
@@ -44,7 +43,7 @@ const FlashCardSelector = ({userState}) => {
         {!selection ? <h2 className='ui orange header'>Select a Category!</h2> : <></>}
 
         {!selection ? (
-          <Card.Group fluid itemsPerRow={2}>
+          <Card.Group itemsPerRow={2}>
             {' '}
             {RenderCategories}{' '}
           </Card.Group>
