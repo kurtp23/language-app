@@ -32,7 +32,11 @@ function Choice ({ name, value, correct, onPicked }) {
   return (
     <Card color='teal'>
       <Image size='medium' circular />
-      <Image src={imgString} size='medium' circular />
+      <animated.div
+          style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
+        >
+        <Image src={imgString} size='medium' circular />
+      </animated.div>
       <Card.Content>
         <Button color='green' fluid={true} value={value} onClick={onSelection}><Icon name='like' />Choose</Button>
       </Card.Content>
