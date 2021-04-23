@@ -30,23 +30,21 @@ function Choice ({ name, value, correct, onPicked }) {
   const revealedAnswer = <Card.Header style={{ fontSize: '15px', color: correct ? 'green' : 'red'}}>{value}</Card.Header>;
 
   return (
-    <Card color='teal'>
+    <Card color='teal' onClick={onSelection}>
       <Image size='medium' circular />
+      
       <animated.div
-          style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
+          style={{ textAlign: 'center', opacity: opacity.interpolate(o => o), transform }}
         >
         <Image src={imgString} size='medium' circular />
       </animated.div>
-      <Card.Content>
-        <Button color='green' fluid={true} value={value} onClick={onSelection}><Icon name='like' />Choose</Button>
-      </Card.Content>
-      <Card.Content style={{ padding: '5px'}}>
-        <animated.div
+
+      <animated.div
           style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
         >
           {revealedAnswer}
-        </animated.div>
-      </Card.Content>
+      </animated.div>
+        
     </Card>
   );
 }
