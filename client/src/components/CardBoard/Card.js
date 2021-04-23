@@ -1,20 +1,23 @@
 import React from 'react';
 import './Card.css';
 
-class Card extends React.Component {
-  render() {
-    let content;
-    if(this.props.faceUp) {
-      content = this.props.content;
-    } else {
-      content = '';
-    }
-    return (
-      <div onClick={this.props.flip} className={`Card ${this.props.faceUp ? 'face-up': ''}`}>
-        {content}
-      </div>
-    );
+function Card({ flip, content, faceUp, index, imgKey }) {
+
+  const imgString = '/images/Challenge/Choices/' + imgKey.replace(/\s/g, '') + '.PNG';
+
+  function handleFlip() {
+
+    flip(index)
   }
+
+  return (
+    <>
+      <div onClick={!faceUp ? handleFlip : null} className={`Card ${faceUp ? 'face-up': ''}`}>
+        {faceUp ? <><img src={imgString} /><p style={{transform: 'scaleX(-1)'}}>{content}</p></> : ''}
+      </div>
+    </>
+  )
 }
+
 
 export default Card;
