@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import Card from '../../components/CardBoard/Card';
 
+import API from '../../utils/API.js';
+
 function NewBoard() {
   const [fronts, setFronts] = React.useState([]);
   const [deck, setDeck] = React.useState([]);
@@ -8,11 +10,18 @@ function NewBoard() {
   const [firstCardIndex, setFirstCardIndex] = React.useState(-1)
   
   useEffect(() => {
+    const category = 'zooAnimals'
 
-    // do the API call here!
-      setFronts(
-          ['🐝','💕','🌻','🧠','🚗','🚲','🚂','🧸','🍦','👾','🚀']
-      )
+    API.getChallenges()
+      .then((data) => {
+        console.log("This is the data ", data.data[0].data[category])
+
+        setFronts(
+          data.data[0].data[category].slice(0,9)
+        )
+
+      })  
+
   }, [])
 
   useEffect(() => {
@@ -20,7 +29,7 @@ function NewBoard() {
       .sort(() => Math.random() - 0.5)
       .map((card, index) => {
           return {
-          content: card,
+          content: card.spa,
           faceUp: false,
           index: index,
           };
@@ -30,11 +39,9 @@ function NewBoard() {
   }, [fronts])
 
   function flipCardTo(cardIdx, faceUp) {
-    console.log("got this index", cardIdx, 'and will be flipped faceUP? ', faceUp)
 
       setDeck(deck.map((f, i) => {
               if(i === cardIdx) {
-                console.log("Match! Flip over this card, ", deck[cardIdx])
                   return {
                     content: f.content,
                     faceUp: faceUp,

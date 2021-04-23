@@ -10,7 +10,7 @@ function Card({ flip, content, faceUp, index }) {
 
   return (
     <>
-      <div onClick={!faceUp ? handleFlip : ''} className={`Card ${faceUp ? 'face-up': ''}`}>
+      <div onClick={!faceUp ? handleFlip : null} className={`Card ${faceUp ? 'face-up': ''}`}>
         {faceUp ? content : ''}
       </div>
     </>
