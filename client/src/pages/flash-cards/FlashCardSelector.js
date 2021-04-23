@@ -5,7 +5,7 @@ import FlashCardCategoryTemplate from '../../components/flash-card-template/Flas
 
 import API from '../../utils/API.js';
 
-const FlashCardSelector = () => {
+const FlashCardSelector = ({userState}) => {
   const [categoryList, setCategoryList] = useState([]);
   const [selection, setSelection] = useState('');
 
@@ -49,7 +49,7 @@ const FlashCardSelector = () => {
             {RenderCategories}{' '}
           </Card.Group>
         ) : (
-          <FlashCard category={selection} />
+          <FlashCard userState={userState} category={selection} />
         )}
       </div>
     </>

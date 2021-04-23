@@ -3,6 +3,7 @@ import { Card, Button } from 'semantic-ui-react';
 import { useSpring, animated as a } from 'react-spring';
 import './FlashCardTemplate.css';
 import Translate from '../../utils/spanish';
+import AudioSearch from '../../utils/audioSearch';
 
 const FlashCardTemplate = (props) => {
 
@@ -20,8 +21,12 @@ const FlashCardTemplate = (props) => {
   const [audioURL, setAudioURL] = useState('');
 
   useEffect(() => {
-    console.log('word is: ', props.word);
-    try{
+    console.log('going');
+    // console.log('word is: ', props.word);
+    // const url = AudioSearch(props.word);
+        
+    try
+    {
       Translate.search(props.word).then((data) => {
         if (typeof(data.data[0]) === 'string') {
           setAudioURL('');
@@ -42,17 +47,12 @@ const FlashCardTemplate = (props) => {
           setAudioURL(`https://media.merriam-webster.com/audio/prons/es/me/mp3/${data.data[0].hwi.prs[0].sound.audio.charAt(0)}/${data.data[0].hwi.prs[0].sound.audio}.mp3`);
           return;
         }
-
-        else {
-          setAudioURL('');
-          return;
-        }
       });
     }
-    catch(err) {
-      console.log(err);
-    }
+    catch(err) {console.log(err);}
+    // console.log('url is', url);
   }, [props.word]);
+    
 
   const playAudio = (e) => {
     e.stopPropagation();  
