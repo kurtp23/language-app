@@ -8,12 +8,28 @@ import SendBtn from "../../components/translate/sendBtn.js";
 import Translate from "../../utils/spanish.js";
 import { Card, Container } from "semantic-ui-react";
 
+import translate from "translate";
+
 function Bot(props) {
   const [message, setMessage] = useState("");
   const [sentMessage, setMessageSend] = useState("");
   const [translateMessage, setTranslate] = useState([]);
   const [fl, setFl] = useState([]);
   const [tArr, setArr] = useState([]);
+
+  const googleTranslate = async () => {
+    const lang = props.userState.language;
+    console.log(lang);
+
+    translate(message, {
+      from: "en",
+      to: lang,
+      engine: "google",
+      key: "AIzaSyCBNb7aSu6QxdN3zVkR7ZxKGcMBbPMbJiU",
+    }).then((text) => {
+      console.log(text); // Hola mundo
+    });
+  };
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
@@ -43,7 +59,7 @@ function Bot(props) {
         send={sentMessage}
         translate={translateMessage}
         fl={fl}
-        onClick={onSend}
+        onClick={googleTranslate}
         handleInputChange={handleInputChange}
         tArr={tArr}
       />
@@ -51,7 +67,7 @@ function Bot(props) {
       <Container>
         <Card centered={true}>
           <InputField centered={true} handleInputChange={handleInputChange} />
-          <SendBtn centered={true} onClick={onSend} />
+          <SendBtn centered={true} onClick={googleTranslate} />
         </Card>
       </Container>
     </div>
