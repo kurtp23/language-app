@@ -3,7 +3,7 @@ import { Card, Button } from 'semantic-ui-react';
 import { useSpring, animated as a } from 'react-spring';
 import './FlashCardTemplate.css';
 import Translate from '../../utils/spanish';
-// import audioSearch from '../../utils/audioSearch';
+import AudioSearch from '../../utils/audioSearch';
 
 const FlashCardTemplate = (props) => {
 
@@ -21,8 +21,9 @@ const FlashCardTemplate = (props) => {
   const [audioURL, setAudioURL] = useState('');
 
   useEffect(() => {
+    console.log('going');
     // console.log('word is: ', props.word);
-    // const url =  audioSearch(props.word)
+    // const url = AudioSearch(props.word);
         
     try
     {
