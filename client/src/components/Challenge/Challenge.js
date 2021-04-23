@@ -41,7 +41,6 @@ function Challenge({ category, language, userState }){
 
   useEffect(() => {
     if (count > 4) {
-      console.log("End Game Reached")
       setGameEnd(true);
       handleEndGame();
 
@@ -50,7 +49,6 @@ function Challenge({ category, language, userState }){
   }, [count])
 
   function handleStatusChanges(ans) {
-    console.log("Selection made, adding to score? ", ans)
     setCount(count + 1)
 
     if (ans) {setScore(score + 1)}
@@ -61,7 +59,6 @@ function Challenge({ category, language, userState }){
   }
 
   function handleEndGame(){
-    console.log("Do something on endgame!")
     // send data to stats schema here
     const stat = {
       flashcardVal: 0,
@@ -69,13 +66,11 @@ function Challenge({ category, language, userState }){
       date: new Date()
     };
     
-    console.log('This will go to stats schema: ', stat);
     API.putStat(userState.userId, stat);
   }
 
   function handleNextClick(){
     // this effectively gives the user the option to either EXIT or CONTINUE the game
-    console.log("Handling Next")
     setCount(0)
     setScore(0)
     setChoices([])

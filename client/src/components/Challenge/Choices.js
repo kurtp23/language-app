@@ -37,7 +37,6 @@ function Choices({ choices, onStatusChange }){
     }
 
     function handleCorrect(ans){
-        console.log("You Picked ", ans)
         onStatusChange(ans === correctAns)
     }
 
@@ -48,7 +47,6 @@ function Choices({ choices, onStatusChange }){
         )
     })
 
-    console.log("This is the selectable data", selectable)
 
     return (
         <>  
