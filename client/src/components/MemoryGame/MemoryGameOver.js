@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function MemoryGameOver(){
+import API from '../../utils/API.js';
 
+function MemoryGameOver({ userState }){
+    useEffect(() => {
+        console.log("Sending Stat")
+        const stat = {
+            flashcardVal: 0,
+            challengeVal: 0,
+            memoryVal: 0,
+            date: new Date()
+          };
+          
+          API.putStat(userState.userId, stat);
+    }, [])
 
     return (
         <p>Game Over!</p>

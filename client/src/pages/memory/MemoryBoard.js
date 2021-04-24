@@ -119,7 +119,7 @@ function MemoryBoard({ userState, category }) {
   return (
       <>
         
-        {gameEnd ? <MemoryGameOver /> : <></>}
+        {gameEnd ? <MemoryGameOver userState={userState} /> : <></>}
 
         <div className="Board">
           {gameCards}
