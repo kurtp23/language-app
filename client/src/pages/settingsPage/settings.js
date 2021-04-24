@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import {
-  Card,
-  Container,
-  Icon,
-  Image,
   Grid,
-  Segment,
   Header,
   Input,
   Checkbox,
-  Form,
   Select,
   Button,
 } from "semantic-ui-react";

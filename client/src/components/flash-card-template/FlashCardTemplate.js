@@ -21,36 +21,13 @@ const FlashCardTemplate = (props) => {
   const [audioURL, setAudioURL] = useState('');
 
   useEffect(() => {
-    console.log('going');
-    // console.log('word is: ', props.word);
-    // const url = AudioSearch(props.word);
-        
-    try
-    {
-      Translate.search(props.word).then((data) => {
-        if (typeof(data.data[0]) === 'string') {
-          setAudioURL('');
-          return;
-        } 
-
-        if (!data.data[0].hwi.prs) {
-          setAudioURL('');
-          return;
-        }
-            
-        if (!data.data[0].hwi.prs[0].sound) {
-          setAudioURL('');
-          return;
-        }
-
-        if (data.data[0].hwi.prs[0].sound.audio) {
-          setAudioURL(`https://media.merriam-webster.com/audio/prons/es/me/mp3/${data.data[0].hwi.prs[0].sound.audio.charAt(0)}/${data.data[0].hwi.prs[0].sound.audio}.mp3`);
-          return;
-        }
-      });
-    }
-    catch(err) {console.log(err);}
-    // console.log('url is', url);
+    (async() => {
+      try {
+        const url = await AudioSearch(props.word);
+        setAudioURL(url);
+      }
+      catch (err) {console.log(err);}
+    })();
   }, [props.word]);
     
 
@@ -63,7 +40,7 @@ const FlashCardTemplate = (props) => {
   return (
     <div className='templateContainer'>
       <div onClick={() => set(state => !state)}>
-        <a.div class='c back' style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
+        <a.div className='c back' style={{ opacity: opacity.to(o => 1 - o), transform }}>
           <Card className='ui raised card'>
             <Card.Content>
               <Card.Header className='ui ribbon label' style={{ backgroundColor: '#fa8072', color: 'white' }}>{props.category}</Card.Header>
@@ -76,7 +53,7 @@ const FlashCardTemplate = (props) => {
             </Card.Content>
           </Card>
         </a.div>
-        <a.div class='c front' style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
+        <a.div className='c front' style={{ opacity, transform: transform.to(t => `${t} rotateX(180deg)`) }}>
           <Card>
             <Card.Content>
               <Card.Header className='ui ribbon label' style={{ backgroundColor: '#fa8072', color: 'white' }}>{props.category}</Card.Header>

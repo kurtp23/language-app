@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Input } from 'semantic-ui-react';
 
 function InputField(props) {

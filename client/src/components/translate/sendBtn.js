@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Icon, Container } from 'semantic-ui-react';
+import React from 'react';
+import { Button, Icon } from 'semantic-ui-react';
 
 function sendBtn(props) {
   return (

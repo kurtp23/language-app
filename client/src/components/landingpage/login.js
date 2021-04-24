@@ -6,7 +6,7 @@ import CardExampleCard from '../../pages/teampage/teampage.js';
 
 const Login = (props) => (
   <div>
-    <Container color='teal' content='teal'>
+    <Container color='teal'>
       <Segment basic textAlign='center'>
         <Divider horizontal inverted>Welcome To Language Learner</Divider>
       </Segment>
