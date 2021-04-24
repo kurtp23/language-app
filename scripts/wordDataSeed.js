@@ -24,7 +24,7 @@ var WordDataSeed = [
     ],
     data: {
       zooAnimals: [
-        { eng: "Polar Bear", es: "Oso Polar", fr: "Ours Polaire" },
+        { eng: "Bear", es: "Oso", fr: "Ours " },
         { eng: "Cheetah", es: "Leopardo", fr: "Guépard" },
         { eng: "Monkey", es: "Mona", fr: "Singe" },
         { eng: "Giraffe", es: "Jirafa", fr: "Girafe" },
@@ -37,7 +37,7 @@ var WordDataSeed = [
         { eng: "Flamingo", es: "Flamenco", fr: "Flamant" },
         { eng: "Snake", es: "Serpiente", fr: "Serpent" },
         { eng: "Fox", es: "Zorro", fr: "Renarde" },
-        { eng: "Butterfly", es: "Marioposa", fr: "Papillon" },
+        { eng: "Butterfly", es: "Mariposa", fr: "Papillon" },
         { eng: "Sea Lion", es: "León Marino", fr: "Lion de Mer" },
         { eng: "Crab", es: "Cangrejo", fr: "Crabe" },
         { eng: "Iguana", es: "Iguana", fr: "Iguane" },

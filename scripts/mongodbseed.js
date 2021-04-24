@@ -12,17 +12,17 @@ async function seedDB() {
   try {
     await client.connect();
     console.log("Connected correctly to server");
-    const collection = client.db("iot").collection("worddatas");
+    const collection = client.db("learningapp").collection("worddatas");
     // The drop() command destroys all data from a collection.
     // Make sure you run it against proper database and collection.
     collection.drop();
     // make a bunch of time series data
 
-    collection.insertMany(WordDataSeed);
+    await collection.insertMany(WordDataSeed);
     console.log("Database seeded! :)");
     client.close();
   } catch (err) {
-    console.log(err.stack);
+    console.log(err);
   }
 }
 seedDB();
