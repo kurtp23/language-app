@@ -48,7 +48,7 @@ const FlashCardTemplate = (props) => {
                 <span className='cardNum'>Card #{props.cardNumber} - English</span>
               </Card.Meta>
               <Card.Description>
-                <h1>{props.englishWord}</h1>
+                <h1>{props.eng}</h1>
               </Card.Description>
             </Card.Content>
           </Card>
