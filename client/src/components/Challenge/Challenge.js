@@ -11,7 +11,7 @@ function Challenge({ category, language, userState }){
   const [score, setScore] = React.useState(0);
   const [gameEnd, setGameEnd] = React.useState(false);
   const [choices, setChoices] = React.useState([])
-
+  
   useEffect(() => {
     // get data from MongoDB
     API.getChallengeData(category)
@@ -50,8 +50,8 @@ function Challenge({ category, language, userState }){
 
   function handleStatusChanges(ans) {
     setCount(count + 1)
-
     if (ans) {setScore(score + 1)}
+    
     setChoices([])
     setChoices(data.sort(function() { 
       return 0.5 - Math.random(); 

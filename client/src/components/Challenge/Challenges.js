@@ -40,7 +40,7 @@ function Challenges({ userState }) {
 
   return (
     <>
-      <Container centered padded className='ui raised centered text container segment' >
+      <Container centered padded className='ui raised centered text container segment' style={{ height: '80%', width: '90%'}}>
             
         {!selection ? 
           <>

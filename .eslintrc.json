@@ -12,33 +12,33 @@
             }
         },
     "rules": {
-        "no-duplicate-case":"error",
+        "no-duplicate-case":"warn",
         "radix": 0,
-        "no-empty":"error",
-        "no-extra-semi":"error",
-        "no-func-assign": "error",
-        "no-irregular-whitespace":"error",
-        "no-unreachable": "error",
-        "curly": "error",
-        "dot-notation": "error",
-        "eqeqeq": "error",
-        "no-empty-function": "error",
-        "no-multi-spaces": "error",
-        "no-mixed-spaces-and-tabs": "error",
-        "default-case": "error",
-        "no-fallthrough": "error",
-        "no-use-before-define": "error",
-        "no-redeclare": "error",
+        "no-empty":"warn",
+        "no-extra-semi":"warn",
+        "no-func-assign": "warn",
+        "no-irregular-whitespace":"warn",
+        "no-unreachable": "warn",
+        "curly": "warn",
+        "dot-notation": "warn",
+        "eqeqeq": "warn",
+        "no-empty-function": "warn",
+        "no-multi-spaces": "warn",
+        "no-mixed-spaces-and-tabs": "warn",
+        "default-case": "warn",
+        "no-fallthrough": "warn",
+        "no-use-before-define": "warn",
+        "no-redeclare": "warn",
         "indent": [
-            "error",
+            "warn",
             2
         ],
         "quotes": [
-            "error",
+            "warn",
             "single"
         ],
         "semi": [
-            "error",
+            "warn",
             "always"
         ]
     }

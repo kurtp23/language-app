@@ -20,7 +20,8 @@ function CorrectAnswerHeader({ correctAnswer }) {
 
   return (
     <>
-      <Header textAlign='center' as='h3'>
+      <Header textAlign='center' as='h2'>
+        
         <Icon name='language' />
         {correctAnswer}
       </Header>

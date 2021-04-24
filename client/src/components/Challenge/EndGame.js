@@ -7,11 +7,11 @@ function EndGame({ onContinue, onExit, score, category }) {
 
   return (
     <>
-      <Container>     
+      <Container style={{ width: '80%', height: '80%'}}>     
         <Image floated='right' src={imgUrl} size='small' circular />       
-        <Header as='h2'>Nice Job!</Header>
+        <Header as='h2'>Your Score: {score}%</Header>
 
-        Your Score: {score}%
+        
 
         <Button onClick={onContinue} basic color='green'>
           <Icon name='like' />
