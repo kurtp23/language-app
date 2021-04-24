@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Card, Button } from 'semantic-ui-react';
 import { useSpring, animated as a } from 'react-spring';
 import './FlashCardTemplate.css';
-import Translate from '../../utils/spanish';
 import AudioSearch from '../../utils/audioSearch';
 
 const FlashCardTemplate = (props) => {
@@ -48,7 +47,7 @@ const FlashCardTemplate = (props) => {
                 <span className='cardNum'>Card #{props.cardNumber} - English</span>
               </Card.Meta>
               <Card.Description>
-                <h1>{props.englishWord}</h1>
+                <h1>{props.eng}</h1>
               </Card.Description>
             </Card.Content>
           </Card>
