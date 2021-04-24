@@ -7,14 +7,13 @@ function MemoryBoard({ userState }) {
   const [fronts, setFronts] = React.useState([]);
   const [deck, setDeck] = React.useState([]);
   const [firstCard, setFirstCard] = React.useState(null)
-  const [firstCardIndex, setFirstCardIndex] = React.useState(-1)
+  const [firstCardIndex, setFirstCardIndex] = React.useState(-1);
   
   useEffect(() => {
     const category = 'zooAnimals'
 
     API.getChallenges()
       .then((data) => {
-        console.log("This is the data ", data.data[0].data[category])
 
         setFronts(
           data.data[0].data[category].slice(0,9)
@@ -25,9 +24,12 @@ function MemoryBoard({ userState }) {
   }, [])
 
   useEffect(() => {
+      const lang = userState.language
+      console.log("This is the language", lang)
       const newDeck = [...fronts, ...fronts]
       .sort(() => Math.random() - 0.5)
       .map((card, index) => {
+        console.log("Setting this card, ", card[userState.language])
           return {
           content: card[userState.language],
           keyName: card.eng,

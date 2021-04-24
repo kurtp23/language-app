@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     if (user) {
       // API.postUser(user);
-      setUserState({ displayName: user.displayName, userId: user.uid, language: "spa", theme: "" });
+      setUserState({ displayName: user.displayName, userId: user.uid, language: "es", theme: "" });
       API.postUser(user).then(() => {
         API.getUser(user.uid).then((data) => {
           const newUser = {
