@@ -1,4 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
+const WordDataSeed = require("./wordDataSeed.js");
 
 async function seedDB() {
   // Connection URL
@@ -17,7 +18,7 @@ async function seedDB() {
     collection.drop();
     // make a bunch of time series data
 
-    collection.insertMany(timeSeriesData);
+    collection.insertMany(WordDataSeed);
     console.log("Database seeded! :)");
     client.close();
   } catch (err) {
