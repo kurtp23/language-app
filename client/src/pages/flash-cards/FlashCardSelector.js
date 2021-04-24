@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from 'semantic-ui-react';
 import FlashCard from './FlashCard';
-import FlashCardCategoryTemplate from '../../components/flash-card-template/FlashCardCategoryTemplate';
+import CategorySelector from '../categorySelector/CategorySelector';
 
 import API from '../../utils/API.js';
 
@@ -28,7 +28,7 @@ const FlashCardSelector = ({userState}) => {
 
   const RenderCategories = categoryList.map((cat, i) => {
     return (
-      <FlashCardCategoryTemplate
+      <CategorySelector
         key={i}
         category={cat.cat}
         description={cat.description}
