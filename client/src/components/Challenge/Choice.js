@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // semantic ui
-import { Card, Button, Image, Icon } from 'semantic-ui-react';
+import { Card, Header, Image, Icon } from 'semantic-ui-react';
 
 // react-spring
 import { useSpring, animated } from 'react-spring';
@@ -16,9 +16,9 @@ function Choice ({ name, value, correct, onPicked }) {
     config: { mass: 5, tension: 600, friction: 40 }
   });
 
-  function onSelection(e) {
-    const answerPicked = e.target.value;
-
+  function onSelection() {
+    const answerPicked = value;
+    
     setFlipped(state => !state);
 
     setTimeout(function(){      
@@ -27,22 +27,31 @@ function Choice ({ name, value, correct, onPicked }) {
 
   }
 
-  const revealedAnswer = <Card.Header style={{ fontSize: '15px', color: correct ? 'green' : 'red'}}>{value}</Card.Header>;
+  const revealedAnswer = <Header style={{ fontSize: '24px', color: correct ? 'green' : 'red'}}>{value}</Header>;
 
   return (
-    <Card color='teal'>
-      <Image size='medium' circular />
-      <Image src={imgString} size='medium' circular />
-      <Card.Content>
-        <Button color='green' fluid={true} value={value} onClick={onSelection}><Icon name='like' />Choose</Button>
-      </Card.Content>
-      <Card.Content style={{ padding: '5px'}}>
-        <animated.div
-          style={{ textAlign: 'center', opacity: opacity.interpolate(o => 1 - o), transform }}
+    <Card style={{position: 'relative'}}color='teal' onClick={onSelection}>
+      
+      <animated.div
+          style={{ textAlign: 'center', opacity: opacity.interpolate(o => o), transform }}
+        >
+        <Image src={imgString} size='medium' circular />
+      </animated.div>
+
+      <animated.div
+          style={{ position: 'absolute',
+            top: '50%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            left: 0,
+            right: 0,
+            textAlign: 'center',
+            opacity: opacity.interpolate(o => 1 - o), transform }}
         >
           {revealedAnswer}
-        </animated.div>
-      </Card.Content>
+
+      </animated.div>
+        
     </Card>
   );
 }
