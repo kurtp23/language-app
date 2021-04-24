@@ -3,7 +3,7 @@ import Card from '../../components/CardBoard/Card';
 
 import API from '../../utils/API.js';
 
-function NewBoard() {
+function NewBoard({ userState }) {
   const [fronts, setFronts] = React.useState([]);
   const [deck, setDeck] = React.useState([]);
   const [firstCard, setFirstCard] = React.useState(null)
@@ -29,7 +29,7 @@ function NewBoard() {
       .sort(() => Math.random() - 0.5)
       .map((card, index) => {
           return {
-          content: card.spa,
+          content: card[userState.language],
           keyName: card.eng,
           faceUp: false,
           index: index,
