@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 // Components
 import MemoryBoard from './MemoryBoard.js';
-import FlashCardCategoryTemplate from '../../components/flash-card-template/FlashCardCategoryTemplate.js';
+import CategorySelector from '../categorySelector/CategorySelector';
 
 // API calls
 import API from '../../utils/API.js';
@@ -34,7 +34,7 @@ function MemoryGame({ userState }) {
   }
 
   const RenderCategories = categoryList.map((cat, i) => {
-    return <FlashCardCategoryTemplate key={i} category={cat.cat} description={cat.description} onChange={handleSelection}/>;
+    return <CategorySelector key={i} category={cat.cat} description={cat.description} onChange={handleSelection}/>;
   });
 
 
