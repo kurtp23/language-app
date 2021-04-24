@@ -25,11 +25,9 @@ function MemoryBoard({ userState }) {
 
   useEffect(() => {
       const lang = userState.language
-      console.log("This is the language", lang)
       const newDeck = [...fronts, ...fronts]
       .sort(() => Math.random() - 0.5)
       .map((card, index) => {
-        console.log("Setting this card, ", card[userState.language])
           return {
           content: card[userState.language],
           keyName: card.eng,
