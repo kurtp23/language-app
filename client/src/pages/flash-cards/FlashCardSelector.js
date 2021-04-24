@@ -5,21 +5,22 @@ import CategorySelector from '../categorySelector/CategorySelector';
 
 import API from '../../utils/API.js';
 
-const FlashCardSelector = ({userState}) => {
+const FlashCardSelector = ({ userState }) => {
   const [categoryList, setCategoryList] = useState([]);
   const [selection, setSelection] = useState('');
 
   useEffect(() => {
-    API.getChallenges().then((data) => {
-      console.log('this is challenge data', data);
-      let list = data.data[0].names.map((name) => {
-        return ({
-          cat: name.cat,
-          description: name.description,
+    API.getChallenges()
+      .then((data) => {
+
+        let list = data.data[0].names.map((name) => {
+          return ({
+            cat: name.cat,
+            description: name.description,
+          });
         });
+        setCategoryList(list);
       });
-      setCategoryList(list);
-    });
   }, []);
 
   function handleSelection(sel) {
