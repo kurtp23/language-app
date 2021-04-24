@@ -3,25 +3,27 @@ import MemoryCard from '../../components/MemoryGame/MemoryCard.js';
 
 import API from '../../utils/API.js';
 
-function MemoryBoard({ userState }) {
+function MemoryBoard({ userState, category }) {
   const [fronts, setFronts] = React.useState([]);
   const [deck, setDeck] = React.useState([]);
   const [firstCard, setFirstCard] = React.useState(null)
   const [firstCardIndex, setFirstCardIndex] = React.useState(-1);
   
-  useEffect(() => {
-    const category = 'zooAnimals'
 
-    API.getChallenges()
+  useEffect(() => {
+    // get data from MongoDB
+    API.getChallengeData(category)
       .then((data) => {
 
+        console.log("Data", data.data)
         setFronts(
-          data.data[0].data[category].slice(0,9)
+          data.data.slice(0,9)
         )
+      });
 
-      })  
+  }, [category]);
 
-  }, [])
+
 
   useEffect(() => {
       const lang = userState.language
