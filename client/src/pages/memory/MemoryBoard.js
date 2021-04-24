@@ -4,6 +4,8 @@ import MemoryGameOver from '../../components/MemoryGame/MemoryGameOver.js';
 
 import API from '../../utils/API.js';
 
+import { Container, Header, Icon } from 'semantic-ui-react';
+
 function MemoryBoard({ userState, category }) {
   const [fronts, setFronts] = React.useState([]);
   const [deck, setDeck] = React.useState([]);
@@ -118,7 +120,11 @@ function MemoryBoard({ userState, category }) {
 
   return (
       <>
-        
+        {gameEnd ? 
+        <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='gamepad' />Thank you for Playing!</Header></Container> : 
+        <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='question circle outline' />Match Game!</Header></Container>
+        }
+
         {gameEnd ? <MemoryGameOver userState={userState} /> : <></>}
 
         <div className="Board">

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import API from '../../utils/API.js';
 
 import { Link } from 'react-router-dom';
-import { Button Container } from 'semantic-ui-react';
+import { Button, Container } from 'semantic-ui-react';
 
 function MemoryGameOver({ userState }){
     useEffect(() => {
