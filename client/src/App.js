@@ -15,7 +15,7 @@ import Stats from "./pages/stats/stats";
 import "./app.css";
 import Bot from "./pages/bot/bot.js";
 import API from "./utils/userAPI.js";
-import NewBoard from "./pages/memory/NewBoard";
+import MemoryGame from "./pages/memory/MemoryGame";
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
 import Settings from "./pages/settingsPage/settings.js";
@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     if (user) {
       // API.postUser(user);
-      setUserState({ displayName: user.displayName, userId: user.uid, language: "spa", theme: "" });
+      setUserState({ displayName: user.displayName, userId: user.uid, language: "es", theme: "" });
       API.postUser(user).then(() => {
         API.getUser(user.uid).then((data) => {
           const newUser = {
@@ -57,7 +57,7 @@ function App() {
 
             <Switch>
               <Route path="/game">
-                <NewBoard />
+                <MemoryGame userState={userState} />
               </Route>
               <Route path="/challenge">
                 <Challenges userState={userState} />
