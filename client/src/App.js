@@ -13,7 +13,7 @@ import postUser from "./utils/userApiPost.js";
 import getUser from "./utils/getUser";
 import Stats from "./pages/stats/stats";
 import "./app.css";
-import Bot from "./pages/bot/bot.js";
+// import Bot from "./pages/bot/bot.js";
 import API from "./utils/userAPI.js";
 import MemoryGame from "./pages/memory/MemoryGame";
 // hard-wiring in the Challenge for dev purposes
@@ -72,7 +72,7 @@ function App() {
                 <Settings userState={userState} setUserState={setUserState} />
               </Route>
               <Route path="/translate">
-                <Bot userState={userState}></Bot>
+                {/* <Bot userState={userState}></Bot> */}
               </Route>
               <Route path="/">
                 <Dashboard userState={userState} />
