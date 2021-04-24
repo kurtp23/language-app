@@ -4,7 +4,7 @@ import { Grid, Pagination, Divider, Button } from 'semantic-ui-react';
 import API from '../../utils/API';
 import { Link } from 'react-router-dom';
 
-const FlashCard = ({category, userState}) => {
+const FlashCard = ({category, language, userState}) => {
 
   const [flashCardList, setFlashCardList] = useState([]);
   const [activeFlashCard, setActiveFlashCard] = useState(1);
@@ -29,12 +29,10 @@ const FlashCard = ({category, userState}) => {
     API.getChallengeData(category)
       .then((data) => {
       // console.log('data is', data.data[0].data.farmAnimals);
-        let fcList = [];
-        console.log(data);
-        data.data.forEach((item) => {
-          fcList.push({                  
-            word: item.spa, 
-            englishWord: item.eng
+        let fcList = data.data.map((data) => {
+          return ({
+            eng: data.eng,                 
+            word: data[userState.language], 
           }); 
         });
         setFlashCardList(fcList);
@@ -43,7 +41,6 @@ const FlashCard = ({category, userState}) => {
     
   useEffect(() => {
     updateFlashCardsViewed(flashCardsViewed + 1);
-    console.log('flashcards viewed is', flashCardsViewed);
   }, [activeFlashCard]);
 
   return (
@@ -54,7 +51,7 @@ const FlashCard = ({category, userState}) => {
           <Grid.Row>
             <Grid.Column>
               <div style={{ height: '50vh', margins: '5px' }}>
-                <FlashCardTemplate category={category} cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} englishWord={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].englishWord : 'loading'}/>
+                <FlashCardTemplate category={category} cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} eng={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].eng : 'loading'}/>
               </div>
             </Grid.Column>
           </Grid.Row>

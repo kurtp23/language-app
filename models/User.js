@@ -27,7 +27,7 @@ const userSchema = new Schema({
   
   language: {
     type: String,
-    default: 'spa',
+    default: 'es',
   },
 
   userCreated: {
