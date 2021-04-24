@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import MemoryCard from '../../components/MemoryGame/MemoryCard.js';
+import MemoryGameOver from '../../components/MemoryGame/MemoryGameOver.js';
 
 import API from '../../utils/API.js';
 
@@ -14,9 +15,12 @@ function MemoryBoard({ userState, category }) {
     // get data from MongoDB
     API.getChallengeData(category)
       .then((data) => {
+        const dataRandom = data.data.sort(function() { 
+          return 0.5 - Math.random(); 
+        })
 
         setFronts(
-          data.data.slice(0,1)
+          dataRandom.slice(0,1)
         )
       });
 
@@ -115,7 +119,8 @@ function MemoryBoard({ userState, category }) {
   return (
       <>
         
-        {gameEnd ? <p>Game Over</p> : <></>}
+        {gameEnd ? <MemoryGameOver /> : <></>}
+
         <div className="Board">
           {gameCards}
         </div>
