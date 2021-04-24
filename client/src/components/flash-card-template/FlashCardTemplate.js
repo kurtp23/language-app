@@ -21,8 +21,6 @@ const FlashCardTemplate = (props) => {
   const [audioURL, setAudioURL] = useState('');
 
   useEffect(() => {
-    console.log('going');
-    // console.log('word is: ', props.word);
     (async() => {
       try {
         const url = await AudioSearch(props.word);
@@ -30,34 +28,6 @@ const FlashCardTemplate = (props) => {
       }
       catch (err) {console.log(err);}
     })();
-
-        
-    // try
-    // {
-    //   Translate.search(props.word).then((data) => {
-    //     if (typeof(data.data[0]) === 'string') {
-    //       setAudioURL('');
-    //       return;
-    //     } 
-
-    //     if (!data.data[0].hwi.prs) {
-    //       setAudioURL('');
-    //       return;
-    //     }
-            
-    //     if (!data.data[0].hwi.prs[0].sound) {
-    //       setAudioURL('');
-    //       return;
-    //     }
-
-    //     if (data.data[0].hwi.prs[0].sound.audio) {
-    //       setAudioURL(`https://media.merriam-webster.com/audio/prons/es/me/mp3/${data.data[0].hwi.prs[0].sound.audio.charAt(0)}/${data.data[0].hwi.prs[0].sound.audio}.mp3`);
-    //       return;
-    //     }
-    //   });
-    // }
-    // catch(err) {console.log(err);}
-
   }, [props.word]);
     
 
