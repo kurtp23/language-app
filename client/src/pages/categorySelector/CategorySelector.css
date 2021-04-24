@@ -1,32 +1,43 @@
-.c {
-    position: absolute;
-    height: 50%;
-    cursor: pointer;
-    will-change: transform, opacity;
-    margin: auto;
+.categoryCard {
+  outline: 3px solid #40e0d0; 
+  height: 100%;
+}
+
+.catSelBtn {
+  background-color: #40e0d0 !important;
+}
+
+.cat.label.categoryLabel {
+  background-color: #40e0d0; 
+  color: white;
+  font-size: 24px;
+}
+
+@media (max-device-width: 600px) {
+  .categoryCard {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      outline: 3px solid #f47835;
   }
-  
-.front,
-.back {
-    background-size: auto;
-    size: 100%;
+
+  .categoryContent {
+      margin: 0px;
+      padding: 0px;
+
   }
-  
-.templateContainer {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    user-select: none;
-    background: #f0f0f0;
+
+  .cat.label.categoryLabel {
+      font-size: 12px;
+      background-color: #fa8072
   }
-  
-.templateContainer > div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #40e0d0;
+
+  .catSelDiv {
+      opacity: 1 !important;
+
   }
+
+  .cat.categoryDescription {
+      font-size: 12px;
+  }
+}
