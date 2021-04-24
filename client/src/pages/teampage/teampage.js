@@ -1,17 +1,19 @@
 import React from 'react';
 import './teampage.css';
-import { Card, Container, Icon, Image, Grid, Segment, Header, Button } from 'semantic-ui-react';
+import { Card, Image, Grid, Segment, Header, Button } from 'semantic-ui-react';
+
 
 function TeamPage() {
+
   return (
     <>
       <br />
       <Header size='huge' textAlign='center' inverted={true} >
         <Header.Content>Meet The Team</Header.Content>
       </Header>
-      <Grid centered={true} columns='5'>
+      <Grid centered={true} columns='5' stackable>
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column >
             <Segment>
               <Card centered={true}>
                 <Image src='../../images/Team/destiny.jpg' wrapped ui={false} />
@@ -33,7 +35,7 @@ function TeamPage() {
               </Card>
             </Segment>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column >
             <Segment>
               <Card centered={true}>
                 <Image src='../../images/Team/erik.png' wrapped ui={false} />
@@ -55,7 +57,7 @@ function TeamPage() {
               </Card>
             </Segment>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column >
             <Segment>
               <Card centered={true}>
                 <Image src='../../images/Team/charles.png' wrapped ui={false} />
@@ -77,7 +79,7 @@ function TeamPage() {
               </Card>
             </Segment>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column >
             <Segment>
               <Card centered={true}>
                 <Image src='https://i.postimg.cc/jSB7HGh6/biopic.jpg' wrapped ui={false} />
@@ -99,7 +101,7 @@ function TeamPage() {
               </Card>
             </Segment>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column >
             <Segment>
               <Card centered={true}>
                 <Image src='https://i.postimg.cc/jSB7HGh6/biopic.jpg' wrapped ui={false} />

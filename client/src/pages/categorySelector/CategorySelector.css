@@ -1,0 +1,43 @@
+.categoryCard {
+  outline: 3px solid #40e0d0; 
+  height: 100%;
+}
+
+.catSelBtn {
+  background-color: #40e0d0 !important;
+}
+
+.cat.label.categoryLabel {
+  background-color: #40e0d0; 
+  color: white;
+  font-size: 24px;
+}
+
+@media (max-device-width: 600px) {
+  .categoryCard {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      outline: 3px solid #f47835;
+  }
+
+  .categoryContent {
+      margin: 0px;
+      padding: 0px;
+
+  }
+
+  .cat.label.categoryLabel {
+      font-size: 12px;
+      background-color: #fa8072
+  }
+
+  .catSelDiv {
+      opacity: 1 !important;
+
+  }
+
+  .cat.categoryDescription {
+      font-size: 12px;
+  }
+}
