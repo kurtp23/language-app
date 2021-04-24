@@ -8,16 +8,15 @@ function MemoryBoard({ userState, category }) {
   const [deck, setDeck] = React.useState([]);
   const [firstCard, setFirstCard] = React.useState(null)
   const [firstCardIndex, setFirstCardIndex] = React.useState(-1);
-  
+  const [gameEnd, setGameEnd] = React.useState(false)  
 
   useEffect(() => {
     // get data from MongoDB
     API.getChallengeData(category)
       .then((data) => {
 
-        console.log("Data", data.data)
         setFronts(
-          data.data.slice(0,9)
+          data.data.slice(0,1)
         )
       });
 
@@ -26,7 +25,6 @@ function MemoryBoard({ userState, category }) {
 
 
   useEffect(() => {
-      const lang = userState.language
       const newDeck = [...fronts, ...fronts]
       .sort(() => Math.random() - 0.5)
       .map((card, index) => {
@@ -40,6 +38,19 @@ function MemoryBoard({ userState, category }) {
       setDeck(newDeck)
       setFirstCard(null)
   }, [fronts])
+
+  useEffect(() => {
+    if (deck.length > 0) {
+      let faceDownCount = 0
+      deck.forEach((card) => {
+        if (!card.faceUp) {faceDownCount++}
+      })
+
+      if (faceDownCount === 0) {setGameEnd(true)}
+      console.log("Face Down Cards:", faceDownCount)
+    }
+  }, [deck])
+
 
   function flipCardTo(cardIdx, faceUp) {
 
@@ -61,14 +72,16 @@ function MemoryBoard({ userState, category }) {
   function flip(cardIdx) {
     
       if(firstCard === null) {
+        
         setFirstCard(deck[cardIdx].content);
         setFirstCardIndex(cardIdx);
-        
+
       } else {
         const firstCardContent = firstCard;
         const secondCardContent = deck[cardIdx].content;
         if(firstCardContent === secondCardContent) {
           setFirstCard(null);
+          
         } else {
           
           setTimeout(() => {
@@ -98,12 +111,15 @@ function MemoryBoard({ userState, category }) {
           faceUp={card.faceUp} />
       )
     })
-
+    
   return (
       <>
+        
+        {gameEnd ? <p>Game Over</p> : <></>}
         <div className="Board">
           {gameCards}
-        </div>)
+        </div>
+
       </>
   )
 }
