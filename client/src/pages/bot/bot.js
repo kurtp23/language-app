@@ -16,16 +16,17 @@ function Bot(props) {
   const [translateMessage, setTranslate] = useState("");
   const [fl, setFl] = useState("");
   const [tArr, setArr] = useState("");
-
+  require("dotenv").config();
+  const apiKey = process.env.REACT_APP_API_KEY;
   const googleTranslate = async () => {
     const lang = props.userState.language;
     console.log(lang);
-
+    console.log("api key", process.env, apiKey);
     translate(message, {
       from: "en",
       to: lang,
       engine: "google",
-      key: "AIzaSyCBNb7aSu6QxdN3zVkR7ZxKGcMBbPMbJiU",
+      key: process.env.API_KEY || process.env.REACT_APP_API_KEY,
     }).then((text) => {
       console.log(text); // Hola mundo
 
