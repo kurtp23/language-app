@@ -51,7 +51,6 @@ function MemoryBoard({ userState, category }) {
       })
 
       if (faceDownCount === 0) {setGameEnd(true)}
-      console.log("Face Down Cards:", faceDownCount)
     }
   }, [deck])
 
