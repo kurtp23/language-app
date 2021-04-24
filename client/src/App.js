@@ -57,7 +57,7 @@ function App() {
 
             <Switch>
               <Route path="/game">
-                <NewBoard />
+                <NewBoard userState={userState} />
               </Route>
               <Route path="/challenge">
                 <Challenges userState={userState} />
