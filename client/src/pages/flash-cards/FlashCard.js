@@ -4,7 +4,7 @@ import { Grid, Pagination, Divider, Button } from 'semantic-ui-react';
 import API from '../../utils/API';
 import { Link } from 'react-router-dom';
 
-const FlashCard = ({category, language, userState}) => {
+const FlashCard = ({category, userState}) => {
 
   const [flashCardList, setFlashCardList] = useState([]);
   const [activeFlashCard, setActiveFlashCard] = useState(1);
@@ -19,16 +19,12 @@ const FlashCard = ({category, language, userState}) => {
       challengeVal: 0,
       date: new Date()
     };
-        
-    console.log('This will go to stats schema: ', stat);
     API.putStat(userState.userId, stat);
-
   };
 
   useEffect(() => {
     API.getChallengeData(category)
       .then((data) => {
-      // console.log('data is', data.data[0].data.farmAnimals);
         let fcList = data.data.map((data) => {
           return ({
             eng: data.eng,                 
@@ -57,7 +53,7 @@ const FlashCard = ({category, language, userState}) => {
           </Grid.Row>
           <Divider horizontal style={{ content: 'center' }}>Language Learner</Divider>
           <Grid.Row >
-            <Grid.Column style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }} onClick={()=> console.log('I have been clicked!')}>
+            <Grid.Column style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
               <Pagination
                 activePage={activeFlashCard}
                 onPageChange={handlePaginationChange}
@@ -69,9 +65,9 @@ const FlashCard = ({category, language, userState}) => {
                 lastItem={null}
               />
             </Grid.Column>
-            <Grid.Column style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }} onClick={handleExit}>
+            <Grid.Column style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
               <Link to="">
-                <Button style={{ margin: '5px', backgroundColor: '#f47835', color: 'white' }} onClick={()=> console.log('I have been clicked!')}>
+                <Button style={{ margin: '5px', backgroundColor: '#f47835', color: 'white' }} onClick={handleExit}>
                         Exit
                 </Button>
               </Link>
