@@ -1,7 +1,7 @@
 import React from 'react';
-import './Card.css';
+import './MemoryCard.css';
 
-function Card({ flip, content, faceUp, index, imgKey }) {
+function MemoryCard({ flip, content, faceUp, index, imgKey }) {
 
   const imgString = '/images/Challenge/Choices/' + imgKey.replace(/\s/g, '') + '.PNG';
 
@@ -20,4 +20,4 @@ function Card({ flip, content, faceUp, index, imgKey }) {
 }
 
 
-export default Card;
+export default MemoryCard;

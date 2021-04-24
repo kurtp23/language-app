@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import Card from '../../components/CardBoard/Card';
+import MemoryCard from '../../components/MemoryGame/MemoryCard.js';
 
 import API from '../../utils/API.js';
 
-function NewBoard({ userState }) {
+function MemoryBoard({ userState }) {
   const [fronts, setFronts] = React.useState([]);
   const [deck, setDeck] = React.useState([]);
   const [firstCard, setFirstCard] = React.useState(null)
@@ -87,7 +87,7 @@ function NewBoard({ userState }) {
   
     const gameCards = deck.map((card, i) => {
       return (
-        <Card
+        <MemoryCard
           key={i}
           index={card.index}
           imgKey={card.keyName}
@@ -106,4 +106,4 @@ function NewBoard({ userState }) {
   )
 }
 
-export default NewBoard;
+export default MemoryBoard;

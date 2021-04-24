@@ -15,7 +15,7 @@ import Stats from "./pages/stats/stats";
 import "./app.css";
 import Bot from "./pages/bot/bot.js";
 import API from "./utils/userAPI.js";
-import NewBoard from "./pages/memory/NewBoard";
+import MemoryBoard from "./pages/memory/MemoryBoard";
 // hard-wiring in the Challenge for dev purposes
 import Challenges from "./components/Challenge/Challenges.js";
 import Settings from "./pages/settingsPage/settings.js";
@@ -57,7 +57,7 @@ function App() {
 
             <Switch>
               <Route path="/game">
-                <NewBoard userState={userState} />
+                <MemoryBoard userState={userState} />
               </Route>
               <Route path="/challenge">
                 <Challenges userState={userState} />
