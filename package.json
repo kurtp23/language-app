@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start:prod": "set NODE_ENV=dev && node server.js ",
+    "start:dev": "set NODE_ENV=dev && concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/userSeed.js && node scripts/wordDataSeed.js && node scripts/statsSeed.js",
     "install": "cd client && npm install",
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "howler": "^2.2.1",
     "if-env": "^1.0.4",
@@ -30,6 +31,7 @@
     "react-particles-js": "^3.4.1",
     "react-router-dom": "^5.2.0",
     "react-spring": "^9.1.1",
+    "react-tsparticles": "^1.26.4",
     "resize-observer-polyfill": "^1.5.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
