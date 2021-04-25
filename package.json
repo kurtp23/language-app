@@ -30,6 +30,7 @@
     "react-particles-js": "^3.4.1",
     "react-router-dom": "^5.2.0",
     "react-spring": "^9.1.1",
+    "react-tsparticles": "^1.26.4",
     "resize-observer-polyfill": "^1.5.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
