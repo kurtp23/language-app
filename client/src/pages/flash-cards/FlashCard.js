@@ -40,7 +40,7 @@ const FlashCard = ({category, userState}) => {
   }, [activeFlashCard]);
 
   return (
-    <div style={{ width: '100%' }} className="ui raised text container segment">
+    <div style={{ width: '100%' }} className="ui raised text container segment" style={{ top: '0px' }}>
       <h2 className="ui orange header">Flash Cards: {category} </h2>
       <div>
         <Grid columns={1} verticalAlign='bottom'>
