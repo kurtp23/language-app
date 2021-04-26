@@ -50,7 +50,7 @@ If you would like to contribute to this project, create a pull request with a co
       
 ## Login
       
-Learnt-Up utilizes Firebase login.
+Learnt-Up utilizes Firebase login. Currently, the user is able to login with their Gmail account.
 
 ## Homepage
       
@@ -60,11 +60,11 @@ From the Homepage the user can navigate to any other page in the application usi
 
 ## Translate
       
-This application features a translation tool powered by Google Translate to translate words quickly from Spanish and French into English.
+This application features a translation tool powered by Google Translate to translate words quickly from Spanish and French into English. The user enters the word they would like to translate into the input box, and upon tapping the 'translate' button the word will be translated using the Google Translate API
 
 ## Play
       
-This application features an interactive card-matching game.
+This application features an interactive card-matching game. The user selects a topic category and is then presented with rows of cards, face down. The user may select two cards, and if they are a match the cards will remain face-up. If not, the cards are turned back over and the user continues to search for matches.
 
 ## Flashcards
       
@@ -81,7 +81,14 @@ Clicking the small audio icon on the card will play audio of the correct pronunc
       
 ## Challenge
       
-The Challenge mini-app engages the user in a short multiple choice quiz that drills the user on vocabulary randomly selected from a chosen category of words.
+The Challenge mini-app engages the user in a short multiple choice quiz that drills the user on vocabulary randomly selected from a chosen category of words. The user first selects a topic category, and then five words from the chosen topics are selected at random and presented to the user with four pictures to choose from.
+
+<p align='center'><img src='./Images/App/Choices.png' width='250'>
+<img src='./Images/App/CorrectChoice.png' width='250'></p>
+
+After playing five rounds, the users results are displayed and posted to the stats databse.
+
+<p align='center'><img src='./Images/App/Results.png' width='250'></p>
 
 ## Stats
       
