@@ -13,13 +13,11 @@ function CorrectAnswerHeader({ correctAnswer }) {
 
 
     useEffect(() => {
-    (async() => {
-      try {
-        const url = await AudioSearch(correctAnswer);
-        setAudioURL(url);
-      }
-      catch (err) {console.log(err);}
-    })();
+      AudioSearch(correctAnswer).then((url) => {
+        console.log("Sound URL: ", url)
+        if (url.length > 1) {setAudioURL(url);}
+      })
+    
   }, [correctAnswer]);
 
   const playAudio = (e) => {
@@ -36,7 +34,7 @@ function CorrectAnswerHeader({ correctAnswer }) {
         {correctAnswer}
       </Header>
       <Header textAlign='center' as='h4'>
-        {audioURL ? <Icon onClick={playAudio} name='assistive listening systems' /> : 'Loading Sound...'}               
+        {audioURL.length ? <Icon onClick={playAudio} name='assistive listening systems' /> : 'Loading Sound...'}               
       </Header>
     </>
   );
