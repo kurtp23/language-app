@@ -11,11 +11,9 @@ import { Header, Icon } from 'semantic-ui-react';
 function CorrectAnswerHeader({ correctAnswer }) {
   const [audioURL, setAudioURL] = useState('');
 
-
     useEffect(() => {
       AudioSearch(correctAnswer)
       .then((url) => {
-        console.log("Sound URL: ", url)
         if (url && url.length > 1) {setAudioURL(url);}
       })
     
@@ -23,6 +21,7 @@ function CorrectAnswerHeader({ correctAnswer }) {
 
   const playAudio = (e) => {
     e.stopPropagation();  
+    
     let audio = new Audio(audioURL);
     audio.play();
   };
@@ -34,14 +33,11 @@ function CorrectAnswerHeader({ correctAnswer }) {
         <Icon name='language' />
         {correctAnswer}
       </Header>
-      <Header textAlign='center' as='h4'>
+      <Header onClick={playAudio} textAlign='center' as='h4'>
         {audioURL.length > 1 ? 
         <>
-        
-        <Header onClick={playAudio} textAlign='center' as='h3'>
           Click here for sound
           <Icon name='assistive listening systems' />
-        </Header>
         </>
          : 'Loading Sound...'}               
       </Header>
