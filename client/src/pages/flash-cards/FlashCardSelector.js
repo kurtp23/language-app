@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Card } from 'semantic-ui-react';
 import FlashCard from './FlashCard';
 import CategorySelector from '../categorySelector/CategorySelector';
-
 import API from '../../utils/API.js';
 
 const FlashCardSelector = ({ userState }) => {
@@ -39,20 +38,18 @@ const FlashCardSelector = ({ userState }) => {
   });
 
   return (
-    <>
-      <div className='ui raised text container segment'>
-        {!selection ? <h2 className='ui orange header'>Select a Category!</h2> : <></>}
+    <div className='ui raised text container segment'>
+      {!selection ? <h2 className='ui orange header'>Select a Category!</h2> : <></>}
 
-        {!selection ? (
-          <Card.Group itemsPerRow={2}>
-            {' '}
-            {RenderCategories}{' '}
-          </Card.Group>
-        ) : (
-          <FlashCard userState={userState} category={selection} />
-        )}
-      </div>
-    </>
+      {!selection ? (
+        <Card.Group itemsPerRow={2}>
+          {' '}
+          {RenderCategories}{' '}
+        </Card.Group>
+      ) : (
+        <FlashCard userState={userState} category={selection} />
+      )}
+    </div>
   );
 };
 
