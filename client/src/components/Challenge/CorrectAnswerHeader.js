@@ -13,9 +13,10 @@ function CorrectAnswerHeader({ correctAnswer }) {
 
 
     useEffect(() => {
-      AudioSearch(correctAnswer).then((url) => {
+      AudioSearch(correctAnswer)
+      .then((url) => {
         console.log("Sound URL: ", url)
-        if (url.length > 1) {setAudioURL(url);}
+        if (url && url.length > 1) {setAudioURL(url);}
       })
     
   }, [correctAnswer]);
@@ -34,7 +35,15 @@ function CorrectAnswerHeader({ correctAnswer }) {
         {correctAnswer}
       </Header>
       <Header textAlign='center' as='h4'>
-        {audioURL.length ? <Icon onClick={playAudio} name='assistive listening systems' /> : 'Loading Sound...'}               
+        {audioURL.length > 1 ? 
+        <>
+        
+        <Header onClick={playAudio} textAlign='center' as='h3'>
+          Click here for sound
+          <Icon name='assistive listening systems' />
+        </Header>
+        </>
+         : 'Loading Sound...'}               
       </Header>
     </>
   );
