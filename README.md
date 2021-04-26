@@ -4,7 +4,7 @@ https://opensource.org/licenses/MIT
 
 ## Description
 
-A mobile-first language learning application geared towards teaching young learners basic vocabulary in other languages (current primary focus is Spanish and then French, with plenty more to follow).
+Welcome to Learnt Up! A mobile-first language learning application geared towards teaching young learners basic vocabulary in other languages (current primary focus is Spanish and then French, with plenty more to follow). Learnt Up is packed with features that make learning a new language both easy and fun.
       
 ## Table of Contents 
       
@@ -15,6 +15,8 @@ A mobile-first language learning application geared towards teaching young learn
 * [Contributing](#contributing)
 
 * [Login](#login)
+
+* [Homepage](#Homepage)
 
 * [Translate](#translate)
       
@@ -40,7 +42,7 @@ Clone the application from the learning app repository and run 'npm install' to 
       
 ## Usage
 
-This application is buildt around several 'mini-apps' each with their own usage.
+This application is buildt around several 'mini-apps' each with their own usage. Learnt Up features: A text translator, a card matching game, a challenge/quiz, review flashcards, settings with the option to change the username or language, and a stats page that stores analytics from each other mini-app.
         
 ## Contributing
 
@@ -49,6 +51,12 @@ If you would like to contribute to this project, create a pull request with a co
 ## Login
       
 Learnt-Up utilizes Firebase login.
+
+## Homepage
+      
+From the Homepage the user can navigate to any other page in the application using either the icons or the dropdown nav bar. The user also has the option to sign-out of Learnt Up.
+
+<p align='center'><img src='./Images/App/HomePage.png' width='250'></p>
 
 ## Translate
       
@@ -60,7 +68,16 @@ This application features an interactive card-matching game.
 
 ## Flashcards
       
-The user may access the flashcard mini-app to view flashcards for reviewing language and learning new vocabulary.
+The user may access the flashcard page to view flashcards for reviewing language and learning new vocabulary. Upon selecting 'Flashcards' from the landing page, the user is presented with several different categories- zoo animals, places, etc. to choose from. 
+
+<p align='center'><img src='./Images/App/Categories.png' width='250'></p>
+
+Once the user selects a category, the flashcard collection generates and the user can page through each card in order. The user can click the card to flip it and reveal the word in the language being learned. 
+
+<p align='center'><img src='./Images/App/EnglishWord.png' width='250'>
+<img src='./Images/App/SpanishWord.png' width='250'></p>
+
+Clicking the small audio icon on the card will play audio of the correct pronunciation of the target word (currently only available in Spanish). Upon clicking exit, the number of flashcards viewed by the user will be posted in the database.
       
 ## Challenge
       
@@ -84,13 +101,27 @@ Learnt-Up utilizes several technologies to achieve its functionality:
     - Particle-React
     - Express
     - Mongoose
-    - MongoDB Atlast
+    - MongoDB Atlas
     - Webster's Dictionary API
     - Google Translate
 
 ## Questions
 
-For questions regarding this repo contact me at charlie.bateman117@gmail.com or visit my repository at https://github.com/Clatrobe00
+For questions regarding this repo contact one of the developers:
+
+    - charlie.bateman117@gmail.com 
+    - kurt_phillips@live.com
+    - eh26steve@gmail.com
+    - erik.justin.portillo@gmail.com
+    - flemingdestiny7401@gmail.com
+
+or visit their repositories: 
+
+    - https://github.com/Clatrobe00
+    - https://github.com/kurtp23
+    - https://github.com/rasputinforever
+    - https://github.com/Eliuth4k9
+    - https://github.com/Destinyfleming
 
 ## License
 
