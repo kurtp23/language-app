@@ -21,8 +21,9 @@ import Challenges from "./components/Challenge/Challenges.js";
 import Settings from "./pages/settingsPage/settings.js";
 import PS from "./components/PS/Ps.js";
 const auth = firebase.auth();
-
+require("dotenv").config();
 function App() {
+  console.log("this is env", process.env.REACT_APP_API_KEY);
   const [user] = useAuthState(auth);
   const [userState, setUserState] = useState({});
   const [dbUser, setDbUser] = useState({});
@@ -49,7 +50,7 @@ function App() {
 
   return (
     <div>
-      {/* <PS /> */}
+      <PS />
       {user ? (
         <Router>
           <div>
