@@ -2,7 +2,7 @@ import React from 'react';
 import './MemoryCard.css';
 
 // semantic ui
-import { Card, Header, Image, Icon } from 'semantic-ui-react';
+import { Image, Icon } from 'semantic-ui-react';
 
 function MemoryCard({ flip, content, faceUp, index, imgKey }) {
 
@@ -16,7 +16,7 @@ function MemoryCard({ flip, content, faceUp, index, imgKey }) {
   return (
     <>
       <div onClick={!faceUp ? handleFlip : null} className={`Card ${faceUp ? 'face-up': 'face-down'}`}>
-        {faceUp ? <><Image src={imgString} style={{ width: '100%', top: '0px' }} size='medium' circular/><p className='answerRevealed' style={{transform: 'scaleX(-1)'}}>{content}</p></> : ''}
+        {faceUp ? <><Image src={imgString} style={{ width: '100%', top: '0px' }} size='medium' circular/><p className='answerRevealed' style={{transform: 'scaleX(-1)'}}>{content}</p></> : <><Icon inverted={true} name='globe' /></>}
       </div>
     </>
   )

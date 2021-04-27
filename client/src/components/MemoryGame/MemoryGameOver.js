@@ -22,7 +22,7 @@ function MemoryGameOver({ userState }){
         <Container style={{ width: '80%', height: '80%'}}> 
 
         <Link to='/'>
-          <Button basic color='red'>
+          <Button style={{marginBottom: '10px', width: '100%'}} basic color='red'>
             Exit
           </Button>
         </Link>

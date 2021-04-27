@@ -19,7 +19,7 @@
   }
 
   .Card.face-down {
-    background-color: red;
+    background-color: #fa8072;
   }
 
   .answerRevealed {
