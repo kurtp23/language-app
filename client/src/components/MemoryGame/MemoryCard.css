@@ -18,6 +18,10 @@
     transform: rotateY(180deg);
   }
 
+  .Card.face-down {
+    background-color: red;
+  }
+
   .answerRevealed {
     color: black;
     font-size: 24px;
