@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import API from '../../utils/API';
+//import API from '../../utils/API';
+import getUser from "../../utils/getUser";
+import API from "../../utils/userAPI.js";
+import { useAuthState } from "react-firebase-hooks/auth";
+import firebase from "firebase/app";
 
+const auth = firebase.auth();
 
 const Chart = () => {
 
@@ -9,16 +14,18 @@ const Chart = () => {
   const [date, setDate] = useState('');
   const [userID, setUserID] = useState('');
 
+  const [user] = useAuthState(auth);
+
   useEffect(() => {
-    API.getStats()
-      .then((data) => {
+    
+    API.postUser(user).then(() => {
+      API.getUser(user.uid).then((data) => {
         console.log(data);
-        setFlashCard (data.data[0].stats[0].flashcardVal);
         setChallenge (data.data[0].stats[0].challengeVal);
-        setDate (data.data[0].stats[0].date);
-        setUserID(data.data[0].userID);
+        setFlashCard (data.data[0].stats[0].flashcardVal);
       });
-  }, []);
+    }); 
+  }, [user]);
 
   const value = flashCard;
   const value2 = challenge;

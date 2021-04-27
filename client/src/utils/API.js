@@ -14,7 +14,7 @@ export default {
     return axios.get('/api/flashcards');
   },
   getStats: function () {
-    return axios.get('/api/stats');
+    return axios.get('/api/users/stats');
   },
   putStat: function(userid, newStat) {
     const url = '/api/users/stats/' + userid;

@@ -33,11 +33,12 @@ function App() {
       setUserState({ displayName: user.displayName, userId: user.uid, language: "es", theme: "" });
       API.postUser(user).then(() => {
         API.getUser(user.uid).then((data) => {
+          console.log(data)
           const newUser = {
             displayName: data.data[0].username,
             userId: data.data[0].fire_id,
             language: data.data[0].language,
-            theme: "",
+            theme: ""
           };
           setUserState(newUser);
         });
