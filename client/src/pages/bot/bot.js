@@ -26,7 +26,7 @@ function Bot(props) {
       from: "en",
       to: lang,
       engine: "google",
-      key: process.env.API_KEY || process.env.REACT_APP_API_KEY,
+      key: process.env.REACT_APP_API_KEY,
     }).then((text) => {
       console.log(text); // Hola mundo
 
