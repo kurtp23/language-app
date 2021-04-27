@@ -5,19 +5,15 @@ function messageField(props) {
   const tArray = props.tArr;
   return (
     <>
-      <Grid centered={true} columns="5">
-        <Grid.Row>
-          <Grid.Column>
-            <Segment>
-              <Card centered={true}>
-                <Card.Content header={"English: " + props.send} />
-                <Card.Content header={"Spanish: " + props.translate} />
-                <Card.Content header={props.fl} extra />
-              </Card>
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Container>
+        <Segment>
+          <Card centered={true} fluid={true}>
+            <Card.Content header={"English: " + props.send} />
+            <Card.Content header={"Translation: " + props.translate} />
+            <Card.Content header={props.fl} extra />
+          </Card>
+        </Segment>
+      </Container>
     </>
   );
 }
