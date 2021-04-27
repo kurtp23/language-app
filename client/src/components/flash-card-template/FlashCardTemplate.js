@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Image, Grid, GridColumn } from 'semantic-ui-react';
 import { useSpring, animated as a } from 'react-spring';
 import './FlashCardTemplate.css';
 import AudioSearch from '../../utils/audioSearch';
@@ -15,7 +15,11 @@ const FlashCardTemplate = (props) => {
     config: { mass: 5, tension: 600, friction: 80 }
   });
 
-  // Audio States
+  // Image State
+
+  const [img, setImg] = useState('');
+
+  // Audio State
 
   const [audioURL, setAudioURL] = useState('');
 
@@ -28,8 +32,12 @@ const FlashCardTemplate = (props) => {
       catch (err) {console.log(err);}
     })();
   }, [props.word]);
-    
 
+  useEffect(() => {
+    const imgString = '/images/Challenge/Choices/' + props.eng.replace(/\s/g, '') + '.PNG';
+    setImg(imgString);
+  }, [props.word]);
+  
   const playAudio = (e) => {
     e.stopPropagation();  
     let audio = new Audio(audioURL);
@@ -47,8 +55,9 @@ const FlashCardTemplate = (props) => {
                 <span className='cardNum'>Card #{props.cardNumber} - English</span>
               </Card.Meta>
               <Card.Description>
-                <h1>{props.eng}</h1>
+                <h2>{props.eng}</h2>
               </Card.Description>
+              <Image style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} src={img} size='small' circular/>
             </Card.Content>
           </Card>
         </a.div>
@@ -60,9 +69,18 @@ const FlashCardTemplate = (props) => {
                 <span className='cardNum'>Card #{props.cardNumber} - Spanish</span>
               </Card.Meta>
               <Card.Description>
-                <h1>{props.word}</h1>
-                <Button size='mini' circular icon='volume up' onClick={playAudio} color={audioURL ? 'teal' : 'grey'} />
+                <Grid columns={2}>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <h2>{props.word}</h2>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Button size='mini' circular icon='volume up' onClick={playAudio} color={audioURL ? 'teal' : 'grey'} />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
               </Card.Description>
+              <Image style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} src={img} size='small' circular/>
             </Card.Content>
           </Card>
         </a.div>

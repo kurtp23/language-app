@@ -2,8 +2,8 @@
 import React, { useEffect } from 'react';
 
 // Components
-import Challenge from './Challenge.js';
-import CategorySelector from '../../pages/categorySelector/CategorySelector';
+import Challenge from '../../components/Challenge/Challenge.js';
+import CategorySelector from '../categorySelector/CategorySelector';
 
 // API calls
 import API from '../../utils/API.js';

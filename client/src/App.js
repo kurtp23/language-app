@@ -17,7 +17,7 @@ import Bot from "./pages/bot/bot.js";
 import API from "./utils/userAPI.js";
 import MemoryGame from "./pages/memory/MemoryGame";
 // hard-wiring in the Challenge for dev purposes
-import Challenges from "./components/Challenge/Challenges.js";
+import Challenges from "./pages/challenge/Challenges.js";
 import Settings from "./pages/settingsPage/settings.js";
 import PS from "./components/PS/Ps.js";
 const auth = firebase.auth();

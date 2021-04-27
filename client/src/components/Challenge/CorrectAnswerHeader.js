@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import AudioSearch from '../../utils/audioSearch';
 
 // semantic ui
 import { Header, Icon } from 'semantic-ui-react';
@@ -7,16 +9,22 @@ import { Header, Icon } from 'semantic-ui-react';
 // import API from '../../utils/API.js'
 
 function CorrectAnswerHeader({ correctAnswer }) {
-  const [sound, setSound] = React.useState(false);
-  useEffect(() => {
-    console.log('Do an API to Webster to get the audio');
+  const [audioURL, setAudioURL] = useState('');
 
+    useEffect(() => {
+      AudioSearch(correctAnswer)
+      .then((url) => {
+        if (url && url.length > 1) {setAudioURL(url);}
+      })
+    
   }, [correctAnswer]);
 
-  function playSound() {
-    console.log('listen to sound');
-    // setSound(true)
-  }
+  const playAudio = (e) => {
+    e.stopPropagation();  
+    
+    let audio = new Audio(audioURL);
+    audio.play();
+  };
 
   return (
     <>
@@ -25,8 +33,13 @@ function CorrectAnswerHeader({ correctAnswer }) {
         <Icon name='language' />
         {correctAnswer}
       </Header>
-      <Header textAlign='center' as='h4'>
-        {sound ? <Icon onClick={playSound} name='assistive listening systems' /> : 'Loading Sound...'}               
+      <Header onClick={playAudio} textAlign='center' as='h4'>
+        {audioURL.length > 1 ? 
+        <>
+          Click here for sound
+          <Icon name='assistive listening systems' />
+        </>
+         : 'Loading Sound...'}               
       </Header>
     </>
   );
