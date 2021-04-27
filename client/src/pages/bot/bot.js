@@ -11,21 +11,22 @@ import { Card, Container } from 'semantic-ui-react';
 import translate from 'translate';
 
 function Bot(props) {
-  const [message, setMessage] = useState('');
-  const [sentMessage, setMessageSend] = useState('');
-  const [translateMessage, setTranslate] = useState('');
-  const [fl, setFl] = useState('');
-  const [tArr, setArr] = useState('');
-
+  const [message, setMessage] = useState("");
+  const [sentMessage, setMessageSend] = useState("");
+  const [translateMessage, setTranslate] = useState("");
+  const [fl, setFl] = useState("");
+  const [tArr, setArr] = useState("");
+  require("dotenv").config();
+  const apiKey = process.env.REACT_APP_API_KEY;
   const googleTranslate = async () => {
     const lang = props.userState.language;
     console.log(lang);
-
+    console.log("api key", process.env, apiKey);
     translate(message, {
       from: 'en',
       to: lang,
-      engine: 'google',
-      key: 'AIzaSyDJCvKsvfAvjf-iGpOhkKJQEdZAz6quGV0',
+      engine: "google",
+      key: process.env.REACT_APP_API_KEY,
     }).then((text) => {
       console.log(text); // Hola mundo
 

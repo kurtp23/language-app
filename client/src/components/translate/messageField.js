@@ -1,28 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Divider, Grid, Segment } from 'semantic-ui-react';
+import { Card, Divider, Grid,Container, Segment } from 'semantic-ui-react';
 
 function messageField(props) {
 
   const tArray = props.tArr;
 
   return (
-    <div style={{paddingTop: '5em'}}>
-      <Card centered={true}>
+    <>
+      <Container>
         <Segment>
-          <Grid columns={2} relaxed='very'>
-            <Grid.Column>
-              <Card.Content header={'English:'} />
-              <Card.Content header={props.send} />
-            </Grid.Column>
-            <Grid.Column>
-              <Card.Content header={'Spanish:'} />
-              <Card.Content header={props.translate} />
-            </Grid.Column>
-          </Grid>
-          <Divider vertical>And</Divider>
+          <Card centered={true} fluid={true}>
+            <Card.Content header={"English: " + props.send} />
+            <Card.Content header={"Translation: " + props.translate} />
+            <Card.Content header={props.fl} extra />
+          </Card>
         </Segment>
-      </Card>
-    </div>
+      </Container>
+    </>
   );
 }
 export default messageField;
