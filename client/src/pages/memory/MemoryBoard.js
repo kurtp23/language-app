@@ -4,7 +4,7 @@ import MemoryGameOver from '../../components/MemoryGame/MemoryGameOver.js';
 
 import API from '../../utils/API.js';
 
-import { Container, Header, Icon } from 'semantic-ui-react';
+import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 
 function MemoryBoard({ userState, category }) {
   const [fronts, setFronts] = React.useState([]);
@@ -22,7 +22,7 @@ function MemoryBoard({ userState, category }) {
         })
 
         setFronts(
-          dataRandom.slice(0,5)
+          dataRandom.slice(0,6)
         )
       });
 
@@ -107,30 +107,35 @@ function MemoryBoard({ userState, category }) {
   
     const gameCards = deck.map((card, i) => {
       return (
-        <MemoryCard
-          key={i}
-          index={card.index}
-          imgKey={card.keyName}
-          flip={flip}
-          content={card.content}
-          faceUp={card.faceUp} />
+        <Grid.Column>
+          <MemoryCard
+            key={i}
+            index={card.index}
+            imgKey={card.keyName}
+            flip={flip}
+            content={card.content}
+            faceUp={card.faceUp} />
+          </Grid.Column>
       )
     })
 
 
   return (
       <>
+      <Container centered padded className='ui raised centered text container segment' style={{ height: '80%', width: '90%'}}>
         {gameEnd ? 
         <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='gamepad' />Thank you for Playing!</Header></Container> : 
         <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='question circle outline' />Match Game!</Header></Container>
         }
 
         {gameEnd ? <MemoryGameOver userState={userState} /> : <></>}
+        <Grid>
+          <Grid.Row columns={3} >
+              {gameCards}
+          </Grid.Row>
+        </Grid>
 
-        <div className="Board">
-          {gameCards}
-        </div>
-
+        </Container>
       </>
   )
 }

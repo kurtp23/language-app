@@ -40,20 +40,23 @@ function MemoryGame({ userState }) {
 
   return (
     <>
-      <Container centered padded className='ui raised centered text container segment' style={{ height: '80%', width: '90%'}}>
             
         {!selection ? 
           <>
+          
+            <Container centered padded className='ui raised centered text container segment' style={{ height: '80%', width: '90%'}}>
             <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='book' />Choose a Category</Header></Container>
             <Divider />
+            <Card.Group centered itemsPerRow={2}>{RenderCategories}</Card.Group>
+            </Container>
           </>
           : <></>}
             
-        {!selection ? <Card.Group centered itemsPerRow={2}>{RenderCategories}</Card.Group> : <></>}
                 
-        {selection ? <MemoryBoard category={selection} userState={userState} language={userState.language} category={selection}/> : <></>}
             
-      </Container>
+      
+      {selection ? <MemoryBoard category={selection} userState={userState} language={userState.language} category={selection}/> : <></>}
+      
     </>
   );
 }
