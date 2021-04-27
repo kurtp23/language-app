@@ -5,7 +5,7 @@
     height: 100px;
     width: 100px;
     border-radius: 5px;
-    margin: 5px;
+    margin-bottom: 5px;
     
     transition: transform 0.8s;
     font-size: 3em;

@@ -130,7 +130,7 @@ function MemoryBoard({ userState, category }) {
 
         {gameEnd ? <MemoryGameOver userState={userState} /> : <></>}
         <Grid>
-          <Grid.Row columns={3} centered={true}>
+          <Grid.Row columns={3} >
               {gameCards}
           </Grid.Row>
         </Grid>
