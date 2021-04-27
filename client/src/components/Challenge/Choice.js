@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // semantic ui
-import { Card, Header, Image, Icon } from 'semantic-ui-react';
+import { Card, Header, Image } from 'semantic-ui-react';
 
 // react-spring
 import { useSpring, animated } from 'react-spring';

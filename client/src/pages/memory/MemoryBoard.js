@@ -22,7 +22,7 @@ function MemoryBoard({ userState, category }) {
         })
 
         setFronts(
-          dataRandom.slice(0,5)
+          dataRandom.slice(0,6)
         )
       });
 
