@@ -33,7 +33,7 @@ function Choice ({ name, value, correct, onPicked }) {
     <Card style={{position: 'relative'}}color='teal' onClick={onSelection}>
       
       <animated.div
-          style={{ textAlign: 'center', opacity: opacity.interpolate(o => o), transform }}
+          style={{ textAlign: 'center', opacity: opacity.to(o => o), transform }}
         >
         <Image src={imgString} size='medium' circular />
       </animated.div>
@@ -46,7 +46,7 @@ function Choice ({ name, value, correct, onPicked }) {
             left: 0,
             right: 0,
             textAlign: 'center',
-            opacity: opacity.interpolate(o => 1 - o), transform }}
+            opacity: opacity.to(o => 1 - o), transform }}
         >
           {revealedAnswer}
 

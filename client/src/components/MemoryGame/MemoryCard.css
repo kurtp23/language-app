@@ -9,11 +9,25 @@
     float: left;
     transition: transform 0.8s;
     font-size: 3em;
-    padding-top: 30px;
+    padding-top: 0px;
   }
   
   .Card.face-up {
     border: #DB7093;
     background-color: #98FB98;
     transform: rotateY(180deg);
+  }
+
+  .answerRevealed {
+    color: black;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    float: left;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
   }
