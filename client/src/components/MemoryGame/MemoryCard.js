@@ -15,7 +15,7 @@ function MemoryCard({ flip, content, faceUp, index, imgKey }) {
 
   return (
     <>
-      <div onClick={!faceUp ? handleFlip : null} className={`Card ${faceUp ? 'face-up': ''}`}>
+      <div onClick={!faceUp ? handleFlip : null} className={`Card ${faceUp ? 'face-up': 'face-down'}`}>
         {faceUp ? <><Image src={imgString} style={{ width: '100%', top: '0px' }} size='medium' circular/><p className='answerRevealed' style={{transform: 'scaleX(-1)'}}>{content}</p></> : ''}
       </div>
     </>
