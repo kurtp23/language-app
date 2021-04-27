@@ -31,6 +31,8 @@ Welcome to Learnt Up! A mobile-first language learning application geared toward
 * [Settings](#Settings)
 
 * [Technologies](#Technologies)
+
+* [Future Development](#Development)
       
 * [Questions](#questions)
 
@@ -52,6 +54,8 @@ If you would like to contribute to this project, create a pull request with a co
       
 Learnt-Up utilizes Firebase login. Currently, the user is able to login with their Gmail account.
 
+<p align='center'><img src='./Images/App/Login.png' width='350'></p>
+
 ## Homepage
       
 From the Homepage the user can navigate to any other page in the application using either the icons or the dropdown nav bar. The user also has the option to sign-out of Learnt Up.
@@ -62,9 +66,16 @@ From the Homepage the user can navigate to any other page in the application usi
       
 This application features a translation tool powered by Google Translate to translate words quickly from Spanish and French into English. The user enters the word they would like to translate into the input box, and upon tapping the 'translate' button the word will be translated using the Google Translate API
 
+<p align='center'><img src='./Images/App/Translate.png' width='250'></p>
+
 ## Play
       
 This application features an interactive card-matching game. The user selects a topic category and is then presented with rows of cards, face down. The user may select two cards, and if they are a match the cards will remain face-up. If not, the cards are turned back over and the user continues to search for matches.
+
+<p align='center'><img src='./Images/App/Matching.png' width='250'>
+<img src='./Images/App/AllMatched.png' width='250'></p>
+
+Once every match has been made, the user may exit the game and their results will be posted into the database.
 
 ## Flashcards
       
@@ -112,6 +123,16 @@ Learnt-Up utilizes several technologies to achieve its functionality:
     - Webster's Dictionary API
     - Google Translate
 
+## Development
+
+In the future, we would like to develop further features such as:
+
+    - New Games for the 'Play' page.
+    - New Languages enabled accross all pages.
+    - Enhanced Data Analytics (to determine preferred app features, most common usage etc.)
+    - Theme swapping available in Settings.
+    - Enhanced Login that does not require a Gmail account.
+
 ## Questions
 
 For questions regarding this repo contact one of the developers:
@@ -124,11 +145,15 @@ For questions regarding this repo contact one of the developers:
 
 or visit their repositories: 
 
-    - https://github.com/Clatrobe00
-    - https://github.com/kurtp23
-    - https://github.com/rasputinforever
-    - https://github.com/Eliuth4k9
-    - https://github.com/Destinyfleming
+Charles Latrobe - https://github.com/Clatrobe00
+
+Kurt Phillips - https://github.com/kurtp23
+    
+Erik Portillo - https://github.com/rasputinforever
+    
+Steve Eliuth - https://github.com/Eliuth4k9
+    
+Destiny Fleming - https://github.com/Destinyfleming
 
 ## License
 
