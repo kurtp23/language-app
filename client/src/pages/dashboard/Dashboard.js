@@ -6,10 +6,27 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => (
   <Container>
-    <Header as='h1' icon inverted textAlign='center' className='header'>
-      <Icon name='globe' />
-      Language Learning App
-    </Header>
+    <br></br>
+    <Grid centered columns={1} >
+      <Grid.Row only='computer'>
+        <Grid.Column >
+          <Header as='h1' icon inverted textAlign='center' className='header' style={{ fontSize:55}}>
+            <Icon name='globe' />
+            Learnt-Up
+          </Header>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+    <Grid centered columns={1} >
+      <Grid.Row only='mobile tablet'>
+        <Grid.Column >
+          <Header as='h1' icon inverted textAlign='center' className='header' style={{ fontSize:35}}>
+            <Icon name='globe' />
+            Learnt-Up
+          </Header>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
     <Divider />
     <Grid centered columns={2} >
       <Grid.Row >
