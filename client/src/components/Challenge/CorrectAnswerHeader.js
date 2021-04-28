@@ -6,7 +6,6 @@ import AudioSearch from '../../utils/audioSearch';
 import { Header, Icon } from 'semantic-ui-react';
 
 // API calls
-// import API from '../../utils/API.js'
 
 function CorrectAnswerHeader({ correctAnswer }) {
   const [audioURL, setAudioURL] = useState('');
