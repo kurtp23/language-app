@@ -35,7 +35,6 @@ const Chart = (props) => {
       <div className='ui raised very padded text container segment'>
         <h4 className='ui orange header' textAlign='center'>
           {' '}
-          Flash Card Stats
         </h4>
         <Image src={statsChart} fluid />
       </div>

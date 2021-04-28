@@ -35,10 +35,10 @@ const NavBar = (props) => (
           <Menu stackable>
             <Menu.Item>
               <img src='../../project3-icon.png' />
-              <h4> Language Learning App</h4>
+              <h4>Learnt-up</h4>
             </Menu.Item>
             <Menu.Item>
-              <p>{props.userState.displayName}</p>
+              {props.userState.displayName}
             </Menu.Item>  
             <Menu.Menu position='right'>
               <Menu.Item>
@@ -46,32 +46,32 @@ const NavBar = (props) => (
                   <Dropdown.Menu>
                     <Dropdown.Item>
                       <Link to='/game'>
-                        <p>Game</p>
+                        Game
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/challenge'>
-                        <p>Challenges</p>
+                        Challenges
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/flashcards'>
-                        <p>Flashcards</p>
+                        Flashcards
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/translate'>
-                        <p>Translate</p>
+                        Translate
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/stats'>
-                        <p>Stats</p>
+                        Stats
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/settings'>
-                        <p> Settings</p>
+                         Settings
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -79,7 +79,7 @@ const NavBar = (props) => (
               </Menu.Item>
               <Menu.Item>
                 <Link to='/'>
-                  <p>Home</p>
+                  <p>Home</p> 
                 </Link>
               </Menu.Item>
               <Menu.Item>
@@ -103,37 +103,37 @@ const NavBar = (props) => (
                   <Dropdown.Menu>
                     <Dropdown.Item>
                       <Link to='/'>
-                        <a>Home</a>
+                        Home
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/game'>
-                        <a>Game</a>
+                        Game
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/challenge'>
-                        <a>Challenges</a>
+                        Challenges
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/flashcards'>
-                        <a>Flashcards</a>
+                        Flashcards
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/translate'>
-                        <a>Translate</a>
+                        Translate
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/stats'>
-                        <a>Stats</a>
+                        Stats
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to='/settings'>
-                        <a> Settings</a>
+                         Settings
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>

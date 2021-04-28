@@ -8,7 +8,7 @@ const Dashboard = () => (
   <Container>
     <Header as='h1' icon inverted textAlign='center' className='header'>
       <Icon name='globe' />
-      Language Learning App
+      Learnt-Up
     </Header>
     <Divider />
     <Grid centered columns={2} >
