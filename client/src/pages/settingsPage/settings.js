@@ -6,6 +6,7 @@ import {
   Checkbox,
   Select,
   Button,
+  Segment,
 } from 'semantic-ui-react';
 import './settings.css';
 
@@ -39,23 +40,25 @@ function Settings(props) {
         <Header color='orange' as="h1" >Settings</Header>
         <Grid >
           <Grid.Row>
-            <Grid.Column centered={true} width={10}>
+            <Grid.Column centered={true} >
               <Header inverted={true}>Change Display Name</Header>
-              <Input onChange={handleInputChange} placeholder='Change Name' ></Input>
-              <Button
-                onClick={() => {
-                  API.putUser(props.userState.userId, changeName)
-                    .then(() => {
-                      props.setUserState({ ...props.userState, displayName: changeName });
-                    })
-                    .catch((err) => {
-                      console.log('errinput user:', err);
-                    });
-                }}
-              >
-                Save 
-              </Button>
-             
+              <Segment>
+                <Input onChange={handleInputChange} placeholder='Change Name' fluid>
+                  <input />
+                  <Button
+                    onClick={() => {
+                      API.putUser(props.userState.userId, changeName)
+                        .then(() => {
+                          props.setUserState({ ...props.userState, displayName: changeName });
+                        })
+                        .catch((err) => {
+                          console.log('errinput user:', err);
+                        });
+                    }}
+                    icon="check"
+                  />
+                </Input>
+              </Segment>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -73,6 +76,7 @@ function Settings(props) {
                 onChange={handleOnChange}
                 placeholder='Select Language'
                 options={languageOptions}
+                fluid
               />
             </Grid.Column>
           </Grid.Row>
