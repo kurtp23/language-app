@@ -90,7 +90,7 @@ const NavBar = (props) => (
         </Segment>
       </Grid.Column>
     </Grid.Row>
-    <Grid.Row columns={1} only='mobile'>
+    <Grid.Row columns={1} only='mobile tablet'>
       <Grid.Column>
         <Segment>
           <Menu>
