@@ -40,14 +40,14 @@ const FlashCard = ({category, userState}) => {
   }, [activeFlashCard]);
 
   return (
-    <div style={{ width: '100%' }} className="ui raised text container segment" style={{ top: '0px' }}>
+    <div style={{ width: '100%' }} className="ui raised text container segment" style={{ top: '0px', width: '100%', margin: '0px' }}>
       <h2 className="ui orange header">Flash Cards: {category} </h2>
       <div>
         <Grid columns={1} verticalAlign='bottom'>
           <Grid.Row>
             <Grid.Column>
               <div style={{ height: '50vh', margins: '5px' }}>
-                <FlashCardTemplate category={category} cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} eng={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].eng : 'loading'}/>
+                <FlashCardTemplate category={category} cardNumber={activeFlashCard} word={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].word : 'loading...'} eng={flashCardList[activeFlashCard -1] ? flashCardList[activeFlashCard -1].eng : 'loading'} language={userState.language}/>
               </div>
             </Grid.Column>
           </Grid.Row>
