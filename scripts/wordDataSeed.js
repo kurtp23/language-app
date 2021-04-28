@@ -122,16 +122,16 @@ var WordDataSeed = [
   },
 ];
 
-// db.WordData.deleteMany({})
-//   .then(
-//     db.WordData.collection.insertMany(WordDataSeed).then((data) => {
-//       console.log(data.result.n + " records inserted!");
-//       process.exit(0);
-//     })
-//   )
-//   .catch((err) => {
-//     console.error(err);
-//     process.exit(1);
-//   });
+db.WordData.deleteMany({})
+  .then(
+    db.WordData.collection.insertMany(WordDataSeed).then((data) => {
+      console.log(data.result.n + " records inserted!");
+      process.exit(0);
+    })
+  )
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
 
 module.exports = WordDataSeed;
