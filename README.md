@@ -105,6 +105,10 @@ After playing five rounds, the users results are displayed and posted to the sta
       
 All three of the interactive apps feed information in a stats database that tracks flashcards viewed, quiz results, and game results for each unique user.
 
+Currently, stats track how many times the user has accessed the challenge and flashcard page.
+
+<p align='center'><img src='./Images/App/Stats.png' width='350'></p>
+
 ## Settings
       
 From settings, the user can manually set a custom username and select which language they'd like to use (currently limited to Spanish and French)
