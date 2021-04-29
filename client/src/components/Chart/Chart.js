@@ -7,16 +7,20 @@ const Chart = (props) => {
   const [challenge, setChallenge] = useState(0);
   const [memoryGame, setMemoryGame] = useState(0);
   const [challengePercent, setChallengePercent] = useState(0)
-
+  const [totalFlashCards, setTotalFlashCards] = useState(0)
+  const [totalMemoryGames, setTotalMemoryGames] = useState(0)
+  
   useEffect(() => {
     if (props.userState.userId) {
       API.getUser(props.userState.userId).then((data) => {
-        console.log("this is stats use effect", data.data);
         let challenge = 0;
         let flash = 0;
         let memory = 0;
 
         let challengeData = []
+        let flaschardCount = 0
+        let memoryGameCount = 0
+
         data.data[0].stats.forEach((stat) => {
           if (stat.challengeVal) {
             challenge++;
@@ -24,9 +28,11 @@ const Chart = (props) => {
           }
           if (stat.flashcardVal) {
             flash++;
+            flaschardCount = flaschardCount + stat.flashcardVal
           }
           if (stat.memoryVal) {
             memory++;
+            memoryGameCount = memoryGameCount + stat.memoryVal
           }
         });
         setChallenge(challenge);
@@ -40,10 +46,12 @@ const Chart = (props) => {
           })
           setChallengePercent(sumVal/challengeData.length)
         }
+
+        setTotalFlashCards(flaschardCount)
+        setTotalMemoryGames(memoryGameCount)
       });
     }
   });
-  console.log("chall/flash are", challenge, flashCard, memoryGame);
   const value = flashCard;
   const value2 = challenge;
   const value3 = memoryGame;
@@ -58,7 +66,12 @@ const Chart = (props) => {
           {" "}
         </h4>
         <Image src={statsChart} fluid />
-        <p>Average Challenge Score: {challengePercent.toFixed(1)}%</p>
+        <ul>
+          <li>Average Challenge Score: {challengePercent.toFixed(1)}%</li>
+          <li>Flashcards Viewed: {totalFlashCards}</li>
+          <li>Times Played Memory Game: {totalMemoryGames}</li>
+        </ul>
+
       </div>
     </>
   );
