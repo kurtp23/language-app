@@ -74,13 +74,15 @@ function TeamPage() {
           <Grid.Column>
             <Segment>
               <Card centered={true}>
-                <Image src='https://i.postimg.cc/jSB7HGh6/biopic.jpg' wrapped ui={false} />
+              <Image src="../../images/Team/steveH.jpg" wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>Steve Eliuth </Card.Header>
                   <Card.Meta>
-                    <span className='date'>Joined in 2015</span>
+                    <span className="date">FullStack Web-Developer</span>
                   </Card.Meta>
-                  <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
+                  <Card.Description>“Stay hungry. Stay foolish.”
+                  ― Steve Jobs
+                  </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Button href='https://github.com/Eliuth4k9'>Github</Button>
