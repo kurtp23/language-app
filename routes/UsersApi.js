@@ -16,7 +16,6 @@ Router.post('/', async (req, res) => {
 Router.get('/:id', async (req, res) => {
   User.find({ fire_id: req.params.id })
     .then((data) => {
-      console.log('this is user from db', data);
       res.json(data);
     })
     .catch((err) => {
@@ -32,7 +31,6 @@ Router.put('/:id', async (req, res) => {
       if (err) {
         throw err;
       } else {
-        console.log('Updated');
         res.send('ok');
       }
     }
@@ -46,7 +44,6 @@ Router.put('/lang/:id', async (req, res) => {
       if (err) {
         throw err;
       } else {
-        console.log('Updated');
         res.send('ok');
       }
     }
@@ -56,12 +53,10 @@ Router.put('/lang/:id', async (req, res) => {
 // puts a stat based on fire_id into user's stats array
 Router.put('/stats/:id', async (req, res) => {
   console.log('PUT for new Stat: ', req.params.id, ' and ', req.body);
-
   User.findOne({ fire_id: req.params.id }).then((data) => {
     console.log('Found User', data);
     // now inject new book data
     const newStatsArray = [...data.stats, req.body];
-
     User.updateOne(
       { fire_id: req.params.id },
       {

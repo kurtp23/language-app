@@ -1,17 +1,17 @@
 // TODO: Send to STATS via sats API
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 // Components
-import Challenge from "../../components/Challenge/Challenge.js";
-import CategorySelector from "../categorySelector/CategorySelector";
+import Challenge from '../../components/Challenge/Challenge.js';
+import CategorySelector from '../categorySelector/CategorySelector';
 
 // API calls
-import API from "../../utils/API.js";
-import { Card, Header, Container, Icon, Divider } from "semantic-ui-react";
+import API from '../../utils/API.js';
+import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react';
 
 function Challenges({ userState }) {
   const [categoryList, setCategoryList] = React.useState([]);
-  const [selection, setSelection] = React.useState("");
+  const [selection, setSelection] = React.useState('');
 
   useEffect(() => {
     // get data from MongoDB
@@ -47,15 +47,15 @@ function Challenges({ userState }) {
       <Container
         centered
         padded
-        className="ui raised centered text container segment"
-        style={{ height: "80%", width: "90%" }}
+        className='ui raised centered text container segment'
+        style={{ height: '80%', width: '90%' }}
       >
         {!selection ? (
           <>
-            <Container textAlign="center">
+            <Container textAlign='center'>
               {/* <h1 className='ui orange header'>Welcome To Challenges!</h1> */}
-              <Header className="ui orange header" as="h2">
-                <Icon name="book" />
+              <Header className='ui orange header' as='h2'>
+                <Icon name='book' />
                 Choose a Category
               </Header>
             </Container>

@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Grid, Header, Input, Checkbox, Select, Button, Segment } from "semantic-ui-react";
-import "./settings.css";
+import React, { useState } from 'react';
+import { Grid, Header, Input, Checkbox, Select, Button, Segment } from 'semantic-ui-react';
+import './settings.css';
+import API from '../../utils/userAPI.js';
 
-import API from "../../utils/userAPI.js";
 const languageOptions = [
-  { key: "es", value: "es", text: "Spanish" },
-  { key: "fr", value: "fr", text: "French" },
-  { key: "se", value: "se", text: "Something Else" },
+  { key: 'es', value: 'es', text: 'Spanish' },
+  { key: 'fr', value: 'fr', text: 'French' },
+  { key: 'se', value: 'se', text: 'Something Else' },
 ];
 
 function Settings(props) {
   const [changeName, setChangeName] = useState();
-  const [changeLanguage, setLanguage] = useState("");
+  const [changeLanguage, setLanguage] = useState('');
   const handleOnChange = (e, data) => {
     setLanguage(data.value);
     API.putLanguage(props.userState.userId, data.value)
@@ -19,7 +19,7 @@ function Settings(props) {
         props.setUserState({ ...props.userState, language: data.value });
       })
       .catch((err) => {
-        console.error("errinput lang:", err);
+        console.error('errinput lang:', err);
       });
   };
   function handleInputChange(event) {
@@ -27,8 +27,8 @@ function Settings(props) {
   }
   return (
     <>
-      <div className="ui raised very padded text container segment">
-        <Header color="orange" as="h1">
+      <div className='ui raised very padded text container segment'>
+        <Header color='orange' as='h1'>
           Settings
         </Header>
         <Grid>
@@ -36,7 +36,7 @@ function Settings(props) {
             <Grid.Column centered={true}>
               <Header>Change Display Name</Header>
               <Segment>
-                <Input onChange={handleInputChange} placeholder="Change Name" fluid>
+                <Input onChange={handleInputChange} placeholder='Change Name' fluid>
                   <input />
                   <Button
                     onClick={() => {
@@ -45,11 +45,11 @@ function Settings(props) {
                           props.setUserState({ ...props.userState, displayName: changeName });
                         })
                         .catch((err) => {
-                          console.error("err input user:", err);
+                          console.error('err input user:', err);
                         });
-                      alert("Name changed to " + changeName);
+                      alert('Name changed to ' + changeName);
                     }}
-                    icon="check"
+                    icon='check'
                   />
                 </Input>
               </Segment>
@@ -67,20 +67,20 @@ function Settings(props) {
               <Select
                 selection
                 onChange={handleOnChange}
-                placeholder="Select Language"
+                placeholder='Select Language'
                 options={languageOptions}
                 fluid
               />
               <Button
-                content={"Confirm Language"}
+                content={'Confirm Language'}
                 onClick={() => {
-                  if (changeLanguage === "fr") {
-                    alert("Language changed to French!");
+                  if (changeLanguage === 'fr') {
+                    alert('Language changed to French!');
                   } else {
-                    alert("Language changed to Spanish!");
+                    alert('Language changed to Spanish!');
                   }
                 }}
-                icon="check"
+                icon='check'
               />
             </Grid.Column>
           </Grid.Row>

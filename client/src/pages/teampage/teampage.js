@@ -74,7 +74,7 @@ function TeamPage() {
           <Grid.Column>
             <Segment>
               <Card centered={true}>
-              <Image src="../../images/Team/steveH.jpg" wrapped ui={false} />
+                <Image src="../../images/Team/steveH.jpg" wrapped ui={false} />
                 <Card.Content>
                   <Card.Header>Steve Eliuth </Card.Header>
                   <Card.Meta>

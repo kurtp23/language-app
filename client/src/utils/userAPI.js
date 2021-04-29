@@ -23,8 +23,7 @@ export default {
   },
   getUser: function (id) {
     return axios.get('/api/users/' + id, (req, res) => {
-      // console.log('this is res', res);
-      // console.log('this is req', req);
+      // Get user
     });
   },
   postUser: function (data) {

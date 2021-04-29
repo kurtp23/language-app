@@ -1,17 +1,17 @@
 // TODO: Send to STATS via sats API
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 // Components
-import MemoryBoard from "./MemoryBoard.js";
-import CategorySelector from "../categorySelector/CategorySelector";
+import MemoryBoard from './MemoryBoard.js';
+import CategorySelector from '../categorySelector/CategorySelector';
 
 // API calls
-import API from "../../utils/API.js";
-import { Card, Header, Container, Icon, Divider } from "semantic-ui-react";
+import API from '../../utils/API.js';
+import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react';
 
 function MemoryGame({ userState }) {
   const [categoryList, setCategoryList] = React.useState([]);
-  const [selection, setSelection] = React.useState("");
+  const [selection, setSelection] = React.useState('');
 
   useEffect(() => {
     // get data from MongoDB
@@ -49,13 +49,13 @@ function MemoryGame({ userState }) {
           <Container
             centered
             padded
-            className="ui raised centered text container segment"
-            style={{ height: "80%", width: "90%" }}
+            className='ui raised centered text container segment'
+            style={{ height: '80%', width: '90%' }}
           >
-            <Container textAlign="center">
-              {/* <h1 className="ui orange header">Welcome To Memory Game!</h1> */}
-              <Header className="ui orange header" as="h2">
-                <Icon name="book" />
+            <Container textAlign='center'>
+              {/* <h1 className='ui orange header'>Welcome To Memory Game!</h1> */}
+              <Header className='ui orange header' as='h2'>
+                <Icon name='book' />
                 Choose a Category
               </Header>
             </Container>

@@ -10,8 +10,8 @@ function messageField(props) {
       <Container>
         <Segment>
           <Card centered={true} fluid={true}>
-            <Card.Content header={"English: " + props.send} />
-            <Card.Content header={"Translation: " + props.translate} />
+            <Card.Content header={'English: ' + props.send} />
+            <Card.Content header={'Translation: ' + props.translate} />
             <Card.Content header={props.fl} extra />
           </Card>
         </Segment>
