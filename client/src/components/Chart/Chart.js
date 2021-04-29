@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import getUser from "../../utils/getUser";
 import API from "../../utils/userAPI.js";
 import { Image } from "semantic-ui-react";
 
@@ -7,6 +6,7 @@ const Chart = (props) => {
   const [flashCard, setFlashCard] = useState(0);
   const [challenge, setChallenge] = useState(0);
   const [memoryGame, setMemoryGame] = useState(0);
+  const [challengePercent, setChallengePercent] = useState(0)
 
   useEffect(() => {
     if (props.userState.userId) {
@@ -15,9 +15,12 @@ const Chart = (props) => {
         let challenge = 0;
         let flash = 0;
         let memory = 0;
+
+        let challengeData = []
         data.data[0].stats.forEach((stat) => {
           if (stat.challengeVal) {
             challenge++;
+            challengeData.push(stat.challengeVal)
           }
           if (stat.flashcardVal) {
             flash++;
@@ -29,6 +32,14 @@ const Chart = (props) => {
         setChallenge(challenge);
         setFlashCard(flash);
         setMemoryGame(memory);
+
+        if (challengeData.length > 0) {
+          let sumVal = 0
+          challengeData.forEach((val) => {
+            sumVal = sumVal + val
+          })
+          setChallengePercent(sumVal/challengeData.length)
+        }
       });
     }
   });
@@ -47,6 +58,7 @@ const Chart = (props) => {
           {" "}
         </h4>
         <Image src={statsChart} fluid />
+        <p>Average Challenge Score: {challengePercent.toFixed(1)}%</p>
       </div>
     </>
   );
