@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
-import {
-  Grid,
-  Header,
-  Input,
-  Checkbox,
-  Select,
-  Button,
-  Segment,
-} from 'semantic-ui-react';
-import './settings.css';
+import React, { useState } from "react";
+import { Grid, Header, Input, Checkbox, Select, Button, Segment } from "semantic-ui-react";
+import "./settings.css";
 
-import API from '../../utils/userAPI.js';
+import API from "../../utils/userAPI.js";
 const languageOptions = [
-  { key: 'es', value: 'es', text: 'Spanish' },
-  { key: 'fr', value: 'fr', text: 'French' },
-  { key: 'se', value: 'se', text: 'Something Else' },
+  { key: "es", value: "es", text: "Spanish" },
+  { key: "fr", value: "fr", text: "French" },
+  { key: "se", value: "se", text: "Something Else" },
 ];
 
 function Settings(props) {
   const [changeName, setChangeName] = useState();
-  const [changeLanguage, setLanguage] = useState('');
+  const [changeLanguage, setLanguage] = useState("");
   const handleOnChange = (e, data) => {
     console.log(data.value);
     setLanguage(data.value);
@@ -28,7 +20,7 @@ function Settings(props) {
         props.setUserState({ ...props.userState, language: data.value });
       })
       .catch((err) => {
-        console.log('errinput lang:', err);
+        console.log("errinput lang:", err);
       });
   };
   function handleInputChange(event) {
@@ -36,14 +28,16 @@ function Settings(props) {
   }
   return (
     <>
-      <div className='ui raised very padded text container segment'>
-        <Header color='orange' as="h1" >Settings</Header>
-        <Grid >
+      <div className="ui raised very padded text container segment">
+        <Header color="orange" as="h1">
+          Settings
+        </Header>
+        <Grid>
           <Grid.Row>
-            <Grid.Column centered={true} >
-              <Header inverted={true}>Change Display Name</Header>
+            <Grid.Column centered={true}>
+              <Header>Change Display Name</Header>
               <Segment>
-                <Input onChange={handleInputChange} placeholder='Change Name' fluid>
+                <Input onChange={handleInputChange} placeholder="Change Name" fluid>
                   <input />
                   <Button
                     onClick={() => {
@@ -52,8 +46,9 @@ function Settings(props) {
                           props.setUserState({ ...props.userState, displayName: changeName });
                         })
                         .catch((err) => {
-                          console.log('errinput user:', err);
+                          console.log("err input user:", err);
                         });
+                      alert("Name changed to " + changeName);
                     }}
                     icon="check"
                   />
@@ -63,20 +58,30 @@ function Settings(props) {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={10}>
-              <Header inverted={true}>Toggle Theme</Header>
-              <Checkbox toggle>
-              </Checkbox>
+              <Header>Toggle Theme</Header>
+              <Checkbox toggle></Checkbox>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={10}>
-              <Header inverted={true}>Select Language</Header>
+              <Header>Select Language</Header>
               <Select
                 selection
                 onChange={handleOnChange}
-                placeholder='Select Language'
+                placeholder="Select Language"
                 options={languageOptions}
                 fluid
+              />
+              <Button
+                content={"Confirm Language"}
+                onClick={() => {
+                  if ((props.userState.language = "fr")) {
+                    alert("Language changed to French!");
+                  } else if ((props.userState.language = "es")) {
+                    alert("Language changed to Spanish!");
+                  }
+                }}
+                icon="check"
               />
             </Grid.Column>
           </Grid.Row>
