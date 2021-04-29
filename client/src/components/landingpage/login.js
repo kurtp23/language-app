@@ -8,7 +8,7 @@ const Login = (props) => (
   <div>
     <Container color='teal'>
       <Segment basic textAlign='center'>
-        <Divider horizontal inverted>Welcome To Language Learner</Divider>
+        <Divider horizontal inverted>Welcome To Learnt-Up</Divider>
       </Segment>
       <LoginCard login={props.login} />
     </Container>
