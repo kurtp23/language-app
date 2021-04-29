@@ -32,7 +32,7 @@ const MobileNav = (props) => (
     <Grid.Row columns={1} only='mobile tablet'>
       <Grid.Column>
         <Segment>
-          <Menu>
+          <Menu style={{height: '25px'}}>
             <Menu.Item header>
               <img src='../../project3-icon.png' />
             </Menu.Item>

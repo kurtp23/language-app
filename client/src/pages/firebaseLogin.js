@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 var firebase = require('firebase');
 var firebaseui = require('firebaseui');
 

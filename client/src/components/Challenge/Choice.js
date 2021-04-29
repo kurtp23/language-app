@@ -6,7 +6,7 @@ import { Card, Header, Image } from 'semantic-ui-react';
 // react-spring
 import { useSpring, animated } from 'react-spring';
 
-function Choice ({ name, value, correct, onPicked }) {
+function Choice({ name, value, correct, onPicked }) {
   const imgString = '/images/Challenge/Choices/' + name.replace(/\s/g, '') + '.PNG';
 
   const [flipped, setFlipped] = useState(false);
@@ -18,40 +18,42 @@ function Choice ({ name, value, correct, onPicked }) {
 
   function onSelection() {
     const answerPicked = value;
-    
+
     setFlipped(state => !state);
 
-    setTimeout(function(){      
+    setTimeout(function () {
       onPicked(answerPicked);
     }, 2000);
 
   }
 
-  const revealedAnswer = <Header style={{ fontSize: '24px', color: correct ? 'green' : 'red'}}>{value}</Header>;
+  const revealedAnswer = <Header style={{ fontSize: '24px', color: correct ? 'green' : 'red' }}>{value}</Header>;
 
   return (
-    <Card style={{position: 'relative'}}color='teal' onClick={onSelection}>
-      
+    <Card style={{ position: 'relative' }} color='teal' onClick={onSelection}>
+
       <animated.div
-          style={{ textAlign: 'center', opacity: opacity.to(o => o), transform }}
-        >
+        style={{ textAlign: 'center', opacity: opacity.to(o => o), transform }}
+      >
         <Image src={imgString} size='medium' circular />
       </animated.div>
 
       <animated.div
-          style={{ position: 'absolute',
-            top: '50%',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            left: 0,
-            right: 0,
-            textAlign: 'center',
-            opacity: opacity.to(o => 1 - o), transform }}
-        >
-          {revealedAnswer}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          left: 0,
+          right: 0,
+          textAlign: 'center',
+          opacity: opacity.to(o => 1 - o), transform
+        }}
+      >
+        {revealedAnswer}
 
       </animated.div>
-        
+
     </Card>
   );
 }

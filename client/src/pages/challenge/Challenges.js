@@ -1,4 +1,3 @@
-// TODO: Send to STATS via sats API
 import React, { useEffect } from 'react';
 
 // Components
@@ -36,7 +35,6 @@ function Challenges({ userState }) {
   const RenderCategories = categoryList.map((cat, i) => {
     return <CategorySelector key={i} category={cat.cat} description={cat.description} onChange={handleSelection}/>;
   });
-
 
   return (
     <>

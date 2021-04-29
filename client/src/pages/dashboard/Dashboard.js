@@ -3,7 +3,6 @@ import { Container, Divider, Grid, Header, Icon, Image, Button } from 'semantic-
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
 
-
 const Dashboard = () => (
   <Container>
     <br></br>

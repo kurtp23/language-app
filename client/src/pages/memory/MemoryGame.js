@@ -1,10 +1,7 @@
-// TODO: Send to STATS via sats API
 import React, { useEffect } from 'react';
-
 // Components
 import MemoryBoard from './MemoryBoard.js';
 import CategorySelector from '../categorySelector/CategorySelector';
-
 // API calls
 import API from '../../utils/API.js';
 import { Card, Header, Container, Icon, Divider } from 'semantic-ui-react';
@@ -26,7 +23,6 @@ function MemoryGame({ userState }) {
         );
         setCategoryList(list);
       });
-
   }, []);
 
   function handleSelection(sel){
@@ -36,7 +32,6 @@ function MemoryGame({ userState }) {
   const RenderCategories = categoryList.map((cat, i) => {
     return <CategorySelector key={i} category={cat.cat} description={cat.description} onChange={handleSelection}/>;
   });
-
 
   return (
     <>
@@ -56,8 +51,7 @@ function MemoryGame({ userState }) {
         </>
         : <></>}
             
-      {selection ? <MemoryBoard category={selection} userState={userState} language={userState.language} category={selection}/> : <></>}
-      
+      {selection ? <MemoryBoard category={selection} userState={userState} language={userState.language} category={selection}/> : <></>} 
     </>
   );
 }
