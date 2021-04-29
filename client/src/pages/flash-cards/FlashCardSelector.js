@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Header, Icon } from 'semantic-ui-react';
-import FlashCard from './FlashCard';
-import CategorySelector from '../categorySelector/CategorySelector';
-import API from '../../utils/API.js';
+import React, { useState, useEffect } from "react";
+import { Card, Header, Icon } from "semantic-ui-react";
+import FlashCard from "./FlashCard";
+import CategorySelector from "../categorySelector/CategorySelector";
+import API from "../../utils/API.js";
 
 const FlashCardSelector = ({ userState }) => {
   const [categoryList, setCategoryList] = useState([]);
-  const [selection, setSelection] = useState('');
+  const [selection, setSelection] = useState("");
 
   useEffect(() => {
-    API.getChallenges()
-      .then((data) => {
-
-        let list = data.data[0].names.map((name) => {
-          return ({
-            cat: name.cat,
-            description: name.description,
-          });
-        });
-        setCategoryList(list);
+    API.getChallenges().then((data) => {
+      let list = data.data[0].names.map((name) => {
+        return {
+          cat: name.cat,
+          description: name.description,
+        };
       });
+      setCategoryList(list);
+    });
   }, []);
 
   function handleSelection(sel) {
@@ -38,18 +36,19 @@ const FlashCardSelector = ({ userState }) => {
   });
 
   return (
-    <div className='ui raised text container segment'>
-      <Header as ="h1" className='ui orange header' textAlign='center'> Welcome To Flashcards!</Header>
-      {!selection ? <Header className='ui orange header' textAlign='center'>
-        <Icon name='book' />
-        Select a Category!
-      </Header> : <></>}
+    <div className="ui raised text container segment">
+      {/* <Header as ="h1" className='ui orange header' textAlign='center'> Welcome To Flashcards!</Header> */}
+      {!selection ? (
+        <Header className="ui orange header" textAlign="center">
+          <Icon name="book" />
+          Select a Category!
+        </Header>
+      ) : (
+        <></>
+      )}
 
       {!selection ? (
-        <Card.Group itemsPerRow={2}>
-          {' '}
-          {RenderCategories}{' '}
-        </Card.Group>
+        <Card.Group itemsPerRow={2}> {RenderCategories} </Card.Group>
       ) : (
         <FlashCard userState={userState} category={selection} />
       )}
