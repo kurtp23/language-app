@@ -13,14 +13,13 @@ function Settings(props) {
   const [changeName, setChangeName] = useState();
   const [changeLanguage, setLanguage] = useState("");
   const handleOnChange = (e, data) => {
-    console.log(data.value);
     setLanguage(data.value);
     API.putLanguage(props.userState.userId, data.value)
       .then(() => {
         props.setUserState({ ...props.userState, language: data.value });
       })
       .catch((err) => {
-        console.log("errinput lang:", err);
+        console.error("errinput lang:", err);
       });
   };
   function handleInputChange(event) {
@@ -46,7 +45,7 @@ function Settings(props) {
                           props.setUserState({ ...props.userState, displayName: changeName });
                         })
                         .catch((err) => {
-                          console.log("err input user:", err);
+                          console.error("err input user:", err);
                         });
                       alert("Name changed to " + changeName);
                     }}

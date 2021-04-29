@@ -4,7 +4,7 @@ import MemoryGameOver from '../../components/MemoryGame/MemoryGameOver.js';
 
 import API from '../../utils/API.js';
 
-import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
+import { Container, Grid, Header, Icon } from 'semantic-ui-react';
 
 function MemoryBoard({ userState, category }) {
   const [fronts, setFronts] = React.useState([]);

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Divider, Grid,Container, Segment } from 'semantic-ui-react';
+import React from 'react';
+import { Card, Container, Segment } from 'semantic-ui-react';
 
 function messageField(props) {
 

@@ -38,9 +38,9 @@ function TeamPage() {
                 <Card.Content>
                   <Card.Header>Erik Portillo </Card.Header>
                   <Card.Meta>
-                    <span className='date'>Joined in 2015</span>
+                    <span className='date'>Lover of Cats</span>
                   </Card.Meta>
-                  <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
+                  <Card.Description>Erik is a web developer living in Portland, Oregon.</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Button href='https://github.com/rasputinforever'>Github</Button>

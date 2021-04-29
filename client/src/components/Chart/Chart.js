@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import getUser from "../../utils/getUser";
 import API from "../../utils/userAPI.js";
 import { Image } from "semantic-ui-react";
 
@@ -7,32 +6,52 @@ const Chart = (props) => {
   const [flashCard, setFlashCard] = useState(0);
   const [challenge, setChallenge] = useState(0);
   const [memoryGame, setMemoryGame] = useState(0);
-
+  const [challengePercent, setChallengePercent] = useState(0)
+  const [totalFlashCards, setTotalFlashCards] = useState(0)
+  const [totalMemoryGames, setTotalMemoryGames] = useState(0)
+  
   useEffect(() => {
     if (props.userState.userId) {
       API.getUser(props.userState.userId).then((data) => {
-        console.log("this is stats use effect", data.data);
         let challenge = 0;
         let flash = 0;
         let memory = 0;
+
+        let challengeData = []
+        let flaschardCount = 0
+        let memoryGameCount = 0
+
         data.data[0].stats.forEach((stat) => {
           if (stat.challengeVal) {
             challenge++;
+            challengeData.push(stat.challengeVal)
           }
           if (stat.flashcardVal) {
             flash++;
+            flaschardCount = flaschardCount + stat.flashcardVal
           }
           if (stat.memoryVal) {
             memory++;
+            memoryGameCount = memoryGameCount + stat.memoryVal
           }
         });
         setChallenge(challenge);
         setFlashCard(flash);
         setMemoryGame(memory);
+
+        if (challengeData.length > 0) {
+          let sumVal = 0
+          challengeData.forEach((val) => {
+            sumVal = sumVal + val
+          })
+          setChallengePercent(sumVal/challengeData.length)
+        }
+
+        setTotalFlashCards(flaschardCount)
+        setTotalMemoryGames(memoryGameCount)
       });
     }
   });
-  console.log("chall/flash are", challenge, flashCard, memoryGame);
   const value = flashCard;
   const value2 = challenge;
   const value3 = memoryGame;
@@ -47,6 +66,12 @@ const Chart = (props) => {
           {" "}
         </h4>
         <Image src={statsChart} fluid />
+        <ul>
+          <li>Average Challenge Score: {challengePercent.toFixed(1)}%</li>
+          <li>Flashcards Viewed: {totalFlashCards}</li>
+          <li>Times Played Memory Game: {totalMemoryGames}</li>
+        </ul>
+
       </div>
     </>
   );
