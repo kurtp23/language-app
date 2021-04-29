@@ -58,9 +58,9 @@ function TeamPage() {
                 <Card.Content>
                   <Card.Header>Charles Latrobe-Bateman </Card.Header>
                   <Card.Meta>
-                    <span className='date'>Joined in 2015</span>
+                    <span className='date'>Former Child</span>
                   </Card.Meta>
-                  <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
+                  <Card.Description>Full Stack Web Developer who enjoys creating sleek, engaging sites with React</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Button href='https://github.com/Clatrobe00'>Github</Button>
