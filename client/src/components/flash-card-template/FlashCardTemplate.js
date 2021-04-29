@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Image, Grid, GridColumn } from 'semantic-ui-react';
+import { Card, Button, Image, Grid } from 'semantic-ui-react';
 import { useSpring, animated as a } from 'react-spring';
 import './FlashCardTemplate.css';
 import AudioSearch from '../../utils/audioSearch';

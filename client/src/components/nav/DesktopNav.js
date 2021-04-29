@@ -12,7 +12,6 @@ function SignOut(props) {
           .signOut()
           .then(() => {
             // Sign-out successful.
-            console.log('signed out');
           })
           .catch((error) => {
             // An error happened.
