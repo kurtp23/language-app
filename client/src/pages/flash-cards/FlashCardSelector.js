@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Header, Icon } from 'semantic-ui-react';
 import FlashCard from './FlashCard';
 import CategorySelector from '../categorySelector/CategorySelector';
 import API from '../../utils/API.js';
@@ -39,7 +39,11 @@ const FlashCardSelector = ({ userState }) => {
 
   return (
     <div className='ui raised text container segment'>
-      {!selection ? <h2 className='ui orange header'>Select a Category!</h2> : <></>}
+      <Header as ="h1" className='ui orange header' textAlign='center'> Welcome To Flashcards!</Header>
+      {!selection ? <Header className='ui orange header' textAlign='center'>
+        <Icon name='book' />
+        Select a Category!
+      </Header> : <></>}
 
       {!selection ? (
         <Card.Group itemsPerRow={2}>

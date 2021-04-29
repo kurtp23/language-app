@@ -44,7 +44,13 @@ function Challenges({ userState }) {
             
         {!selection ? 
           <>
-            <Container textAlign='center'><Header className='ui orange header' as='h2'><Icon name='book' />Choose a Category</Header></Container>
+            <Container textAlign='center'>
+              <h1 className='ui orange header'>Welcome To Challenges!</h1>
+              <Header className='ui orange header' as='h2'>
+                <Icon name='book' />
+                Choose a Category
+              </Header>
+            </Container>
             <Divider />
           </>
           : <></>}
