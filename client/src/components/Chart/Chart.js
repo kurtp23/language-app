@@ -38,8 +38,8 @@ const Chart = (props) => {
   const value3 = memoryGame;
   const chartPercents =`&chd=t%3A${value}%2C100%7C${value2}%2C100%7C${value3}%2C40`;
   
-  const chartColor = 'chco=FF8033%7CFFB479%2C52cbff%7Ca6e4ff';
-  const statsChart =`https://image-charts.com/chart?${chartColor}${chartPercents}&chl=Flashcards%7C%7CChallenges&chli=Stats&chs=700x300&cht=pd`;
+  const chartColor = 'chco=FF8033%7CFFB479%2C52cbff%7Ca6e4ff%2Cfc4128%7Cff997d';
+  const statsChart =`https://image-charts.com/chart?${chartColor}${chartPercents}&chl=Flashcard%7C%7CChallenge%7C%7CGame%7C%7C&chli=Stats&chs=700x300&cht=pd`;
   return (
     <>
       <div className="ui raised very padded text container segment">
