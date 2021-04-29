@@ -20,15 +20,12 @@ function Bot(props) {
   const apiKey = process.env.REACT_APP_API_KEY;
   const googleTranslate = async () => {
     const lang = props.userState.language;
-    console.log(lang);
-    console.log("api key", process.env, apiKey);
     translate(message, {
       from: 'en',
       to: lang,
       engine: "google",
       key: process.env.REACT_APP_API_KEY,
     }).then((text) => {
-      console.log(text); // Hola mundo
 
       setTranslate(text);
       setFl(lang);
@@ -40,19 +37,16 @@ function Bot(props) {
     setMessage(event.target.value);
   };
   const onSend = () => {
-    console.log(message);
     let arr = [];
     arr.push(message);
     for (let i = 0; i < arr.length; i++) {
       setMessageSend(arr[i]);
     }
     Translate.search(message).then((data) => {
-      console.log('this is arr', data.data);
       setArr(data.data);
       setTranslate([data.data[0].shortdef[0], data.data[1].shortdef[0], data.data[2].shortdef[0]]);
       setFl([data.data[0].fl, data.data[1].fl, data.data[2].fl]);
     });
-    console.log(arr);
   };
 
   return (

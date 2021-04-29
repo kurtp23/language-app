@@ -9,8 +9,6 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "./utils/fireUtil";
-import postUser from "./utils/userApiPost.js";
-import getUser from "./utils/getUser";
 import Stats from "./pages/stats/stats";
 import "./app.css";
 import Bot from "./pages/bot/bot.js";
@@ -23,10 +21,8 @@ import PS from "./components/PS/Ps.js";
 const auth = firebase.auth();
 require("dotenv").config();
 function App() {
-  console.log("this is env", process.env.REACT_APP_API_KEY);
   const [user] = useAuthState(auth);
   const [userState, setUserState] = useState({});
-  const [dbUser, setDbUser] = useState({});
 
   useEffect(() => {
     if (user) {
@@ -34,7 +30,6 @@ function App() {
       setUserState({ displayName: user.displayName, userId: user.uid, language: "es", theme: "" });
       API.postUser(user).then(() => {
         API.getUser(user.uid).then((data) => {
-          console.log(data)
           const newUser = {
             displayName: data.data[0].username,
             userId: data.data[0].fire_id,
@@ -46,8 +41,6 @@ function App() {
       });
     }
   }, [user]);
-
-  console.log("this is user state", userState);
 
   return (
     <div>

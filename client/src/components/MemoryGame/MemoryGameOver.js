@@ -7,7 +7,6 @@ import { Button, Container } from 'semantic-ui-react';
 
 function MemoryGameOver({ userState }){
     useEffect(() => {
-        console.log("Sending Stat")
         const stat = {
             flashcardVal: 0,
             challengeVal: 0,
