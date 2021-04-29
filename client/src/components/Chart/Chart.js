@@ -27,8 +27,10 @@ const Chart = (props) => {
   console.log('chall/flash are', challenge, flashCard);
   const value = flashCard;
   const value2 = challenge;
-  const chartPercents =`&chd=t%3A${value}%2C100%7C${value2}%2C100`;
-  const chartColor = 'chco=FF8033%7CFFB479%2C01BDFE%7CB5EBFE';
+  const value3 = memory;
+  const chartPercents =`&chd=t%3A${value}%2C100%7C${value2}%2C100%7C${value3}%2C40`;
+  
+  const chartColor = 'chco=FF8033%7CFFB479%2C52cbff%7Ca6e4ff';
   const statsChart =`https://image-charts.com/chart?${chartColor}${chartPercents}&chl=Flashcards%7C%7CChallenges&chli=Stats&chs=700x300&cht=pd`;
   return (
     <>
