@@ -5,6 +5,8 @@ https://opensource.org/licenses/MIT
 ## Description
 
 Welcome to Learnt Up! A mobile-first language learning application geared towards teaching young learners basic vocabulary in other languages (current primary focus is Spanish and then French, with plenty more to follow). Learnt Up is packed with features that make learning a new language both easy and fun.
+
+Learnt-Up is deployed at this URL: https://floating-oasis-75260.herokuapp.com/
       
 ## Table of Contents 
       
