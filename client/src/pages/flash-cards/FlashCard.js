@@ -41,7 +41,7 @@ const FlashCard = ({category, userState}) => {
 
   return (
     <div style={{ width: '100%' }} className="ui raised text container" style={{ top: '0px', width: '100%', margin: '0px' }}>
-      <h2 className="ui orange header">Flash Cards: {category} </h2>
+      <h3 className="ui orange header">Flash Cards: {category} </h3>
       <div>
         <Grid columns={1} verticalAlign='bottom'>
           <Grid.Row>
