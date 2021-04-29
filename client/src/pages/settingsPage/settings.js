@@ -74,9 +74,9 @@ function Settings(props) {
               <Button
                 content={"Confirm Language"}
                 onClick={() => {
-                  if ((props.userState.language = "fr")) {
+                  if (changeLanguage === "fr") {
                     alert("Language changed to French!");
-                  } else if ((props.userState.language = "es")) {
+                  } else {
                     alert("Language changed to Spanish!");
                   }
                 }}

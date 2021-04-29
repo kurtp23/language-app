@@ -14,7 +14,7 @@ class Test extends Component {
   }
   render() {
     return (
-      <Particles style={{position:"absolute"}}
+      <Particles style={{position:"fixed"}}
         id="tsparticles"
         init={this.particlesInit}
         loaded={this.particlesLoaded}
